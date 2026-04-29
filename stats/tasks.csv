@@ -24,7 +24,7 @@ squeegee_collect_sand,squeegee,collect,sand,163
 mallet_crush_banana,mallet,crush,banana,162
 spoon_press_sponge,spoon,press,sponge,160
 scooper_dig_toysand,icecreamscooper | scooper,scoop,sand,158
-knifeblade_open_box,knifeblade,,box,158
+knifeblade_open_box,knifeblade,open,box,158
 chopstick_slice_dough,chopstick,slice,dough,155
 spatula_press_sponge,spatula,press,sponge,150
 book_collect_nuts,book,sweep,nuts,132
@@ -32,7 +32,7 @@ spoon_spread_tomatosauce,spoon,spread,tomatosauce,131
 cup_crush_dough,cup,crush,dough,127
 spoon_cut_kinetic_sand,spoon,cut,kineticsand,122
 spoon_crush_nuts,spoon,crush,nuts,122
-knife_open_box,knife,,box,118
+knife_open_box,knife,open,box,118
 spoon_stir_coffee,spoon,stir,coffee,117
 squeegee_sweep_nuts,squeegee,sweep,nuts,116
 brush_sweep_nuts,brush,sweep,cashew | nuts,112
@@ -41,7 +41,7 @@ scooper_scoop_icecream,icecreamscooper | scooper,scoop,icecream,108
 fork_cut_dough,fork,cut,dough,107
 fork_spread_tomatosauce,fork,spread,tomatosauce,106
 chopstick_stir_coffee,chopstick,stir,coffee,101
-towel_sweep_nuts,,sweep,nuts,98
+towel_sweep_nuts,towel,sweep,nuts,98
 spoon_dig_plantingpot,spoon,dig,plantingpot,94
 straw_stir_coffee,straw,stir,coffee,93
 rollingpin_roll_dough,rollingpin,roll,dough,90
