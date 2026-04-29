@@ -16,7 +16,8 @@
   .layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: start; }
   @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
 
-  .sidebar { background: #fff; padding: 1rem 1.1rem 1.1rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); position: sticky; top: 1rem; }
+  .sidebar { background: #fff; padding: 1rem 1.1rem 1.1rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
+  @media (max-width: 900px) { .sidebar { position: static; max-height: none; overflow-y: visible; margin-bottom: 1rem; } }
   .sidebar h2 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; font-weight: 700; margin: 0 0 0.6rem 0; }
   .filter-group { margin-bottom: 1rem; }
   .filter-group .label { font-size: 0.85rem; margin-bottom: 0.35rem; color: #444; font-weight: 600; }
