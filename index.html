@@ -390,6 +390,34 @@
                         where <code>c</code> is a slerp+lerp camera path between training cameras. The composition gives
                         <strong>+27 MUSIQ over the same SparseGS render without diffusion</strong>.
                     </p>
+                    <p style="font-size: 95%;">
+                        <strong>v143</strong> &mdash; Difix3D fix-up on a plain InstantSplat-1k backbone (no SparseGS regularizers):<br>
+                        &nbsp;&nbsp;<code>Î(c) = Difix<sub>1-step</sub>(Render<sub>InstantSplat-1k</sub>(c))</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v142</strong> &mdash; 4-step GSFix3D fix-up applied to a MASt3R-initialized 3DGS render:<br>
+                        &nbsp;&nbsp;<code>Î(c) = GSFix<sub>4-step</sub>(Render<sub>3DGS-MASt3R</sub>(c))</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v129</strong> &mdash; pure InstantSplat trained for 7k iterations, no diffusion:<br>
+                        &nbsp;&nbsp;<code>G = argmin<sub>G</sub> Σ<sub>c</sub> (1&minus;λ)·L<sub>1</sub> + λ·L<sub>D-SSIM</sub>, &nbsp; K=7000</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v150</strong> &mdash; Sparfels (Lin et&nbsp;al. 2025): adds a sparsity-aware geometric prior on top of <code>L<sub>3DGS</sub></code>:<br>
+                        &nbsp;&nbsp;<code>L<sub>v150</sub> = L<sub>3DGS</sub> + λ<sub>geom</sub>·L<sub>sparfels-geom</sub></code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v149b</strong> &mdash; VGGT-X (Liu et&nbsp;al. 2025) initialization, 30k-iter 3DGS refinement:<br>
+                        &nbsp;&nbsp;<code>G<sub>0</sub> = VGGT(8&nbsp;cams); &nbsp; G = argmin<sub>G</sub> L<sub>3DGS</sub>, K=30000</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v123 (1k)</strong> &mdash; plain InstantSplat-1k baseline (no MASt3R init, no regularizers):<br>
+                        &nbsp;&nbsp;<code>G = argmin<sub>G</sub> L<sub>3DGS</sub>, &nbsp; K=1000</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v127</strong> &mdash; InstantSplat-1k augmented with our photometric-matching loss:<br>
+                        &nbsp;&nbsp;<code>L<sub>v127</sub> = L<sub>3DGS</sub> + λ<sub>pm</sub>·L<sub>pm-loss</sub></code>
+                    </p>
                 </div>
             </div>
 
@@ -588,6 +616,18 @@
                         &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s))))</code><br>
                         Stack order is <em>not</em> commutative: reversing to GSFix&rarr;Difix (v384) drops MUSIQ by
                         1.46 (70.57 vs 72.03).
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v384</strong> &mdash; reversed stack (GSFix first, then Difix), same Lanczos downsample:<br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s))))</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v381</strong> &mdash; Difix3D-only fix-up on the per-frame InstantSplat 1080p render (no GSFix):<br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s)))</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>v382</strong> &mdash; GSFix3D-only fix-up on the per-frame InstantSplat 1080p render (no Difix):<br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s)))</code>
                     </p>
                 </div>
             </div>
