@@ -204,98 +204,6 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container is-max-widescreen">
-            <div class="rows">
-                <div class="row is-full-width">
-                    <h2 class="title is-2"><span class="dvima">Human trajectory diversity</span></h2>
-                    <p style="font-size: 125%">
-                        For the tasks with hand-optimized annotations, we overlay every human hand trajectory for that task on a single representative frame. Each color corresponds to one trial. Dense overlays reveal the natural spread of approach directions, contact points, and execution styles.
-                    </p>
-                </div>
-                <div class="columns is-multiline" id="overlay-grid">
-                    <div class="column is-full has-text-centered" id="overlay-loading">
-                        <em>loading trajectory overlays…</em>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container is-max-widescreen">
-            <div class="rows">
-                <div class="row is-full-width">
-                    <h2 class="title is-2"><span class="dvima">Worked example: annotated sample</span></h2>
-                    <p style="font-size: 125%">
-                        A single end-to-end example of our annotated format, for the sequence
-                        <code>videos_0121/squeegee_collect_sand/20260122_squeegee_collect_sand_from_table_20</code>.
-                        The video on the left is <code>cam0_rgb.mp4</code> with the MANO hand skeleton (21 joints + bones)
-                        and a fading wrist tail drawn on top in 2D. The downloads on the right are the exact inputs to
-                        <code>batch_process.py</code> (which fuses hand keypoints with tool pose) and to
-                        <code>vis_robotool.py</code> (the viser 3D reference viewer).
-                    </p>
-                </div>
-                <br>
-                <div class="columns is-vcentered">
-                    <div class="column is-two-thirds has-text-centered">
-                        <video controls autoplay muted loop playsinline
-                               style="width:100%; border-radius:4px; background:#000">
-                            <source src="assets/sample_data/squeegee_skeleton_overlay.mp4" type="video/mp4">
-                        </video>
-                        <div style="font-size: 0.95rem; margin-top: 6px; color: #555">
-                            Left/right MANO hand joints projected into camera 0. Colors are per-finger (thumb = red, index = green,
-                            middle = blue, ring = yellow, pinky = magenta). Wrist dot + 60-frame fading tail shows hand motion.
-                        </div>
-                    </div>
-                    <div class="column">
-                        <h4 class="title is-5">Download sample assets</h4>
-                        <table class="table is-narrow is-striped is-hoverable" style="font-size:0.9rem">
-                            <thead>
-                                <tr><th>file</th><th>what it is</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><a href="assets/sample_data/mano_joints_squeegee.pkl"><code>mano_joints_squeegee.pkl</code></a></td>
-                                    <td>combined hand joints + tool_object_pose for this trial (output of <code>batch_process.py</code>)</td></tr>
-                                <tr><td><a href="assets/sample_data/result_hand_optimized.pkl"><code>result_hand_optimized.pkl</code></a></td>
-                                    <td>raw multi-view optimized hand result (input to <code>batch_process.py</code>)</td></tr>
-                                <tr><td><a href="assets/sample_data/poses_o.npy"><code>poses_o.npy</code></a></td>
-                                    <td>per-frame 6DoF tool object pose (7-tuple <code>[qx, qy, qz, qw, tx, ty, tz]</code>)</td></tr>
-                                <tr><td><a href="assets/sample_data/tool_masks.zip"><code>tool_masks.zip</code></a></td>
-                                    <td>per-frame tool segmentation masks from the 8-camera rig</td></tr>
-                                <tr><td><a href="assets/sample_data/realsense_calibration_0121.yaml"><code>realsense_calibration_0121.yaml</code></a></td>
-                                    <td>intrinsics + extrinsics for the 8 cameras on 2026-01-21</td></tr>
-                                <tr><td><a href="assets/sample_data/batch_process.py"><code>batch_process.py</code></a></td>
-                                    <td>reference pipeline: fuse MANO hand joints with tool pose into the combined pkl</td></tr>
-                                <tr><td><a href="assets/sample_data/vis_robotool.py"><code>vis_robotool.py</code></a></td>
-                                    <td>viser 3D viewer of the combined pkl (hand skeleton + tool mesh)</td></tr>
-                                <tr><td><a href="assets/sample_data/squeegee_skeleton_overlay.mp4"><code>squeegee_skeleton_overlay.mp4</code></a></td>
-                                    <td>the 2D skeleton-on-video rendering shown to the left</td></tr>
-                            </tbody>
-                        </table>
-                        <p style="font-size:0.82rem; color:#666">
-                            The corresponding raw 8-camera videos (<code>cam{0..7}_rgb.mp4</code>) ship with the full dataset release.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <h2 class="title is-3">Interactive Dataset Visualizer</h2>
-                    <p style="font-size: 125%">
-                        Browse a stratified random subset of trials. Filter by tool, action, or object to see how humans solve the same task in different ways.
-                    </p>
-                    <a class="button is-large is-primary" target="_blank" href="dataset-visualizer/">Open the visualizer</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
         <!-- ============ AUTO-SEGMENTATION / ANNOTATION ============ -->
     <section class="section">
         <div class="container is-max-desktop">
@@ -677,6 +585,98 @@
             </div>
         </div>
     </section>
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="row is-full-width">
+                    <h2 class="title is-2"><span class="dvima">Human trajectory diversity</span></h2>
+                    <p style="font-size: 125%">
+                        For the tasks with hand-optimized annotations, we overlay every human hand trajectory for that task on a single representative frame. Each color corresponds to one trial. Dense overlays reveal the natural spread of approach directions, contact points, and execution styles.
+                    </p>
+                </div>
+                <div class="columns is-multiline" id="overlay-grid">
+                    <div class="column is-full has-text-centered" id="overlay-loading">
+                        <em>loading trajectory overlays…</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="row is-full-width">
+                    <h2 class="title is-2"><span class="dvima">Worked example: annotated sample</span></h2>
+                    <p style="font-size: 125%">
+                        A single end-to-end example of our annotated format, for the sequence
+                        <code>videos_0121/squeegee_collect_sand/20260122_squeegee_collect_sand_from_table_20</code>.
+                        The video on the left is <code>cam0_rgb.mp4</code> with the MANO hand skeleton (21 joints + bones)
+                        and a fading wrist tail drawn on top in 2D. The downloads on the right are the exact inputs to
+                        <code>batch_process.py</code> (which fuses hand keypoints with tool pose) and to
+                        <code>vis_robotool.py</code> (the viser 3D reference viewer).
+                    </p>
+                </div>
+                <br>
+                <div class="columns is-vcentered">
+                    <div class="column is-two-thirds has-text-centered">
+                        <video controls autoplay muted loop playsinline
+                               style="width:100%; border-radius:4px; background:#000">
+                            <source src="assets/sample_data/squeegee_skeleton_overlay.mp4" type="video/mp4">
+                        </video>
+                        <div style="font-size: 0.95rem; margin-top: 6px; color: #555">
+                            Left/right MANO hand joints projected into camera 0. Colors are per-finger (thumb = red, index = green,
+                            middle = blue, ring = yellow, pinky = magenta). Wrist dot + 60-frame fading tail shows hand motion.
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-5">Download sample assets</h4>
+                        <table class="table is-narrow is-striped is-hoverable" style="font-size:0.9rem">
+                            <thead>
+                                <tr><th>file</th><th>what it is</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><a href="assets/sample_data/mano_joints_squeegee.pkl"><code>mano_joints_squeegee.pkl</code></a></td>
+                                    <td>combined hand joints + tool_object_pose for this trial (output of <code>batch_process.py</code>)</td></tr>
+                                <tr><td><a href="assets/sample_data/result_hand_optimized.pkl"><code>result_hand_optimized.pkl</code></a></td>
+                                    <td>raw multi-view optimized hand result (input to <code>batch_process.py</code>)</td></tr>
+                                <tr><td><a href="assets/sample_data/poses_o.npy"><code>poses_o.npy</code></a></td>
+                                    <td>per-frame 6DoF tool object pose (7-tuple <code>[qx, qy, qz, qw, tx, ty, tz]</code>)</td></tr>
+                                <tr><td><a href="assets/sample_data/tool_masks.zip"><code>tool_masks.zip</code></a></td>
+                                    <td>per-frame tool segmentation masks from the 8-camera rig</td></tr>
+                                <tr><td><a href="assets/sample_data/realsense_calibration_0121.yaml"><code>realsense_calibration_0121.yaml</code></a></td>
+                                    <td>intrinsics + extrinsics for the 8 cameras on 2026-01-21</td></tr>
+                                <tr><td><a href="assets/sample_data/batch_process.py"><code>batch_process.py</code></a></td>
+                                    <td>reference pipeline: fuse MANO hand joints with tool pose into the combined pkl</td></tr>
+                                <tr><td><a href="assets/sample_data/vis_robotool.py"><code>vis_robotool.py</code></a></td>
+                                    <td>viser 3D viewer of the combined pkl (hand skeleton + tool mesh)</td></tr>
+                                <tr><td><a href="assets/sample_data/squeegee_skeleton_overlay.mp4"><code>squeegee_skeleton_overlay.mp4</code></a></td>
+                                    <td>the 2D skeleton-on-video rendering shown to the left</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:0.82rem; color:#666">
+                            The corresponding raw 8-camera videos (<code>cam{0..7}_rgb.mp4</code>) ship with the full dataset release.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Interactive Dataset Visualizer</h2>
+                    <p style="font-size: 125%">
+                        Browse a stratified random subset of trials. Filter by tool, action, or object to see how humans solve the same task in different ways.
+                    </p>
+                    <a class="button is-large is-primary" target="_blank" href="dataset-visualizer/">Open the visualizer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 <section class="section" id="BibTeX">
         <div class="container is-max-widescreen content">
