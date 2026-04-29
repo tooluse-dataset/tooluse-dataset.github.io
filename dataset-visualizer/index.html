@@ -6,17 +6,35 @@
 <title>RoboTool Dataset Visualizer</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <style>
-  body { padding: 1.25rem; background: #fafafa; }
-  header { margin-bottom: 1rem; }
+  body { padding: 1.25rem 1.5rem 2rem; background: #fafafa; }
+  header { margin-bottom: 1.25rem; }
   h1.title { margin-bottom: 0.25rem; }
-  .controls { background: #fff; padding: 1rem 1.25rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 1.25rem; }
-  .filter-group { margin-bottom: 0.75rem; }
-  .filter-group .label { font-size: 0.85rem; margin-bottom: 0.35rem; color: #555; }
-  .checkbox-list { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; max-height: 110px; overflow-y: auto; padding: 0.4rem 0.6rem; border: 1px solid #eee; border-radius: 4px; background: #fcfcfc; }
-  .checkbox-list label { font-size: 0.85rem; cursor: pointer; user-select: none; white-space: nowrap; }
-  .checkbox-list input[type=checkbox] { margin-right: 0.25rem; vertical-align: middle; }
-  .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
-  .toolbar .left { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .home-link { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 1.05rem; font-weight: 600; color: #1f5fa8; text-decoration: none; padding: 0.4rem 0.85rem; border-radius: 6px; background: #eef4fb; border: 1px solid #d6e4f3; transition: background 0.15s; }
+  .home-link:hover { background: #d6e4f3; color: #144078; }
+  .home-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .sidebar { background: #fff; padding: 1rem 1.1rem 1.1rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); position: sticky; top: 1rem; }
+  .sidebar h2 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; font-weight: 700; margin: 0 0 0.6rem 0; }
+  .filter-group { margin-bottom: 1rem; }
+  .filter-group .label { font-size: 0.85rem; margin-bottom: 0.35rem; color: #444; font-weight: 600; }
+  .checkbox-list { display: flex; flex-direction: column; gap: 0.25rem; max-height: 180px; overflow-y: auto; padding: 0.4rem 0.55rem; border: 1px solid #eee; border-radius: 4px; background: #fcfcfc; }
+  .checkbox-list label { font-size: 0.83rem; cursor: pointer; user-select: none; white-space: nowrap; }
+  .checkbox-list input[type=checkbox] { margin-right: 0.4rem; vertical-align: middle; }
+
+  .sidebar .sort-row { margin: 0.6rem 0 0.85rem; }
+  .sidebar .sort-row .label { font-size: 0.85rem; margin-bottom: 0.25rem; color: #444; font-weight: 600; }
+  .sidebar select { width: 100%; }
+  .sidebar .default-btn { width: 100%; margin-top: 0.4rem; background: #1f5fa8; color: #fff; border: none; padding: 0.55rem; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+  .sidebar .default-btn:hover { background: #144078; }
+
+  .main-pane .topbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .count-badge { background: #1f5fa8; color: #fff; padding: 0.3rem 0.75rem; border-radius: 12px; font-size: 0.82rem; font-weight: 600; }
+  .next-btn { background: #fff; color: #1f5fa8; border: 1.5px solid #1f5fa8; padding: 0.4rem 0.95rem; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+  .next-btn:hover { background: #1f5fa8; color: #fff; }
+
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
   .card-task { background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.07); display: flex; flex-direction: column; }
   .card-task .thumb-wrap { width: 100%; aspect-ratio: 16/9; background: #222; display: flex; align-items: center; justify-content: center; position: relative; }
@@ -26,66 +44,70 @@
   .card-task .meta { padding: 0.55rem 0.75rem 0.7rem; font-size: 0.82rem; line-height: 1.35; }
   .card-task .task-name { font-weight: 600; word-break: break-word; margin-bottom: 0.2rem; color: #333; }
   .card-task .tags { color: #666; font-size: 0.78rem; margin-bottom: 0.25rem; }
-  .card-task .trials { color: #3273dc; font-weight: 600; font-size: 0.8rem; }
-  .count-badge { background: #3273dc; color: #fff; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.78rem; }
-  .home-link { font-size: 0.85rem; }
-
+  .card-task .trials { color: #1f5fa8; font-weight: 600; font-size: 0.8rem; }
   .card-task[data-video] { cursor: pointer; }
-
   </style>
 </head>
 <body>
 <header class="container">
-  <h1 class="title is-3">RoboTool Dataset Visualizer</h1>
-  <p class="subtitle is-6">Per-task thumbnails (frame at 8&nbsp;s). Filter by tool / action / object, sort by trial count or alphabetically.</p>
-  <a class="home-link" href="../">&larr; back to RoboTool home</a>
+  <a class="home-link" href="../" title="Back to RoboTool home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/>
+    </svg>
+    <span>Home</span>
+  </a>
+  <h1 class="title is-3" style="margin-top: 0.85rem;">RoboTool Dataset Visualizer</h1>
 </header>
 
 <section class="container">
-  <div class="controls">
-    <div class="columns is-multiline">
-      <div class="column is-4 filter-group">
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Filters</h2>
+      <div class="filter-group">
         <div class="label">Tool</div>
         <div id="filter-tools" class="checkbox-list"></div>
       </div>
-      <div class="column is-4 filter-group">
+      <div class="filter-group">
         <div class="label">Action</div>
         <div id="filter-actions" class="checkbox-list"></div>
       </div>
-      <div class="column is-4 filter-group">
+      <div class="filter-group">
         <div class="label">Object</div>
         <div id="filter-objects" class="checkbox-list"></div>
       </div>
-    </div>
-    <div class="toolbar">
-      <div class="left">
-        <label class="label" for="sort-select" style="margin: 0; font-size: 0.85rem;">Sort:</label>
-        <div class="select is-small">
-          <select id="sort-select">
+      <div class="sort-row">
+        <div class="label">Sort</div>
+        <div class="select is-small" style="width:100%;">
+          <select id="sort-select" style="width:100%;">
             <option value="trials_desc">Trials (high &rarr; low)</option>
             <option value="trials_asc">Trials (low &rarr; high)</option>
             <option value="alpha_asc">Task name (A &rarr; Z)</option>
             <option value="alpha_desc">Task name (Z &rarr; A)</option>
           </select>
         </div>
-        <button id="clear-filters" class="button is-small is-light">Clear filters</button>
       </div>
-      <div class="right">
-        <span id="count" class="count-badge">0 tasks</span>
+      <button id="default-btn" class="default-btn">Default</button>
+    </aside>
+
+    <div class="main-pane">
+      <div class="topbar">
+        <span class="count-badge">65 tasks</span>
+        <button id="next-btn" class="next-btn">View next 15 &rarr;</button>
       </div>
+      <div id="grid" class="grid"></div>
     </div>
   </div>
-
-  <div id="grid" class="grid"></div>
 </section>
 
 <script>
+const PAGE_SIZE = 15;
 let TASKS = [];
 const state = {
   tools: new Set(),
   actions: new Set(),
   objects: new Set(),
-  sort: 'trials_desc'
+  sort: 'trials_desc',
+  pageStart: 0
 };
 
 function uniqueValues(field) {
@@ -104,6 +126,7 @@ function renderCheckboxes(containerId, values, stateSet) {
     cb.addEventListener('change', e => {
       const v = e.target.dataset.value;
       if (e.target.checked) stateSet.add(v); else stateSet.delete(v);
+      state.pageStart = 0;
       render();
     });
   });
@@ -127,8 +150,6 @@ function sortTasks(arr) {
   return a;
 }
 
-
-// Click-to-play: replace thumbnail with autoplay video for tasks that have a video file.
 document.addEventListener('click', (e) => {
   const card = e.target.closest('.card-task');
   if (!card) return;
@@ -151,9 +172,10 @@ document.addEventListener('click', (e) => {
 
 function render() {
   const filtered = TASKS.filter(matches);
-  const ordered = sortTasks(filtered).slice(0, 12);
-  document.getElementById('count').textContent = `${ordered.length} task${ordered.length === 1 ? '' : 's'}`;
-  const html = ordered.map(t => {
+  const ordered = sortTasks(filtered);
+  if (state.pageStart >= ordered.length) state.pageStart = 0;
+  const page = ordered.slice(state.pageStart, state.pageStart + PAGE_SIZE);
+  const html = page.map(t => {
     const thumb = t.thumbnail
       ? `<img src="${t.thumbnail}" alt="${t.task_dir}" loading="lazy">`
       : `<span class="placeholder">no thumbnail</span>`;
@@ -181,12 +203,25 @@ function render() {
 
 document.getElementById('sort-select').addEventListener('change', e => {
   state.sort = e.target.value;
+  state.pageStart = 0;
   render();
 });
 
-document.getElementById('clear-filters').addEventListener('click', () => {
+document.getElementById('next-btn').addEventListener('click', () => {
+  const filtered = TASKS.filter(matches);
+  const ordered = sortTasks(filtered);
+  state.pageStart += PAGE_SIZE;
+  if (state.pageStart >= ordered.length) state.pageStart = 0;
+  render();
+  document.getElementById('grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('default-btn').addEventListener('click', () => {
   state.tools.clear(); state.actions.clear(); state.objects.clear();
+  state.sort = 'trials_desc';
+  state.pageStart = 0;
   document.querySelectorAll('.checkbox-list input[type=checkbox]').forEach(cb => cb.checked = false);
+  document.getElementById('sort-select').value = 'trials_desc';
   render();
 });
 
