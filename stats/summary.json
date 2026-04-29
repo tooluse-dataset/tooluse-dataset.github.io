@@ -1,0 +1,943 @@
+{
+  "n_trials": 11228,
+  "n_unparsed": 1,
+  "n_task_dirs": 65,
+  "n_unique_tools": 20,
+  "n_unique_verbs": 15,
+  "n_unique_objects": 16,
+  "tool_counts": {
+    "spatula": 2451,
+    "fork": 1892,
+    "spoon": 1737,
+    "knife": 658,
+    "mallet": 552,
+    "ladle": 483,
+    "rollingpin": 393,
+    "book": 362,
+    "cup": 297,
+    "icecreamscooper": 279,
+    "squeegee": 279,
+    "scoop": 267,
+    "chopstick": 256,
+    "brush": 197,
+    "rollrod": 171,
+    "knifeblade": 158,
+    "pan": 136,
+    "scooper": 131,
+    "straw": 93,
+    "pestle": 86
+  },
+  "verb_counts": {
+    "flip": 2316,
+    "scoop": 1957,
+    "roll": 933,
+    "lift": 754,
+    "crush": 728,
+    "push": 629,
+    "slice": 590,
+    "sweep": 535,
+    "stir": 513,
+    "dig": 439,
+    "spread": 433,
+    "collect": 333,
+    "press": 310,
+    "cut": 300,
+    "shape": 79
+  },
+  "object_counts": {
+    "nuts": 2445,
+    "sand": 1338,
+    "egg": 1334,
+    "dough": 1166,
+    "naan": 938,
+    "eggtoy": 798,
+    "toy": 629,
+    "banana": 547,
+    "coffee": 513,
+    "tomatosauce": 433,
+    "sponge": 310,
+    "box": 276,
+    "kineticsand": 258,
+    "icecream": 108,
+    "plantingpot": 94,
+    "cashew": 41
+  },
+  "task_counts": {
+    "fork_flip_egg": 912,
+    "spatula_flip_naan": 486,
+    "spatula_flip_egg": 466,
+    "fork_flip_naan": 452,
+    "ladle_scoop_nuts": 441,
+    "spatula_lift_place_egg": 405,
+    "scooper_scoop_nuts": 354,
+    "spoon_lift_place_egg": 349,
+    "knife_slice_banana": 311,
+    "rollingpin_roll_sand": 303,
+    "spoon_scoop_nuts": 294,
+    "spatula_scoop_nuts": 281,
+    "fork_scoop_nuts": 264,
+    "book_push_toy": 230,
+    "mallet_push_toy": 210,
+    "plasticwraprod_roll_sand": 199,
+    "pan_push_toy": 189,
+    "fork_dig_toysand": 176,
+    "rollrod_roll_dough": 171,
+    "cup_roll_dough": 170,
+    "spoon_dig_toysand": 169,
+    "squeegee_collect_sand": 163,
+    "mallet_crush_banana": 162,
+    "spoon_press_sponge": 160,
+    "scooper_dig_toysand": 158,
+    "knifeblade_open_box": 158,
+    "chopstick_slice_dough": 155,
+    "spatula_press_sponge": 150,
+    "book_collect_nuts": 132,
+    "spoon_spread_tomatosauce": 131,
+    "cup_crush_dough": 127,
+    "spoon_cut_kinetic_sand": 122,
+    "spoon_crush_nuts": 122,
+    "knife_open_box": 118,
+    "spoon_stir_coffee": 117,
+    "squeegee_sweep_nuts": 116,
+    "brush_sweep_nuts": 112,
+    "mallet_crush_nuts": 109,
+    "scooper_scoop_icecream": 108,
+    "fork_cut_dough": 107,
+    "fork_spread_tomatosauce": 106,
+    "chopstick_stir_coffee": 101,
+    "towel_sweep_nuts": 98,
+    "spoon_dig_plantingpot": 94,
+    "straw_stir_coffee": 93,
+    "rollingpin_roll_dough": 90,
+    "brush_collect_sand": 85,
+    "spatula_collect_sand": 85,
+    "knife_spread_tomatosauce": 84,
+    "spatula_stir_coffee": 82,
+    "woodenspoon_crush_dough": 80,
+    "fork_shape_kineticsand": 79,
+    "fork_stir_coffee": 78,
+    "spoon_sweep_nuts": 77,
+    "knife_slice_dought": 74,
+    "spoon_crush_banana": 74,
+    "mallet_crush_dough": 71,
+    "knife_cut_dough": 71,
+    "spatula_spread_tomatosauce": 57,
+    "scooper_shape_kineticsand": 57,
+    "spatual_spread_tomatosauce": 55,
+    "fork_slice_dough": 50,
+    "pestle_crush_nuts": 44,
+    "ladle_stir_coffee": 42,
+    "malletpestle_crush_nuts": 42
+  },
+  "tool_verb_counts": {
+    "spatula|flip": 1284,
+    "fork|flip": 1032,
+    "ladle|scoop": 441,
+    "spatula|lift": 405,
+    "rollingpin|roll": 393,
+    "knife|slice": 385,
+    "spoon|lift": 349,
+    "mallet|crush": 342,
+    "spoon|scoop": 294,
+    "spatula|scoop": 281,
+    "icecreamscooper|scoop": 279,
+    "scoop|scoop": 267,
+    "fork|scoop": 264,
+    "spoon|dig": 263,
+    "book|push": 230,
+    "spoon|crush": 224,
+    "mallet|push": 210,
+    "fork|dig": 176,
+    "rollrod|roll": 171,
+    "cup|roll": 170,
+    "squeegee|collect": 163,
+    "spoon|press": 160,
+    "chopstick|slice": 155,
+    "spatula|press": 150,
+    "pan|push": 136,
+    "book|sweep": 132,
+    "spoon|spread": 131,
+    "scooper|scoop": 131,
+    "spoon|cut": 122,
+    "spoon|stir": 117,
+    "squeegee|sweep": 116,
+    "brush|sweep": 112,
+    "spatula|spread": 112,
+    "fork|cut": 107,
+    "fork|spread": 106,
+    "chopstick|stir": 101,
+    "straw|stir": 93,
+    "pestle|crush": 86,
+    "brush|collect": 85,
+    "spatula|collect": 85,
+    "knife|spread": 84,
+    "spatula|stir": 82,
+    "fork|shape": 79,
+    "fork|stir": 78,
+    "spoon|sweep": 77,
+    "knife|cut": 71,
+    "spatula|crush": 52,
+    "fork|slice": 50,
+    "ladle|stir": 42,
+    "cup|crush": 24
+  },
+  "verb_to_tools": {
+    "slice": [
+      "chopstick",
+      "fork",
+      "knife"
+    ],
+    "crush": [
+      "cup",
+      "mallet",
+      "pestle",
+      "spatula",
+      "spoon"
+    ],
+    "scoop": [
+      "fork",
+      "icecreamscooper",
+      "ladle",
+      "scoop",
+      "scooper",
+      "spatula",
+      "spoon"
+    ],
+    "sweep": [
+      "book",
+      "brush",
+      "spoon",
+      "squeegee"
+    ],
+    "cut": [
+      "fork",
+      "knife",
+      "spoon"
+    ],
+    "stir": [
+      "chopstick",
+      "fork",
+      "ladle",
+      "spatula",
+      "spoon",
+      "straw"
+    ],
+    "collect": [
+      "brush",
+      "spatula",
+      "squeegee"
+    ],
+    "roll": [
+      "cup",
+      "rollingpin",
+      "rollrod"
+    ],
+    "press": [
+      "spatula",
+      "spoon"
+    ],
+    "flip": [
+      "fork",
+      "spatula"
+    ],
+    "spread": [
+      "fork",
+      "knife",
+      "spatula",
+      "spoon"
+    ],
+    "dig": [
+      "fork",
+      "spoon"
+    ],
+    "shape": [
+      "fork"
+    ],
+    "push": [
+      "book",
+      "mallet",
+      "pan"
+    ],
+    "lift": [
+      "spatula",
+      "spoon"
+    ]
+  },
+  "tool_to_verbs": {
+    "knife": [
+      "cut",
+      "slice",
+      "spread"
+    ],
+    "mallet": [
+      "crush",
+      "push"
+    ],
+    "chopstick": [
+      "slice",
+      "stir"
+    ],
+    "icecreamscooper": [
+      "scoop"
+    ],
+    "scoop": [
+      "scoop"
+    ],
+    "spoon": [
+      "crush",
+      "cut",
+      "dig",
+      "lift",
+      "press",
+      "scoop",
+      "spread",
+      "stir",
+      "sweep"
+    ],
+    "squeegee": [
+      "collect",
+      "sweep"
+    ],
+    "brush": [
+      "collect",
+      "sweep"
+    ],
+    "spatula": [
+      "collect",
+      "crush",
+      "flip",
+      "lift",
+      "press",
+      "scoop",
+      "spread",
+      "stir"
+    ],
+    "book": [
+      "push",
+      "sweep"
+    ],
+    "fork": [
+      "cut",
+      "dig",
+      "flip",
+      "scoop",
+      "shape",
+      "slice",
+      "spread",
+      "stir"
+    ],
+    "straw": [
+      "stir"
+    ],
+    "ladle": [
+      "scoop",
+      "stir"
+    ],
+    "cup": [
+      "crush",
+      "roll"
+    ],
+    "rollingpin": [
+      "roll"
+    ],
+    "rollrod": [
+      "roll"
+    ],
+    "scooper": [
+      "scoop"
+    ],
+    "pan": [
+      "push"
+    ],
+    "pestle": [
+      "crush"
+    ]
+  },
+  "task_to_tools": {
+    "knife_slice_banana": [
+      "knife"
+    ],
+    "knife_slice_dought": [
+      "knife"
+    ],
+    "mallet_crush_dough": [
+      "mallet"
+    ],
+    "chopstick_slice_dough": [
+      "chopstick"
+    ],
+    "scooper_scoop_nuts": [
+      "icecreamscooper",
+      "scoop"
+    ],
+    "spoon_scoop_nuts": [
+      "spoon"
+    ],
+    "squeegee_sweep_nuts": [
+      "squeegee"
+    ],
+    "brush_sweep_nuts": [
+      "brush"
+    ],
+    "spatula_scoop_nuts": [
+      "spatula"
+    ],
+    "spoon_sweep_nuts": [
+      "spoon"
+    ],
+    "book_collect_nuts": [
+      "book"
+    ],
+    "spoon_cut_kinetic_sand": [
+      "spoon"
+    ],
+    "fork_stir_coffee": [
+      "fork"
+    ],
+    "spoon_stir_coffee": [
+      "spoon"
+    ],
+    "mallet_crush_banana": [
+      "mallet"
+    ],
+    "spoon_crush_banana": [
+      "spoon"
+    ],
+    "straw_stir_coffee": [
+      "straw"
+    ],
+    "spatula_stir_coffee": [
+      "spatula"
+    ],
+    "mallet_crush_nuts": [
+      "mallet"
+    ],
+    "squeegee_collect_sand": [
+      "squeegee"
+    ],
+    "brush_collect_sand": [
+      "brush"
+    ],
+    "spatula_collect_sand": [
+      "spatula"
+    ],
+    "chopstick_stir_coffee": [
+      "chopstick"
+    ],
+    "ladle_stir_coffee": [
+      "ladle"
+    ],
+    "cup_roll_dough": [
+      "cup"
+    ],
+    "rollingpin_roll_dough": [
+      "rollingpin"
+    ],
+    "rollrod_roll_dough": [
+      "rollrod"
+    ],
+    "spoon_crush_nuts": [
+      "spoon"
+    ],
+    "spoon_press_sponge": [
+      "spoon"
+    ],
+    "fork_flip_egg": [
+      "fork",
+      "spatula"
+    ],
+    "knife_spread_tomatosauce": [
+      "knife"
+    ],
+    "spatual_spread_tomatosauce": [
+      "spatula"
+    ],
+    "spatula_flip_egg": [
+      "spatula"
+    ],
+    "spatula_spread_tomatosauce": [
+      "spatula"
+    ],
+    "spoon_spread_tomatosauce": [
+      "spoon"
+    ],
+    "fork_flip_naan": [
+      "fork"
+    ],
+    "spatula_flip_naan": [
+      "spatula"
+    ],
+    "fork_spread_tomatosauce": [
+      "fork"
+    ],
+    "spatula_press_sponge": [
+      "spatula"
+    ],
+    "fork_scoop_nuts": [
+      "fork"
+    ],
+    "ladle_scoop_nuts": [
+      "ladle"
+    ],
+    "fork_dig_toysand": [
+      "fork"
+    ],
+    "rollingpin_roll_sand": [
+      "rollingpin"
+    ],
+    "scooper_dig_toysand": [
+      "icecreamscooper",
+      "scooper"
+    ],
+    "spoon_dig_toysand": [
+      "spoon"
+    ],
+    "knife_open_box": [
+      "knife"
+    ],
+    "fork_shape_kineticsand": [
+      "fork"
+    ],
+    "knifeblade_open_box": [
+      "knifeblade"
+    ],
+    "scooper_shape_kineticsand": [
+      "icecreamscooper",
+      "scooper"
+    ],
+    "book_push_toy": [
+      "book"
+    ],
+    "mallet_push_toy": [
+      "mallet"
+    ],
+    "pan_push_toy": [
+      "pan"
+    ],
+    "malletpestle_crush_nuts": [
+      "pestle"
+    ],
+    "scooper_scoop_icecream": [
+      "icecreamscooper",
+      "scooper"
+    ],
+    "spatula_lift_place_egg": [
+      "spatula"
+    ],
+    "spoon_lift_place_egg": [
+      "spoon"
+    ],
+    "pestle_crush_nuts": [
+      "pestle"
+    ],
+    "spoon_dig_plantingpot": [
+      "spoon"
+    ],
+    "fork_cut_dough": [
+      "fork"
+    ],
+    "cup_crush_dough": [
+      "cup"
+    ],
+    "knife_cut_dough": [
+      "knife"
+    ],
+    "fork_slice_dough": [
+      "fork"
+    ],
+    "woodenspoon_crush_dough": [
+      "spatula",
+      "spoon"
+    ]
+  },
+  "task_to_verbs": {
+    "knife_slice_banana": [
+      "slice"
+    ],
+    "knife_slice_dought": [
+      "slice"
+    ],
+    "mallet_crush_dough": [
+      "crush"
+    ],
+    "chopstick_slice_dough": [
+      "slice"
+    ],
+    "scooper_scoop_nuts": [
+      "scoop"
+    ],
+    "spoon_scoop_nuts": [
+      "scoop"
+    ],
+    "squeegee_sweep_nuts": [
+      "sweep"
+    ],
+    "towel_sweep_nuts": [
+      "sweep"
+    ],
+    "brush_sweep_nuts": [
+      "sweep"
+    ],
+    "spatula_scoop_nuts": [
+      "scoop"
+    ],
+    "spoon_sweep_nuts": [
+      "sweep"
+    ],
+    "book_collect_nuts": [
+      "sweep"
+    ],
+    "spoon_cut_kinetic_sand": [
+      "cut"
+    ],
+    "fork_stir_coffee": [
+      "stir"
+    ],
+    "spoon_stir_coffee": [
+      "stir"
+    ],
+    "mallet_crush_banana": [
+      "crush"
+    ],
+    "spoon_crush_banana": [
+      "crush"
+    ],
+    "straw_stir_coffee": [
+      "stir"
+    ],
+    "spatula_stir_coffee": [
+      "stir"
+    ],
+    "mallet_crush_nuts": [
+      "crush"
+    ],
+    "squeegee_collect_sand": [
+      "collect"
+    ],
+    "brush_collect_sand": [
+      "collect"
+    ],
+    "plasticwraprod_roll_sand": [
+      "roll"
+    ],
+    "spatula_collect_sand": [
+      "collect"
+    ],
+    "chopstick_stir_coffee": [
+      "stir"
+    ],
+    "ladle_stir_coffee": [
+      "stir"
+    ],
+    "cup_roll_dough": [
+      "roll"
+    ],
+    "rollingpin_roll_dough": [
+      "roll"
+    ],
+    "rollrod_roll_dough": [
+      "roll"
+    ],
+    "spoon_crush_nuts": [
+      "crush"
+    ],
+    "spoon_press_sponge": [
+      "press"
+    ],
+    "fork_flip_egg": [
+      "flip"
+    ],
+    "knife_spread_tomatosauce": [
+      "spread"
+    ],
+    "spatual_spread_tomatosauce": [
+      "spread"
+    ],
+    "spatula_flip_egg": [
+      "flip"
+    ],
+    "spatula_spread_tomatosauce": [
+      "spread"
+    ],
+    "spoon_spread_tomatosauce": [
+      "spread"
+    ],
+    "fork_flip_naan": [
+      "flip"
+    ],
+    "spatula_flip_naan": [
+      "flip"
+    ],
+    "fork_spread_tomatosauce": [
+      "spread"
+    ],
+    "spatula_press_sponge": [
+      "press"
+    ],
+    "fork_scoop_nuts": [
+      "scoop"
+    ],
+    "ladle_scoop_nuts": [
+      "scoop"
+    ],
+    "fork_dig_toysand": [
+      "dig"
+    ],
+    "rollingpin_roll_sand": [
+      "roll"
+    ],
+    "scooper_dig_toysand": [
+      "scoop"
+    ],
+    "spoon_dig_toysand": [
+      "dig"
+    ],
+    "fork_shape_kineticsand": [
+      "shape"
+    ],
+    "scooper_shape_kineticsand": [
+      "scoop"
+    ],
+    "book_push_toy": [
+      "push"
+    ],
+    "mallet_push_toy": [
+      "push"
+    ],
+    "pan_push_toy": [
+      "push"
+    ],
+    "malletpestle_crush_nuts": [
+      "crush"
+    ],
+    "scooper_scoop_icecream": [
+      "scoop"
+    ],
+    "spatula_lift_place_egg": [
+      "lift"
+    ],
+    "spoon_lift_place_egg": [
+      "lift"
+    ],
+    "pestle_crush_nuts": [
+      "crush"
+    ],
+    "spoon_dig_plantingpot": [
+      "dig"
+    ],
+    "fork_cut_dough": [
+      "cut"
+    ],
+    "cup_crush_dough": [
+      "crush"
+    ],
+    "knife_cut_dough": [
+      "cut"
+    ],
+    "fork_slice_dough": [
+      "slice"
+    ],
+    "woodenspoon_crush_dough": [
+      "crush"
+    ]
+  },
+  "task_to_objects": {
+    "knife_slice_banana": [
+      "banana"
+    ],
+    "knife_slice_dought": [
+      "dough"
+    ],
+    "mallet_crush_dough": [
+      "dough"
+    ],
+    "chopstick_slice_dough": [
+      "dough"
+    ],
+    "scooper_scoop_nuts": [
+      "nuts"
+    ],
+    "spoon_scoop_nuts": [
+      "nuts"
+    ],
+    "squeegee_sweep_nuts": [
+      "nuts"
+    ],
+    "towel_sweep_nuts": [
+      "nuts"
+    ],
+    "brush_sweep_nuts": [
+      "cashew",
+      "nuts"
+    ],
+    "spatula_scoop_nuts": [
+      "nuts"
+    ],
+    "spoon_sweep_nuts": [
+      "nuts"
+    ],
+    "book_collect_nuts": [
+      "nuts"
+    ],
+    "spoon_cut_kinetic_sand": [
+      "kineticsand"
+    ],
+    "fork_stir_coffee": [
+      "coffee"
+    ],
+    "spoon_stir_coffee": [
+      "coffee"
+    ],
+    "mallet_crush_banana": [
+      "banana"
+    ],
+    "spoon_crush_banana": [
+      "banana"
+    ],
+    "straw_stir_coffee": [
+      "coffee"
+    ],
+    "spatula_stir_coffee": [
+      "coffee"
+    ],
+    "mallet_crush_nuts": [
+      "nuts"
+    ],
+    "squeegee_collect_sand": [
+      "sand"
+    ],
+    "brush_collect_sand": [
+      "sand"
+    ],
+    "plasticwraprod_roll_sand": [
+      "sand"
+    ],
+    "spatula_collect_sand": [
+      "sand"
+    ],
+    "chopstick_stir_coffee": [
+      "coffee"
+    ],
+    "ladle_stir_coffee": [
+      "coffee"
+    ],
+    "cup_roll_dough": [
+      "dough"
+    ],
+    "rollingpin_roll_dough": [
+      "dough"
+    ],
+    "rollrod_roll_dough": [
+      "dough"
+    ],
+    "spoon_crush_nuts": [
+      "nuts"
+    ],
+    "spoon_press_sponge": [
+      "sponge"
+    ],
+    "fork_flip_egg": [
+      "egg",
+      "eggtoy"
+    ],
+    "knife_spread_tomatosauce": [
+      "tomatosauce"
+    ],
+    "spatual_spread_tomatosauce": [
+      "tomatosauce"
+    ],
+    "spatula_flip_egg": [
+      "eggtoy"
+    ],
+    "spatula_spread_tomatosauce": [
+      "tomatosauce"
+    ],
+    "spoon_spread_tomatosauce": [
+      "tomatosauce"
+    ],
+    "fork_flip_naan": [
+      "naan"
+    ],
+    "spatula_flip_naan": [
+      "naan"
+    ],
+    "fork_spread_tomatosauce": [
+      "tomatosauce"
+    ],
+    "spatula_press_sponge": [
+      "sponge"
+    ],
+    "fork_scoop_nuts": [
+      "nuts"
+    ],
+    "ladle_scoop_nuts": [
+      "nuts"
+    ],
+    "fork_dig_toysand": [
+      "sand"
+    ],
+    "rollingpin_roll_sand": [
+      "sand"
+    ],
+    "scooper_dig_toysand": [
+      "sand"
+    ],
+    "spoon_dig_toysand": [
+      "sand"
+    ],
+    "knife_open_box": [
+      "box"
+    ],
+    "fork_shape_kineticsand": [
+      "kineticsand"
+    ],
+    "knifeblade_open_box": [
+      "box"
+    ],
+    "scooper_shape_kineticsand": [
+      "kineticsand"
+    ],
+    "book_push_toy": [
+      "toy"
+    ],
+    "mallet_push_toy": [
+      "toy"
+    ],
+    "pan_push_toy": [
+      "toy"
+    ],
+    "malletpestle_crush_nuts": [
+      "nuts"
+    ],
+    "scooper_scoop_icecream": [
+      "icecream"
+    ],
+    "spatula_lift_place_egg": [
+      "egg"
+    ],
+    "spoon_lift_place_egg": [
+      "egg"
+    ],
+    "pestle_crush_nuts": [
+      "nuts"
+    ],
+    "spoon_dig_plantingpot": [
+      "plantingpot"
+    ],
+    "fork_cut_dough": [
+      "dough"
+    ],
+    "cup_crush_dough": [
+      "dough"
+    ],
+    "knife_cut_dough": [
+      "dough"
+    ],
+    "fork_slice_dough": [
+      "dough"
+    ],
+    "woodenspoon_crush_dough": [
+      "dough"
+    ]
+  }
+}

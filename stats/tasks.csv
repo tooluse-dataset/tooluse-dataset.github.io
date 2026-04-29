@@ -1,0 +1,66 @@
+task_dir,tools,actions,objects,trials
+fork_flip_egg,fork | spatula,flip,egg | eggtoy,912
+spatula_flip_naan,spatula,flip,naan,486
+spatula_flip_egg,spatula,flip,eggtoy,466
+fork_flip_naan,fork,flip,naan,452
+ladle_scoop_nuts,ladle,scoop,nuts,441
+spatula_lift_place_egg,spatula,lift,egg,405
+scooper_scoop_nuts,icecreamscooper | scoop,scoop,nuts,354
+spoon_lift_place_egg,spoon,lift,egg,349
+knife_slice_banana,knife,slice,banana,311
+rollingpin_roll_sand,rollingpin,roll,sand,303
+spoon_scoop_nuts,spoon,scoop,nuts,294
+spatula_scoop_nuts,spatula,scoop,nuts,281
+fork_scoop_nuts,fork,scoop,nuts,264
+book_push_toy,book,push,toy,230
+mallet_push_toy,mallet,push,toy,210
+plasticwraprod_roll_sand,,roll,sand,199
+pan_push_toy,pan,push,toy,189
+fork_dig_toysand,fork,dig,sand,176
+rollrod_roll_dough,rollrod,roll,dough,171
+cup_roll_dough,cup,roll,dough,170
+spoon_dig_toysand,spoon,dig,sand,169
+squeegee_collect_sand,squeegee,collect,sand,163
+mallet_crush_banana,mallet,crush,banana,162
+spoon_press_sponge,spoon,press,sponge,160
+scooper_dig_toysand,icecreamscooper | scooper,scoop,sand,158
+knifeblade_open_box,knifeblade,,box,158
+chopstick_slice_dough,chopstick,slice,dough,155
+spatula_press_sponge,spatula,press,sponge,150
+book_collect_nuts,book,sweep,nuts,132
+spoon_spread_tomatosauce,spoon,spread,tomatosauce,131
+cup_crush_dough,cup,crush,dough,127
+spoon_cut_kinetic_sand,spoon,cut,kineticsand,122
+spoon_crush_nuts,spoon,crush,nuts,122
+knife_open_box,knife,,box,118
+spoon_stir_coffee,spoon,stir,coffee,117
+squeegee_sweep_nuts,squeegee,sweep,nuts,116
+brush_sweep_nuts,brush,sweep,cashew | nuts,112
+mallet_crush_nuts,mallet,crush,nuts,109
+scooper_scoop_icecream,icecreamscooper | scooper,scoop,icecream,108
+fork_cut_dough,fork,cut,dough,107
+fork_spread_tomatosauce,fork,spread,tomatosauce,106
+chopstick_stir_coffee,chopstick,stir,coffee,101
+towel_sweep_nuts,,sweep,nuts,98
+spoon_dig_plantingpot,spoon,dig,plantingpot,94
+straw_stir_coffee,straw,stir,coffee,93
+rollingpin_roll_dough,rollingpin,roll,dough,90
+brush_collect_sand,brush,collect,sand,85
+spatula_collect_sand,spatula,collect,sand,85
+knife_spread_tomatosauce,knife,spread,tomatosauce,84
+spatula_stir_coffee,spatula,stir,coffee,82
+woodenspoon_crush_dough,spatula | spoon,crush,dough,80
+fork_shape_kineticsand,fork,shape,kineticsand,79
+fork_stir_coffee,fork,stir,coffee,78
+spoon_sweep_nuts,spoon,sweep,nuts,77
+knife_slice_dought,knife,slice,dough,74
+spoon_crush_banana,spoon,crush,banana,74
+mallet_crush_dough,mallet,crush,dough,71
+knife_cut_dough,knife,cut,dough,71
+spatula_spread_tomatosauce,spatula,spread,tomatosauce,57
+scooper_shape_kineticsand,icecreamscooper | scooper,scoop,kineticsand,57
+spatual_spread_tomatosauce,spatula,spread,tomatosauce,55
+fork_slice_dough,fork,slice,dough,50
+pestle_crush_nuts,pestle,crush,nuts,44
+ladle_stir_coffee,ladle,stir,coffee,42
+malletpestle_crush_nuts,pestle,crush,nuts,42

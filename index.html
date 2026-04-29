@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>RoboTool: A Diverse Human Tool-Use Video Dataset</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .author-block { display: none; }
+        .publication-authors:hover .author-block { display: block; }
+        table.stats-table td, table.stats-table th { padding: 4px 8px; font-size: 0.9rem; }
+        table.stats-table th { background: #f3f3f3; }
+        .kpi-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin: 8px 0; }
+        .kpi { text-align: center; min-width: 130px; }
+        .kpi .num { font-size: 2.2rem; font-weight: 700; color: #1f5fa8; line-height: 1; }
+        .kpi .lbl { font-size: 0.9rem; color: #555; margin-top: 4px; }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">RoboTool: A Large-Scale,<br>Multi-Tool Human Manipulation Dataset</h1>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="team-name"><b>Anonymous Authors</b></span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a target="_blank" href="dataset-visualizer"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="fas fa-database"></i></span>
+                                        <span><b>Dataset Visualizer</b></span>
+                                    </a>
+                                    <a target="_blank" href="stats/tasks.csv"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="fas fa-table"></i></span>
+                                        <span><b>Task Table (CSV)</b></span>
+                                    </a>
+                                    <a target="_blank" href="stats/summary.json"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"><i class="fas fa-code"></i></span>
+                                        <span><b>Summary JSON</b></span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPI strip -->
+    <section class="section" style="padding-top: 0">
+        <div class="container is-max-desktop">
+            <div class="kpi-grid">
+                <div class="kpi"><div class="num" id="kpi-trials">—</div><div class="lbl">trials</div></div>
+                <div class="kpi"><div class="num" id="kpi-tasks">—</div><div class="lbl">task signatures</div></div>
+                <div class="kpi"><div class="num" id="kpi-tools">—</div><div class="lbl">distinct tools</div></div>
+                <div class="kpi"><div class="num" id="kpi-verbs">—</div><div class="lbl">actions (verbs)</div></div>
+                <div class="kpi"><div class="num" id="kpi-objects">—</div><div class="lbl">object categories</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 125%">
+                            RoboTool is a large-scale dataset of <b>human tool-use demonstrations</b> captured in a shared multi-camera rig. We densely cover the <i>combinatorial space</i> of tool, action, and object: the same action (e.g., <i>scoop</i>, <i>stir</i>, <i>crush</i>) is performed with many different physical tools, so every trajectory measures <b>how humans flexibly repurpose objects</b> to accomplish a goal. Each trial captures 8 synchronized RGB-D cameras, and a large fraction of the dataset ships with hand-optimized 6DoF object poses, per-frame masks, and hand trajectories — enabling policy learning, affordance discovery, and tool-use generalization studies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered">
+                    <div class="row is-full-width">
+                        <h2 class="title is-2"><span class="dvima">Dataset at a glance</span></h2>
+                        <p style="font-size: 125%">
+                            Collection spans one shared scene (cutting-board / tabletop) with 8 calibrated RGB-D cameras. Each trial is one human demonstration of a (tool, action, object) triple with natural variation in grasp, approach, and in-plane pose. Key takeaway: for almost every action we record, multiple tools are demonstrated, yielding rich <i>tool-choice diversity</i> per goal.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="columns">
+                        <div class="column has-text-centered">
+                            <img src="figures/pie_tools.png" class="interpolation-image" alt=""
+                                style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+                            <span style="font-size: 115%"><b>Tool distribution.</b> Share of trials using each physical tool. Spatulas, forks, and spoons dominate the long tail.</span>
+                        </div>
+                        <div class="column has-text-centered">
+                            <img src="figures/pie_verbs.png" class="interpolation-image" alt=""
+                                style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+                            <span style="font-size: 115%"><b>Action distribution.</b> Share of trials per action. <i>flip</i>, <i>scoop</i>, <i>roll</i>, <i>lift</i>, and <i>crush</i> lead the set.</span>
+                        </div>
+                        <div class="column has-text-centered">
+                            <img src="figures/pie_objects.png" class="interpolation-image" alt=""
+                                style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+                            <span style="font-size: 115%"><b>Object distribution.</b> Share of trials per manipulated object / material — includes egg, dough, sand, nuts, naan, tomato sauce, and sponge.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="row is-full-width">
+                    <h2 class="title is-2"><span class="dvima">One action, many tools</span></h2>
+                    <p style="font-size: 125%">
+                        The signature of this dataset is the diversity of <i>how</i> humans perform the same action. <i>scoop</i> is demonstrated with <b>7</b> distinct tools, <i>stir</i> with <b>6</b>, <i>crush</i> with <b>5</b>, etc. This is visible in both the tool×verb heatmap and the per-action tool-choice bar chart below.
+                    </p>
+                </div>
+                <br>
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <img src="figures/tool_verb_heatmap.png" class="interpolation-image" alt=""
+                            style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+                        <span style="font-size: 115%"><b>Tool × action heatmap.</b> Each cell is the trial count for a specific (tool, action) pair. Empty cells indicate affordance gaps; dense rows/columns indicate highly reused tools/actions.</span>
+                    </div>
+                </div>
+                <br>
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <img src="figures/verb_tool_diversity.png" class="interpolation-image" alt=""
+                            style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+                        <span style="font-size: 115%"><b>Tool-choice diversity per action.</b> For each verb, we list every distinct tool used to realize it in the dataset.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="row is-full-width">
+                    <h2 class="title is-2"><span class="dvima">Task distribution</span></h2>
+                    <p style="font-size: 125%">
+                        Top task folders by number of trials. The full table and CSV enumerate every task signature and its (tool, action, object) breakdown.
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <img src="figures/bar_tasks.png" class="interpolation-image" alt=""
+                            style="display: block; width: 80%; margin-left: auto; margin-right: auto" />
+                    </div>
+                </div>
+                <br>
+                <h3 class="title is-4">Full task table</h3>
+                <p style="font-size: 110%">Click a column header to sort; filter by tool / action / object in the visualizer.</p>
+                <div style="overflow-x: auto">
+                    <table class="stats-table table is-striped is-narrow is-hoverable" id="task-table">
+                        <thead>
+                            <tr>
+                                <th>#</th><th>task_dir</th><th>tools</th><th>actions</th><th>objects</th><th>trials</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-table-body"><tr><td colspan="6">loading…</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="row is-full-width">
+                    <h2 class="title is-2"><span class="dvima">Human trajectory diversity</span></h2>
+                    <p style="font-size: 125%">
+                        For the tasks with hand-optimized annotations, we overlay every human hand trajectory for that task on a single representative frame. Each color corresponds to one trial. Dense overlays reveal the natural spread of approach directions, contact points, and execution styles.
+                    </p>
+                </div>
+                <div class="columns is-multiline" id="overlay-grid">
+                    <div class="column is-full has-text-centered" id="overlay-loading">
+                        <em>loading trajectory overlays…</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="row is-full-width">
+                    <h2 class="title is-2"><span class="dvima">Worked example: annotated sample</span></h2>
+                    <p style="font-size: 125%">
+                        A single end-to-end example of our annotated format, for the sequence
+                        <code>videos_0121/squeegee_collect_sand/20260122_squeegee_collect_sand_from_table_20</code>.
+                        The video on the left is <code>cam0_rgb.mp4</code> with the MANO hand skeleton (21 joints + bones)
+                        and a fading wrist tail drawn on top in 2D. The downloads on the right are the exact inputs to
+                        <code>batch_process.py</code> (which fuses hand keypoints with tool pose) and to
+                        <code>vis_robotool.py</code> (the viser 3D reference viewer).
+                    </p>
+                </div>
+                <br>
+                <div class="columns is-vcentered">
+                    <div class="column is-two-thirds has-text-centered">
+                        <video controls autoplay muted loop playsinline
+                               style="width:100%; border-radius:4px; background:#000">
+                            <source src="assets/sample_data/squeegee_skeleton_overlay.mp4" type="video/mp4">
+                        </video>
+                        <div style="font-size: 0.95rem; margin-top: 6px; color: #555">
+                            Left/right MANO hand joints projected into camera 0. Colors are per-finger (thumb = red, index = green,
+                            middle = blue, ring = yellow, pinky = magenta). Wrist dot + 60-frame fading tail shows hand motion.
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-5">Download sample assets</h4>
+                        <table class="table is-narrow is-striped is-hoverable" style="font-size:0.9rem">
+                            <thead>
+                                <tr><th>file</th><th>what it is</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><a href="assets/sample_data/mano_joints_squeegee.pkl"><code>mano_joints_squeegee.pkl</code></a></td>
+                                    <td>combined hand joints + tool_object_pose for this trial (output of <code>batch_process.py</code>)</td></tr>
+                                <tr><td><a href="assets/sample_data/result_hand_optimized.pkl"><code>result_hand_optimized.pkl</code></a></td>
+                                    <td>raw multi-view optimized hand result (input to <code>batch_process.py</code>)</td></tr>
+                                <tr><td><a href="assets/sample_data/poses_o.npy"><code>poses_o.npy</code></a></td>
+                                    <td>per-frame 6DoF tool object pose (7-tuple <code>[qx, qy, qz, qw, tx, ty, tz]</code>)</td></tr>
+                                <tr><td><a href="assets/sample_data/tool_masks.zip"><code>tool_masks.zip</code></a></td>
+                                    <td>per-frame tool segmentation masks from the 8-camera rig</td></tr>
+                                <tr><td><a href="assets/sample_data/realsense_calibration_0121.yaml"><code>realsense_calibration_0121.yaml</code></a></td>
+                                    <td>intrinsics + extrinsics for the 8 cameras on 2026-01-21</td></tr>
+                                <tr><td><a href="assets/sample_data/batch_process.py"><code>batch_process.py</code></a></td>
+                                    <td>reference pipeline: fuse MANO hand joints with tool pose into the combined pkl</td></tr>
+                                <tr><td><a href="assets/sample_data/vis_robotool.py"><code>vis_robotool.py</code></a></td>
+                                    <td>viser 3D viewer of the combined pkl (hand skeleton + tool mesh)</td></tr>
+                                <tr><td><a href="assets/sample_data/squeegee_skeleton_overlay.mp4"><code>squeegee_skeleton_overlay.mp4</code></a></td>
+                                    <td>the 2D skeleton-on-video rendering shown to the left</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:0.82rem; color:#666">
+                            The corresponding raw 8-camera videos (<code>cam{0..7}_rgb.mp4</code>) ship with the full dataset release.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Interactive Dataset Visualizer</h2>
+                    <p style="font-size: 125%">
+                        Browse a stratified random subset of trials. Filter by tool, action, or object to see how humans solve the same task in different ways.
+                    </p>
+                    <a class="button is-large is-primary" target="_blank" href="dataset-visualizer/">Open the visualizer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- ============ AUTO-SEGMENTATION / ANNOTATION ============ -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-2"><span class="dvima">Auto-Segmentation &amp; Annotation</span></h2>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
+                        We provide a fully automated annotation pipeline that turns raw multi-camera footage into
+                        (1) a metric-scale fused point cloud, (2) DINO-based per-frame foreground masks, and
+                        (3) ICP-aligned tool poses &mdash; <strong>all without manual labels</strong>.
+                    </p>
+                    <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
+                        <strong>What is unique vs 2025/2026 research:</strong> recent automatic-annotation pipelines
+                        (e.g., SAM2-Track, Grounded-SAM2, ICP-on-DINO baselines) target either single-camera tracking
+                        <em>or</em> rigid-only tool pose &mdash; not both, and not on a calibrated 8-camera rig with
+                        depth co-registration. Our pipeline fuses 8 RealSense streams into a metric point cloud,
+                        runs DINO-feature clustering for stable foreground masks across all 8 views, then drives ICP
+                        on the per-frame masked point cloud to recover 6-DoF tool trajectories &mdash;
+                        producing <em>geometry-aware</em> annotations that downstream 3DGS/4DGS pipelines consume directly.
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">Multi-camera fused point cloud</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/pointcloud_ours.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">Auto-segmentation (DINO masks)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/auto_segmentation.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">ICP tool-pose annotation</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/icp_pose.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 3D GAUSSIAN SPLATTING ============ -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-2"><span class="dvima">3D Gaussian Splatting Novel-View Synthesis</span></h2>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
+                        For static scenes (single timestep, 8 calibrated cameras) we reconstruct a per-scene 3D Gaussian
+                        field and synthesize novel views around the captured rig. Our top variant <strong>v117</strong>
+                        achieves <strong>MUSIQ&nbsp;71.85</strong> &mdash; the highest no-reference quality on this scene
+                        among all 3DGS pipelines we tested.
+                    </p>
+                    <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
+                        <strong>What is unique vs 2025/2026 research:</strong> sparse-view 3DGS papers
+                        (DropGaussian, FSGS, CoR-GS, DNGaussian, AnySplat) all aim for a stronger
+                        <em>training-time</em> regularizer to combat under-constrained Gaussians. Our finding is
+                        complementary &mdash; the dominant remaining quality gap is texture, not geometry, and a
+                        single forward pass through a generative <em>view-degradation prior</em>
+                        (Difix3D, NVIDIA 2024) closes it.
+                        We pair an under-fit SparseGS backbone with an under-used post-processing prior, and the
+                        composition is greater than its parts.
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <h3 class="title is-4">Core equations</h3>
+                    <p style="font-size: 95%;">
+                        Standard 3DGS photometric loss (Kerbl et&nbsp;al., 2023):<br>
+                        &nbsp;&nbsp;<code>L<sub>3DGS</sub> = (1&minus;λ)·L<sub>1</sub> + λ·L<sub>D-SSIM</sub></code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        SparseGS-style regularizers (our v55 base, after Xiong et&nbsp;al. 2024):<br>
+                        &nbsp;&nbsp;<code>L<sub>v55</sub> = L<sub>3DGS</sub> + λ<sub>warp</sub>·L<sub>warp_reg</sub> + λ<sub>P</sub>·L<sub>Pearson_depth</sub> + λ<sub>OE</sub>·L<sub>opacity_entropy</sub></code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>Our addition (v117):</strong> a 1-step Difix3D diffusion fix-up applied to the rendered
+                        novel-view sequence:<br>
+                        &nbsp;&nbsp;<code>Î(c) = Difix<sub>1-step</sub>(Render<sub>3DGS</sub>(c))</code><br>
+                        where <code>c</code> is a slerp+lerp camera path between training cameras. The composition gives
+                        <strong>+27 MUSIQ over the same SparseGS render without diffusion</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">Ground truth (cam0)</p>
+                    <img src="videos/3dgs_gt_cam0.png" style="width:100%; border-radius:6px;" alt="3DGS GT cam0">
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">Ours v117 (Difix3D, MUSIQ 71.85)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_ours_v117.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <h3 class="title is-4 has-text-centered">3DGS results &mdash; ours vs baselines (no add-ons)</h3>
+                    <p style="font-size: 90%; color:#555; max-width: 900px; margin: 0 auto 12px; text-align:center;">
+                        Same 8-camera <code>pestle_crush_nuts_ep5</code> scene, single timestep,
+                        no post-processing on baselines. Direction: MUSIQ&uarr;, NIQE&darr;, BRISQUE&darr;, PIQE&darr;, MANIQA&darr;, TOPIQ&uarr;.
+                    </p>
+                    <table class="stats-table table is-striped is-narrow is-hoverable" style="margin: 0 auto;">
+                        <thead>
+                            <tr>
+                                <th>method</th>
+                                <th>recipe (no add-ons)</th>
+                                <th>MUSIQ&uarr;</th>
+                                <th>NIQE&darr;</th>
+                                <th>BRISQUE&darr;</th>
+                                <th>PIQE&darr;</th>
+                                <th>MANIQA&darr;</th>
+                                <th>TOPIQ&uarr;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>v55_frame0</td><td>SparseGS baseline (no diffusion)</td><td>51.03</td><td>4.81</td><td>31.05</td><td>49.61</td><td>0.193</td><td>0.370</td></tr>
+                            <tr><td>v118</td><td>InstantSplat (MASt3R init, 1k iters)</td><td>53.22</td><td>5.16</td><td>41.11</td><td>49.31</td><td>0.227</td><td>0.375</td></tr>
+                            <tr><td>v147_frame0</td><td>SparseGS + per-scene init (raw)</td><td>28.86</td><td>6.77</td><td>47.24</td><td>63.12</td><td>0.116</td><td>0.187</td></tr>
+                            <tr><td>v148_frame0</td><td>plain 3DGS + MASt3R 1k</td><td>30.17</td><td>7.51</td><td>64.24</td><td>63.63</td><td>0.185</td><td>0.204</td></tr>
+                            <tr style="background:#e8f4fc;"><td><strong>v117 (ours)</strong></td><td><strong>SparseGS + Difix3D fix-up</strong></td><td><strong>71.85</strong></td><td><strong>4.71</strong></td><td><strong>21.53</strong></td><td>48.76</td><td>0.361</td><td><strong>0.552</strong></td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
+                        All scores measured on the same 8-camera <code>pestle_crush_nuts_ep5</code> scene at the held-out frame-0 timestep.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 4D GAUSSIAN SPLATTING ============ -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-2"><span class="dvima">4D Gaussian Splatting Novel-View Synthesis</span></h2>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
+                        For dynamic scenes (10&nbsp;s &middot; 30&nbsp;fps &middot; 8 calibrated cameras) we reconstruct a
+                        time-aware Gaussian field and synthesize a novel-view trajectory of equal length.
+                        Our top variant <strong>v383</strong> reaches <strong>MUSIQ&nbsp;72.03</strong> &mdash;
+                        the first 4DGS pipeline on this scene to <em>exceed</em> the strongest 3DGS-only result (71.85).
+                    </p>
+                    <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
+                        <strong>What is unique vs 2025/2026 research:</strong> recent 4DGS work
+                        (4DGaussians/HexPlane CVPR&nbsp;2024, Spacetime Gaussians CVPR&nbsp;2024, MEGA ICCV&nbsp;2025,
+                        Faster-GS CVPR&nbsp;2026) focuses on <em>architectural</em> changes &mdash; learned
+                        deformation fields, per-Gaussian polynomial trajectories, entropy-constrained compression,
+                        accelerated optimization. None target a key empirical observation: per-frame InstantSplat
+                        produces images whose <em>artifact distribution exactly matches what generative view-fixers were
+                        trained to remove</em>. We show that a per-frame backbone + an <strong>ordered</strong>
+                        diffusion stack (Difix3D&rarr;GSFix3D) at 1080p is
+                        <strong>+1.46 MUSIQ better than the reverse order</strong>, and the full pipeline
+                        beats every 4DGS baseline by 8&ndash;15 MUSIQ on the same scene.
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <h3 class="title is-4">Core equations</h3>
+                    <p style="font-size: 95%;">
+                        Per-frame InstantSplat training (Fan et&nbsp;al. 2024) on each of <em>T</em>&nbsp;timesteps
+                        independently, MASt3R-initialized (Leroy et&nbsp;al. 2024):<br>
+                        &nbsp;&nbsp;<code>{G<sub>t</sub>} = argmin<sub>G</sub> Σ<sub>c</sub> (1&minus;λ)·L<sub>1</sub> + λ·L<sub>D-SSIM</sub>, &nbsp; t&isin;{0..T&minus;1}</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        Novel-view synthesis along a smooth camera path
+                        <code>c(s)</code> with leg order
+                        <code>[0,4,7,5,6,2,3,1]</code> (slerp rotation + lerp position):<br>
+                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code>
+                    </p>
+                    <p style="font-size: 95%;">
+                        <strong>Our addition (v383):</strong> ordered 1080p diffusion stack with Lanczos downsample:<br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s))))</code><br>
+                        Stack order is <em>not</em> commutative: reversing to GSFix&rarr;Difix (v384) drops MUSIQ by
+                        1.46 (70.57 vs 72.03).
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">Ground truth (cam0, 10 s @ 30 fps)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_gt_cam0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">Ours v383 (InstantSplat &rarr; Difix &rarr; GSFix, 1080p&rarr;720p)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_ours_v383.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <h3 class="title is-4 has-text-centered">4DGS results &mdash; ours vs baselines (no add-ons)</h3>
+                    <p style="font-size: 90%; color:#555; max-width: 900px; margin: 0 auto 12px; text-align:center;">
+                        Same 8-camera <code>redrubberspatula_lift_egg_59</code> scene
+                        (300 frames @ 30 fps, novel-view path <code>[0,4,7,5,6,2,3,1]</code>).
+                        Baselines run <em>without</em> any of our diffusion / 1080p / stack add-ons.
+                        Direction: MUSIQ&uarr;, NIQE&darr;, BRISQUE&darr;, PIQE&darr;, MANIQA&darr;, TOPIQ&uarr;.
+                    </p>
+                    <table class="stats-table table is-striped is-narrow is-hoverable" style="margin: 0 auto;">
+                        <thead>
+                            <tr>
+                                <th>method</th>
+                                <th>recipe (no add-ons)</th>
+                                <th>MUSIQ&uarr;</th>
+                                <th>NIQE&darr;</th>
+                                <th>BRISQUE&darr;</th>
+                                <th>PIQE&darr;</th>
+                                <th>MANIQA&darr;</th>
+                                <th>TOPIQ&uarr;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>v300</td><td>4DGaussians (Wu CVPR'24, default config)</td><td>24.17</td><td>8.01</td><td>61.49</td><td>72.54</td><td>0.104</td><td>0.143</td></tr>
+                            <tr><td>v301</td><td>Spacetime Gaussians (Li CVPR'24)</td><td>28.40</td><td>6.53</td><td>57.04</td><td>69.34</td><td>0.124</td><td>0.195</td></tr>
+                            <tr><td>v302</td><td>Dynamic 3D Gaussians (Luiten 3DV'24)</td><td>25.24</td><td>8.36</td><td>71.61</td><td>67.76</td><td>0.187</td><td>0.171</td></tr>
+                            <tr><td>v305</td><td>CoDa-4DGS (Song ICCV'25)</td><td>36.89</td><td>6.35</td><td>57.20</td><td>73.77</td><td>0.147</td><td>0.253</td></tr>
+                            <tr><td>v306</td><td>Faster-GS 4D (Hahlbohm CVPR'26)</td><td>29.62</td><td>5.73</td><td>46.20</td><td>61.78</td><td>0.085</td><td>0.176</td></tr>
+                            <tr><td>v371</td><td>Per-frame InstantSplat (no diffusion)</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
+                            <tr style="background:#fcf2e8;"><td><strong>v381</strong></td><td><strong>InstantSplat + Difix3D + 1080p</strong></td><td>63.48</td><td>5.44</td><td>19.45</td><td><strong>31.20</strong></td><td>0.326</td><td>0.455</td></tr>
+                            <tr style="background:#fcf2e8;"><td><strong>v382</strong></td><td><strong>InstantSplat + GSFix3D + 1080p</strong></td><td>62.92</td><td><strong>4.31</strong></td><td>28.81</td><td>38.10</td><td><strong>0.316</strong></td><td>0.506</td></tr>
+                            <tr style="background:#fcf2e8;"><td><strong>v384</strong></td><td><strong>InstantSplat + GSFix &rarr; Difix + 1080p</strong></td><td>70.57</td><td>4.63</td><td><strong>12.92</strong></td><td>27.02</td><td>0.393</td><td>0.531</td></tr>
+                            <tr style="background:#e8f4fc;"><td><strong>v383 (ours, best)</strong></td><td><strong>InstantSplat + Difix &rarr; GSFix + 1080p</strong></td><td><strong>72.03</strong></td><td>4.50</td><td>21.88</td><td>38.33</td><td>0.412</td><td><strong>0.561</strong></td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
+                        Highlighted rows (yellow) ablate single-component additions; the green row is the full v383 stack &mdash;
+                        the first 4DGS pipeline on this scene to exceed 71.85 (the v117 3D-only ceiling).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="section" id="BibTeX">
+        <div class="container is-max-widescreen content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{robotool2026,
+    title  = {RoboTool: A Large-Scale, Multi-Tool Human Manipulation Dataset},
+    year   = {2026},
+}</code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-centered">
+                        <p>
+                            Website template adapted from <a href="https://droid-dataset.github.io/">DROID</a>,
+                            which in turn builds on <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+                            and <a href="https://eureka-research.github.io/">Eureka</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const CACHE_BUST = '?v=' + Date.now();
+        async function loadSummary() {
+            const res = await fetch('stats/summary.json' + CACHE_BUST, { cache: 'no-store' });
+            const s = await res.json();
+            const setNum = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v.toLocaleString(); };
+            setNum('kpi-trials', s.n_trials);
+            setNum('kpi-tasks', s.n_task_dirs);
+            setNum('kpi-tools', s.n_unique_tools);
+            setNum('kpi-verbs', s.n_unique_verbs);
+            setNum('kpi-objects', s.n_unique_objects);
+
+            const tbody = document.getElementById('task-table-body');
+            const rows = Object.entries(s.task_counts || {})
+                .sort((a, b) => b[1] - a[1]);
+            tbody.innerHTML = '';
+            rows.forEach(([task, n], i) => {
+                const tools = (s.task_to_tools && s.task_to_tools[task]) || [];
+                const verbs = (s.task_to_verbs && s.task_to_verbs[task]) || [];
+                const objs  = (s.task_to_objects && s.task_to_objects[task]) || [];
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${i + 1}</td><td><code>${task}</code></td><td>${tools.join(', ')}</td><td>${verbs.join(', ')}</td><td>${objs.join(', ')}</td><td style="text-align:right">${n.toLocaleString()}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        loadSummary().catch(e => console.error(e));
+
+        async function loadOverlays() {
+            const grid = document.getElementById('overlay-grid');
+            try {
+                const res = await fetch('figures/overlays/index.json' + CACHE_BUST, { cache: 'no-store' });
+                if (!res.ok) throw new Error('no index');
+                const items = await res.json();
+                console.log('[overlays] loaded', items.length, 'items');
+                grid.innerHTML = '';
+                items.forEach(it => {
+                    const col = document.createElement('div');
+                    col.className = 'column is-one-third has-text-centered';
+                    col.innerHTML =
+                        '<img src="' + it.image + CACHE_BUST +
+                        '" alt="' + it.task + '" style="width:100%;border-radius:4px;border:1px solid #eee" />' +
+                        '<div style="font-size:0.95rem;margin-top:4px"><code>' + it.task + '</code></div>';
+                    grid.appendChild(col);
+                });
+                if (!items.length) grid.innerHTML = '<div class="column is-full has-text-centered"><em>No overlays generated yet.</em></div>';
+            } catch (e) {
+                console.error('[overlays] failed', e);
+                grid.innerHTML = '<div class="column is-full has-text-centered"><em>Overlay index failed to load: ' + e.message + '</em></div>';
+            }
+        }
+        loadOverlays();
+    </script>
+
+</body>
+
+</html>
