@@ -414,6 +414,58 @@
                 </div>
             </div>
 
+            <h3 class="title is-4 has-text-centered" style="margin-top:24px;">More 3DGS variants (sorted by MUSIQ)</h3>
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v143 (ours) &mdash; Difix3D on InstantSplat-1k (MUSIQ 63.26)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v143.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v142 (ours) &mdash; GSFix3D MASt3R (MUSIQ 62.25)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v142.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v129 &mdash; InstantSplat 7k (MUSIQ 55.90)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v129.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v118 &mdash; InstantSplat MASt3R 1k (MUSIQ 53.22)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v118.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v123 (1k) &mdash; InstantSplat 1k (MUSIQ 52.83)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v123.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v127 (ours) &mdash; InstantSplat 1k pm-loss (MUSIQ 52.76)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v127.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <p class="has-text-centered" style="font-weight:600;">v55 &mdash; SparseGS baseline (MUSIQ 51.03)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v55.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
             <div class="columns is-centered">
                 <div class="column">
                     <h3 class="title is-4 has-text-centered">3DGS results &mdash; ours vs baselines (no add-ons)</h3>
@@ -436,7 +488,12 @@
                         </thead>
                         <tbody>
                             <tr style="background:#e8f4fc;"><td><strong>v117 (ours)</strong></td><td><strong>SparseGS + Difix3D fix-up</strong></td><td><strong>71.85</strong></td><td><strong>4.71</strong></td><td><strong>21.53</strong></td><td>48.76</td><td>0.361</td><td><strong>0.552</strong></td></tr>
+                            <tr style="background:#f4faff;"><td><strong>v143 (ours)</strong></td><td>Difix3D on InstantSplat-1k</td><td>63.26</td><td>5.07</td><td>30.66</td><td>53.36</td><td>0.308</td><td>0.450</td></tr>
+                            <tr style="background:#f4faff;"><td><strong>v142 (ours)</strong></td><td>GSFix3D (MASt3R init)</td><td>62.25</td><td>4.98</td><td>39.07</td><td>50.56</td><td>0.336</td><td>0.523</td></tr>
+                            <tr><td>v129</td><td>InstantSplat 7k</td><td>55.90</td><td>5.18</td><td>48.90</td><td>50.44</td><td>0.240</td><td>0.402</td></tr>
                             <tr><td>v118</td><td>InstantSplat (MASt3R init, 1k iters)</td><td>53.22</td><td>5.16</td><td>41.11</td><td>49.31</td><td>0.227</td><td>0.375</td></tr>
+                            <tr><td>v123 (1k)</td><td>InstantSplat 1k</td><td>52.83</td><td>5.12</td><td>40.68</td><td>48.98</td><td>0.226</td><td>0.374</td></tr>
+                            <tr style="background:#f4faff;"><td><strong>v127 (ours)</strong></td><td>InstantSplat 1k + pm-loss</td><td>52.76</td><td>5.13</td><td>40.44</td><td>48.92</td><td>0.222</td><td>0.371</td></tr>
                             <tr><td>v55_frame0</td><td>SparseGS baseline (no diffusion)</td><td>51.03</td><td>4.81</td><td>31.05</td><td>49.61</td><td>0.193</td><td>0.370</td></tr>
                             <tr><td>v148_frame0</td><td>plain 3DGS + MASt3R 1k</td><td>30.17</td><td>7.51</td><td>64.24</td><td>63.63</td><td>0.185</td><td>0.204</td></tr>
                             <tr><td>v147_frame0</td><td>SparseGS + per-scene init (raw)</td><td>28.86</td><td>6.77</td><td>47.24</td><td>63.12</td><td>0.116</td><td>0.187</td></tr>
