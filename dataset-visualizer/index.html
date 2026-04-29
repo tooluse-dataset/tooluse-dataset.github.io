@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoboTool Dataset Visualizer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<style>
+  body { padding: 1.25rem; background: #fafafa; }
+  header { margin-bottom: 1rem; }
+  h1.title { margin-bottom: 0.25rem; }
+  .controls { background: #fff; padding: 1rem 1.25rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 1.25rem; }
+  .filter-group { margin-bottom: 0.75rem; }
+  .filter-group .label { font-size: 0.85rem; margin-bottom: 0.35rem; color: #555; }
+  .checkbox-list { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; max-height: 110px; overflow-y: auto; padding: 0.4rem 0.6rem; border: 1px solid #eee; border-radius: 4px; background: #fcfcfc; }
+  .checkbox-list label { font-size: 0.85rem; cursor: pointer; user-select: none; white-space: nowrap; }
+  .checkbox-list input[type=checkbox] { margin-right: 0.25rem; vertical-align: middle; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+  .toolbar .left { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .card-task { background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.07); display: flex; flex-direction: column; }
+  .card-task .thumb-wrap { width: 100%; aspect-ratio: 16/9; background: #222; display: flex; align-items: center; justify-content: center; }
+  .card-task img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-task .placeholder { color: #aaa; font-size: 0.8rem; }
+  .card-task .meta { padding: 0.55rem 0.75rem 0.7rem; font-size: 0.82rem; line-height: 1.35; }
+  .card-task .task-name { font-weight: 600; word-break: break-word; margin-bottom: 0.2rem; color: #333; }
+  .card-task .tags { color: #666; font-size: 0.78rem; margin-bottom: 0.25rem; }
+  .card-task .trials { color: #3273dc; font-weight: 600; font-size: 0.8rem; }
+  .count-badge { background: #3273dc; color: #fff; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.78rem; }
+  .home-link { font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<header class="container">
+  <h1 class="title is-3">RoboTool Dataset Visualizer</h1>
+  <p class="subtitle is-6">Per-task thumbnails (frame at 8&nbsp;s). Filter by tool / action / object, sort by trial count or alphabetically.</p>
+  <a class="home-link" href="../">&larr; back to RoboTool home</a>
+</header>
+
+<section class="container">
+  <div class="controls">
+    <div class="columns is-multiline">
+      <div class="column is-4 filter-group">
+        <div class="label">Tool</div>
+        <div id="filter-tools" class="checkbox-list"></div>
+      </div>
+      <div class="column is-4 filter-group">
+        <div class="label">Action</div>
+        <div id="filter-actions" class="checkbox-list"></div>
+      </div>
+      <div class="column is-4 filter-group">
+        <div class="label">Object</div>
+        <div id="filter-objects" class="checkbox-list"></div>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="left">
+        <label class="label" for="sort-select" style="margin: 0; font-size: 0.85rem;">Sort:</label>
+        <div class="select is-small">
+          <select id="sort-select">
+            <option value="trials_desc">Trials (high &rarr; low)</option>
+            <option value="trials_asc">Trials (low &rarr; high)</option>
+            <option value="alpha_asc">Task name (A &rarr; Z)</option>
+            <option value="alpha_desc">Task name (Z &rarr; A)</option>
+          </select>
+        </div>
+        <button id="clear-filters" class="button is-small is-light">Clear filters</button>
+      </div>
+      <div class="right">
+        <span id="count" class="count-badge">0 tasks</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="grid" class="grid"></div>
+</section>
+
+<script>
+let TASKS = [];
+const state = {
+  tools: new Set(),
+  actions: new Set(),
+  objects: new Set(),
+  sort: 'trials_desc'
+};
+
+function uniqueValues(field) {
+  const s = new Set();
+  TASKS.forEach(t => (t[field] || []).forEach(v => s.add(v)));
+  return [...s].sort((a, b) => a.localeCompare(b));
+}
+
+function renderCheckboxes(containerId, values, stateSet) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = values.map(v => {
+    const id = `${containerId}__${v}`;
+    return `<label><input type="checkbox" data-value="${v}" id="${id}"> ${v}</label>`;
+  }).join('');
+  c.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', e => {
+      const v = e.target.dataset.value;
+      if (e.target.checked) stateSet.add(v); else stateSet.delete(v);
+      render();
+    });
+  });
+}
+
+function matches(task) {
+  const checkAny = (set, list) => set.size === 0 || list.some(v => set.has(v));
+  return checkAny(state.tools, task.tools)
+      && checkAny(state.actions, task.actions)
+      && checkAny(state.objects, task.objects);
+}
+
+function sortTasks(arr) {
+  const a = arr.slice();
+  switch (state.sort) {
+    case 'trials_desc': a.sort((x, y) => y.trials - x.trials || x.task_dir.localeCompare(y.task_dir)); break;
+    case 'trials_asc': a.sort((x, y) => x.trials - y.trials || x.task_dir.localeCompare(y.task_dir)); break;
+    case 'alpha_asc': a.sort((x, y) => x.task_dir.localeCompare(y.task_dir)); break;
+    case 'alpha_desc': a.sort((x, y) => y.task_dir.localeCompare(x.task_dir)); break;
+  }
+  return a;
+}
+
+function render() {
+  const filtered = TASKS.filter(matches);
+  const ordered = sortTasks(filtered);
+  document.getElementById('count').textContent = `${ordered.length} task${ordered.length === 1 ? '' : 's'}`;
+  const html = ordered.map(t => {
+    const thumb = t.thumbnail
+      ? `<img src="${t.thumbnail}" alt="${t.task_dir}" loading="lazy">`
+      : `<span class="placeholder">no thumbnail</span>`;
+    const tagLine = `${t.tools.join(' | ') || '—'} &middot; ${t.actions.join(' | ') || '—'} &middot; ${t.objects.join(' | ') || '—'}`;
+    return `<div class="card-task">
+      <div class="thumb-wrap">${thumb}</div>
+      <div class="meta">
+        <div class="task-name">${t.task_dir}</div>
+        <div class="tags">${tagLine}</div>
+        <div class="trials">${t.trials} trial${t.trials === 1 ? '' : 's'}</div>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('grid').innerHTML = html || '<p class="has-text-grey">No tasks match the current filters.</p>';
+}
+
+document.getElementById('sort-select').addEventListener('change', e => {
+  state.sort = e.target.value;
+  render();
+});
+
+document.getElementById('clear-filters').addEventListener('click', () => {
+  state.tools.clear(); state.actions.clear(); state.objects.clear();
+  document.querySelectorAll('.checkbox-list input[type=checkbox]').forEach(cb => cb.checked = false);
+  render();
+});
+
+fetch('tasks.json', { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(data => {
+    TASKS = data;
+    renderCheckboxes('filter-tools', uniqueValues('tools'), state.tools);
+    renderCheckboxes('filter-actions', uniqueValues('actions'), state.actions);
+    renderCheckboxes('filter-objects', uniqueValues('objects'), state.objects);
+    render();
+  })
+  .catch(err => {
+    document.getElementById('grid').innerHTML = `<p class="has-text-danger">Failed to load tasks.json: ${err}</p>`;
+  });
+</script>
+</body>
+</html>
