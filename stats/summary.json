@@ -2,8 +2,8 @@
   "n_trials": 11228,
   "n_unparsed": 1,
   "n_task_dirs": 65,
-  "n_unique_tools": 20,
-  "n_unique_verbs": 15,
+  "n_unique_tools": 22,
+  "n_unique_verbs": 16,
   "n_unique_objects": 16,
   "tool_counts": {
     "spatula": 2451,
@@ -25,7 +25,9 @@
     "pan": 136,
     "scooper": 131,
     "straw": 93,
-    "pestle": 86
+    "pestle": 86,
+    "rolling-rod": 199,
+    "towel": 98
   },
   "verb_counts": {
     "flip": 2316,
@@ -42,7 +44,8 @@
     "collect": 333,
     "press": 310,
     "cut": 300,
-    "shape": 79
+    "shape": 79,
+    "open": 276
   },
   "object_counts": {
     "nuts": 2445,
@@ -179,7 +182,11 @@
     "spatula|crush": 52,
     "fork|slice": 50,
     "ladle|stir": 42,
-    "cup|crush": 24
+    "cup|crush": 24,
+    "rolling-rod|roll": 199,
+    "knifeblade|open": 158,
+    "knife|open": 118,
+    "towel|sweep": 98
   },
   "verb_to_tools": {
     "slice": [
@@ -207,7 +214,8 @@
       "book",
       "brush",
       "spoon",
-      "squeegee"
+      "squeegee",
+      "towel"
     ],
     "cut": [
       "fork",
@@ -230,7 +238,8 @@
     "roll": [
       "cup",
       "rollingpin",
-      "rollrod"
+      "rollrod",
+      "rolling-rod"
     ],
     "press": [
       "spatula",
@@ -261,13 +270,18 @@
     "lift": [
       "spatula",
       "spoon"
+    ],
+    "open": [
+      "knifeblade",
+      "knife"
     ]
   },
   "tool_to_verbs": {
     "knife": [
       "cut",
       "slice",
-      "spread"
+      "spread",
+      "open"
     ],
     "mallet": [
       "crush",
@@ -351,6 +365,15 @@
     ],
     "pestle": [
       "crush"
+    ],
+    "rolling-rod": [
+      "roll"
+    ],
+    "knifeblade": [
+      "open"
+    ],
+    "towel": [
+      "sweep"
     ]
   },
   "task_to_tools": {
@@ -548,6 +571,12 @@
     "woodenspoon_crush_dough": [
       "spatula",
       "spoon"
+    ],
+    "plasticwraprod_roll_sand": [
+      "rolling-rod"
+    ],
+    "towel_sweep_nuts": [
+      "towel"
     ]
   },
   "task_to_verbs": {
@@ -739,6 +768,12 @@
     ],
     "woodenspoon_crush_dough": [
       "crush"
+    ],
+    "knifeblade_open_box": [
+      "open"
+    ],
+    "knife_open_box": [
+      "open"
     ]
   },
   "task_to_objects": {
