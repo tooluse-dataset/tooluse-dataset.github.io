@@ -431,11 +431,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>v55_frame0</td><td>SparseGS baseline (no diffusion)</td><td>51.03</td><td>4.81</td><td>31.05</td><td>49.61</td><td>0.193</td><td>0.370</td></tr>
-                            <tr><td>v118</td><td>InstantSplat (MASt3R init, 1k iters)</td><td>53.22</td><td>5.16</td><td>41.11</td><td>49.31</td><td>0.227</td><td>0.375</td></tr>
-                            <tr><td>v147_frame0</td><td>SparseGS + per-scene init (raw)</td><td>28.86</td><td>6.77</td><td>47.24</td><td>63.12</td><td>0.116</td><td>0.187</td></tr>
-                            <tr><td>v148_frame0</td><td>plain 3DGS + MASt3R 1k</td><td>30.17</td><td>7.51</td><td>64.24</td><td>63.63</td><td>0.185</td><td>0.204</td></tr>
                             <tr style="background:#e8f4fc;"><td><strong>v117 (ours)</strong></td><td><strong>SparseGS + Difix3D fix-up</strong></td><td><strong>71.85</strong></td><td><strong>4.71</strong></td><td><strong>21.53</strong></td><td>48.76</td><td>0.361</td><td><strong>0.552</strong></td></tr>
+                            <tr><td>v118</td><td>InstantSplat (MASt3R init, 1k iters)</td><td>53.22</td><td>5.16</td><td>41.11</td><td>49.31</td><td>0.227</td><td>0.375</td></tr>
+                            <tr><td>v55_frame0</td><td>SparseGS baseline (no diffusion)</td><td>51.03</td><td>4.81</td><td>31.05</td><td>49.61</td><td>0.193</td><td>0.370</td></tr>
+                            <tr><td>v148_frame0</td><td>plain 3DGS + MASt3R 1k</td><td>30.17</td><td>7.51</td><td>64.24</td><td>63.63</td><td>0.185</td><td>0.204</td></tr>
+                            <tr><td>v147_frame0</td><td>SparseGS + per-scene init (raw)</td><td>28.86</td><td>6.77</td><td>47.24</td><td>63.12</td><td>0.116</td><td>0.187</td></tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
@@ -539,16 +539,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>v300</td><td>4DGaussians (Wu CVPR'24, default config)</td><td>24.17</td><td>8.01</td><td>61.49</td><td>72.54</td><td>0.104</td><td>0.143</td></tr>
-                            <tr><td>v301</td><td>Spacetime Gaussians (Li CVPR'24)</td><td>28.40</td><td>6.53</td><td>57.04</td><td>69.34</td><td>0.124</td><td>0.195</td></tr>
-                            <tr><td>v302</td><td>Dynamic 3D Gaussians (Luiten 3DV'24)</td><td>25.24</td><td>8.36</td><td>71.61</td><td>67.76</td><td>0.187</td><td>0.171</td></tr>
+                            <tr style="background:#e8f4fc;"><td><strong>v383 (ours, best)</strong></td><td><strong>InstantSplat + Difix &rarr; GSFix + 1080p</strong></td><td><strong>72.03</strong></td><td>4.50</td><td>21.88</td><td>38.33</td><td>0.412</td><td><strong>0.561</strong></td></tr>
+                            <tr style="background:#fcf2e8;"><td><strong>v384 (ours)</strong></td><td><strong>InstantSplat + GSFix &rarr; Difix + 1080p</strong></td><td>70.57</td><td>4.63</td><td><strong>12.92</strong></td><td>27.02</td><td>0.393</td><td>0.531</td></tr>
+                            <tr style="background:#fcf2e8;"><td><strong>v381 (ours)</strong></td><td><strong>InstantSplat + Difix3D + 1080p</strong></td><td>63.48</td><td>5.44</td><td>19.45</td><td><strong>31.20</strong></td><td>0.326</td><td>0.455</td></tr>
+                            <tr style="background:#fcf2e8;"><td><strong>v382 (ours)</strong></td><td><strong>InstantSplat + GSFix3D + 1080p</strong></td><td>62.92</td><td><strong>4.31</strong></td><td>28.81</td><td>38.10</td><td><strong>0.316</strong></td><td>0.506</td></tr>
+                            <tr><td>v371 (ours)</td><td>Per-frame InstantSplat (no diffusion)</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
                             <tr><td>v305</td><td>CoDa-4DGS (Song ICCV'25)</td><td>36.89</td><td>6.35</td><td>57.20</td><td>73.77</td><td>0.147</td><td>0.253</td></tr>
                             <tr><td>v306</td><td>Faster-GS 4D (Hahlbohm CVPR'26)</td><td>29.62</td><td>5.73</td><td>46.20</td><td>61.78</td><td>0.085</td><td>0.176</td></tr>
-                            <tr><td>v371</td><td>Per-frame InstantSplat (no diffusion)</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
-                            <tr style="background:#fcf2e8;"><td><strong>v381</strong></td><td><strong>InstantSplat + Difix3D + 1080p</strong></td><td>63.48</td><td>5.44</td><td>19.45</td><td><strong>31.20</strong></td><td>0.326</td><td>0.455</td></tr>
-                            <tr style="background:#fcf2e8;"><td><strong>v382</strong></td><td><strong>InstantSplat + GSFix3D + 1080p</strong></td><td>62.92</td><td><strong>4.31</strong></td><td>28.81</td><td>38.10</td><td><strong>0.316</strong></td><td>0.506</td></tr>
-                            <tr style="background:#fcf2e8;"><td><strong>v384</strong></td><td><strong>InstantSplat + GSFix &rarr; Difix + 1080p</strong></td><td>70.57</td><td>4.63</td><td><strong>12.92</strong></td><td>27.02</td><td>0.393</td><td>0.531</td></tr>
-                            <tr style="background:#e8f4fc;"><td><strong>v383 (ours, best)</strong></td><td><strong>InstantSplat + Difix &rarr; GSFix + 1080p</strong></td><td><strong>72.03</strong></td><td>4.50</td><td>21.88</td><td>38.33</td><td>0.412</td><td><strong>0.561</strong></td></tr>
+                            <tr><td>v301</td><td>Spacetime Gaussians (Li CVPR'24)</td><td>28.40</td><td>6.53</td><td>57.04</td><td>69.34</td><td>0.124</td><td>0.195</td></tr>
+                            <tr><td>v302</td><td>Dynamic 3D Gaussians (Luiten 3DV'24)</td><td>25.24</td><td>8.36</td><td>71.61</td><td>67.76</td><td>0.187</td><td>0.171</td></tr>
+                            <tr><td>v300</td><td>4DGaussians (Wu CVPR'24, default config)</td><td>24.17</td><td>8.01</td><td>61.49</td><td>72.54</td><td>0.104</td><td>0.143</td></tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
