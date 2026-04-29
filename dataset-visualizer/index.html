@@ -29,7 +29,12 @@
   .card-task .trials { color: #3273dc; font-weight: 600; font-size: 0.8rem; }
   .count-badge { background: #3273dc; color: #fff; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.78rem; }
   .home-link { font-size: 0.85rem; }
-</style>
+
+  .card-task[data-video] { cursor: pointer; }
+  .card-task[data-video]::after { content: '\25B6'; position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; }
+  .card-task[data-video]:hover::after { background: rgba(31,95,168,0.95); }
+
+  </style>
 </head>
 <body>
 <header class="container">
@@ -124,10 +129,32 @@ function sortTasks(arr) {
   return a;
 }
 
+
+// Click-to-play: replace thumbnail with autoplay video for tasks that have a video file.
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.card-task');
+  if (!card) return;
+  const videoSrc = card.dataset.video;
+  if (!videoSrc) return;
+  const img = card.querySelector('img');
+  if (!img) return;
+  const video = document.createElement('video');
+  video.src = videoSrc;
+  video.controls = true;
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.style.width = img.style.width || '100%';
+  video.style.height = img.style.height || 'auto';
+  video.style.borderRadius = getComputedStyle(img).borderRadius;
+  img.replaceWith(video);
+});
+
 function render() {
   const filtered = TASKS.filter(matches);
   const ordered = sortTasks(filtered);
-  document.getElementById('count').textContent = `${ordered.length} task${ordered.length === 1 ? '' : 's'}`;
+  document.getElementById('count').textContent = `${ordered.length} of 65 tasks`;
   const html = ordered.map(t => {
     const thumb = t.thumbnail
       ? `<img src="${t.thumbnail}" alt="${t.task_dir}" loading="lazy">`
@@ -142,7 +169,7 @@ function render() {
       else camLabel = String(t.camera).replace('.mp4', '');
     }
     const camTag = camLabel ? `<span class="cam-tag">${camLabel}</span>` : '';
-    return `<div class="card-task">
+    return `<div class="card-task"${t.video ? ` data-video="${t.video}" style="cursor:pointer;"` : ""}>
       <div class="thumb-wrap">${thumb}${camTag}</div>
       <div class="meta">
         <div class="task-name">${t.task_dir}</div>

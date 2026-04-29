@@ -27,7 +27,8 @@
     ],
     "trials": 230,
     "thumbnail": "thumbnails/book_push_toy.jpg",
-    "camera": "cam1_rgb.mp4"
+    "camera": "cam1_rgb.mp4",
+    "video": "videos/book_push_toy.mp4"
   },
   {
     "task_dir": "brush_collect_sand",
@@ -165,7 +166,8 @@
     ],
     "trials": 912,
     "thumbnail": "thumbnails/fork_flip_egg.jpg",
-    "camera": "cam0_rgb.mp4"
+    "camera": "cam0_rgb.mp4",
+    "video": "videos/fork_flip_egg.mp4"
   },
   {
     "task_dir": "fork_flip_naan",
@@ -180,7 +182,8 @@
     ],
     "trials": 452,
     "thumbnail": "thumbnails/fork_flip_naan.jpg",
-    "camera": "cam1_rgb.mp4"
+    "camera": "cam1_rgb.mp4",
+    "video": "videos/fork_flip_naan.mp4"
   },
   {
     "task_dir": "fork_scoop_nuts",
@@ -195,7 +198,8 @@
     ],
     "trials": 264,
     "thumbnail": "thumbnails/fork_scoop_nuts.jpg",
-    "camera": "cam2_rgb.mp4"
+    "camera": "cam2_rgb.mp4",
+    "video": "videos/fork_scoop_nuts.mp4"
   },
   {
     "task_dir": "fork_shape_kineticsand",
@@ -300,7 +304,8 @@
     ],
     "trials": 311,
     "thumbnail": "thumbnails/knife_slice_banana.jpg",
-    "camera": "main_cam_right_video.mp4"
+    "camera": "main_cam_right_video.mp4",
+    "video": "videos/knife_slice_banana.mp4"
   },
   {
     "task_dir": "knife_slice_dought",
@@ -360,7 +365,8 @@
     ],
     "trials": 441,
     "thumbnail": "thumbnails/ladle_scoop_nuts.jpg",
-    "camera": "cam3_rgb.mp4"
+    "camera": "cam3_rgb.mp4",
+    "video": "videos/ladle_scoop_nuts.mp4"
   },
   {
     "task_dir": "ladle_stir_coffee",
@@ -420,7 +426,8 @@
     ],
     "trials": 210,
     "thumbnail": "thumbnails/mallet_push_toy.jpg",
-    "camera": "main_cam_left_video.mp4"
+    "camera": "main_cam_left_video.mp4",
+    "video": "videos/mallet_push_toy.mp4"
   },
   {
     "task_dir": "malletpestle_crush_nuts",
@@ -510,7 +517,8 @@
     ],
     "trials": 303,
     "thumbnail": "thumbnails/rollingpin_roll_sand.jpg",
-    "camera": "cam4_rgb.mp4"
+    "camera": "cam4_rgb.mp4",
+    "video": "videos/rollingpin_roll_sand.mp4"
   },
   {
     "task_dir": "rollrod_roll_dough",
@@ -573,7 +581,8 @@
     ],
     "trials": 354,
     "thumbnail": "thumbnails/scooper_scoop_nuts.jpg",
-    "camera": "main_cam_left_video.mp4"
+    "camera": "main_cam_left_video.mp4",
+    "video": "videos/scooper_scoop_nuts.mp4"
   },
   {
     "task_dir": "scooper_shape_kineticsand",
@@ -633,7 +642,8 @@
     ],
     "trials": 466,
     "thumbnail": "thumbnails/spatula_flip_egg.jpg",
-    "camera": "cam2_rgb.mp4"
+    "camera": "cam2_rgb.mp4",
+    "video": "videos/spatula_flip_egg.mp4"
   },
   {
     "task_dir": "spatula_flip_naan",
@@ -648,7 +658,8 @@
     ],
     "trials": 486,
     "thumbnail": "thumbnails/spatula_flip_naan.jpg",
-    "camera": "cam3_rgb.mp4"
+    "camera": "cam3_rgb.mp4",
+    "video": "videos/spatula_flip_naan.mp4"
   },
   {
     "task_dir": "spatula_lift_place_egg",
@@ -663,7 +674,8 @@
     ],
     "trials": 405,
     "thumbnail": "thumbnails/spatula_lift_place_egg.jpg",
-    "camera": "cam4_rgb.mp4"
+    "camera": "cam4_rgb.mp4",
+    "video": "videos/spatula_lift_place_egg.mp4"
   },
   {
     "task_dir": "spatula_press_sponge",
@@ -693,7 +705,8 @@
     ],
     "trials": 281,
     "thumbnail": "thumbnails/spatula_scoop_nuts.jpg",
-    "camera": "cam6_rgb.mp4"
+    "camera": "cam6_rgb.mp4",
+    "video": "videos/spatula_scoop_nuts.mp4"
   },
   {
     "task_dir": "spatula_spread_tomatosauce",
@@ -813,7 +826,8 @@
     ],
     "trials": 349,
     "thumbnail": "thumbnails/spoon_lift_place_egg.jpg",
-    "camera": "cam4_rgb.mp4"
+    "camera": "cam4_rgb.mp4",
+    "video": "videos/spoon_lift_place_egg.mp4"
   },
   {
     "task_dir": "spoon_press_sponge",
@@ -843,7 +857,8 @@
     ],
     "trials": 294,
     "thumbnail": "thumbnails/spoon_scoop_nuts.jpg",
-    "camera": "cam6_rgb.mp4"
+    "camera": "cam6_rgb.mp4",
+    "video": "videos/spoon_scoop_nuts.mp4"
   },
   {
     "task_dir": "spoon_spread_tomatosauce",
