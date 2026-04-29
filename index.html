@@ -31,14 +31,98 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+        /* ====== DROID-style adoption ====== */
+        :root {
+            --rt-accent: #1f5fa8;
+            --rt-accent-soft: #e8f0fa;
+            --rt-text: #1a1a1a;
+            --rt-muted: #555;
+            --rt-bg: #ffffff;
+            --rt-bg-alt: #fafbfc;
+            --rt-border: #e3e6ea;
+        }
+        body {
+            font-family: "Myriad-Pro", "Open Sans", "Google Sans", sans-serif;
+            color: var(--rt-text);
+            background: var(--rt-bg);
+        }
+        .hero { background: linear-gradient(180deg, #ffffff 0%, #f3f6fa 100%); }
+        .hero-body { padding-top: 3rem; padding-bottom: 1.5rem; }
+        .publication-title { font-family: "Myriad-Pro", "Open Sans", sans-serif; letter-spacing: -0.01em; }
+        .publication-authors { font-family: "Myriad-Pro", "Open Sans", sans-serif; }
         .author-block { display: none; }
         .publication-authors:hover .author-block { display: block; }
-        table.stats-table td, table.stats-table th { padding: 4px 8px; font-size: 0.9rem; }
-        table.stats-table th { background: #f3f3f3; }
-        .kpi-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin: 8px 0; }
-        .kpi { text-align: center; min-width: 130px; }
-        .kpi .num { font-size: 2.2rem; font-weight: 700; color: #1f5fa8; line-height: 1; }
-        .kpi .lbl { font-size: 0.9rem; color: #555; margin-top: 4px; }
+        .publication-links .button { margin: 4px 4px; }
+        .dvima { font-variant: small-caps; letter-spacing: 0.02em; }
+        .section { padding: 2.5rem 1.5rem; }
+        h2.title.is-2 { color: var(--rt-text); }
+        h2.title.is-3 { color: var(--rt-text); }
+        .content p { line-height: 1.55; }
+        a { color: var(--rt-accent); }
+        a:hover { color: #143f73; }
+
+        /* KPI strip — DROID-style panel */
+        .kpi-grid {
+            display: flex; flex-wrap: wrap; gap: 0;
+            justify-content: center; margin: 8px auto;
+            max-width: 980px; background: #fff;
+            border: 1px solid var(--rt-border); border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+        .kpi {
+            flex: 1 1 160px; min-width: 140px; text-align: center;
+            padding: 18px 16px; border-right: 1px solid var(--rt-border);
+        }
+        .kpi:last-child { border-right: none; }
+        .kpi .num {
+            font-size: 2.4rem; font-weight: 700; color: var(--rt-accent);
+            line-height: 1; font-family: "Myriad-Pro", "Open Sans", sans-serif;
+        }
+        .kpi .lbl {
+            font-size: 0.85rem; color: var(--rt-muted); margin-top: 6px;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+
+        /* Tables — DROID-style polish */
+        table.stats-table { border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+        table.stats-table td, table.stats-table th { padding: 6px 10px; font-size: 0.88rem; border-bottom: 1px solid var(--rt-border); }
+        table.stats-table thead th {
+            background: var(--rt-accent); color: #fff;
+            font-weight: 600; letter-spacing: 0.02em;
+            border-bottom: none;
+        }
+        table.stats-table tbody tr:hover { background: var(--rt-accent-soft) !important; }
+        table.stats-table tbody tr:last-child td { border-bottom: none; }
+
+        /* Image / video grid polish */
+        .interpolation-image, .columns video, .columns img {
+            border-radius: 8px;
+        }
+        .columns video, .columns img.interpolation-image {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .columns .has-text-centered p[style*="font-weight:600"] { color: var(--rt-text); }
+
+        /* Section accent line under headings */
+        h2.title.is-2 .dvima::after {
+            content: ""; display: block; width: 60px; height: 3px;
+            background: var(--rt-accent); margin-top: 8px; border-radius: 2px;
+        }
+
+        /* Code blocks */
+        pre, code { font-family: "Source Code Pro", ui-monospace, Menlo, monospace; }
+        pre { background: #f6f8fa; border: 1px solid var(--rt-border); border-radius: 8px; padding: 12px 14px; }
+
+        /* Footer */
+        .footer { padding: 2.5rem 1.5rem; background: #f3f6fa; border-top: 1px solid var(--rt-border); }
+        .footer .content p { color: var(--rt-muted); font-size: 0.9rem; }
+
+        /* Buttons (publication links) */
+        .button.is-dark { background-color: #1a1a1a; }
+        .button.is-dark:hover { background-color: var(--rt-accent); }
+        .button.is-large.is-primary { background-color: var(--rt-accent); }
+        .button.is-large.is-primary:hover { background-color: #143f73; }
     </style>
 </head>
 
