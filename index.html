@@ -487,6 +487,12 @@
                         <source src="videos/3dgs_v139b.mp4" type="video/mp4">
                     </video>
                 </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v55 &mdash; SparseGS baseline (MUSIQ 51.03)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/3dgs_v55.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
 
 <div class="columns is-centered">
@@ -603,7 +609,44 @@
                 </div>
             </div>
 
+                        <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v383 (ours, best) &mdash; Difix &rarr; GSFix (MUSIQ 72.03)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_v383.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v384 (ours) &mdash; GSFix &rarr; Difix (MUSIQ 70.57)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_v384.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
             <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v381 (ours) &mdash; Difix3D only (MUSIQ 63.48)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_v381.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v382 (ours) &mdash; GSFix3D only (MUSIQ 62.92)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_v382.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight:600;">v371 (ours) &mdash; per-frame InstantSplat baseline (MUSIQ 55.44)</p>
+                    <video controls muted playsinline style="width:100%; border-radius:6px;">
+                        <source src="videos/4dgs_v371.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+<div class="columns is-centered">
                 <div class="column">
                     <h3 class="title is-4 has-text-centered">4DGS results &mdash; ours vs baselines (no add-ons)</h3>
                     <p style="font-size: 90%; color:#555; max-width: 900px; margin: 0 auto 12px; text-align:center;">
@@ -631,11 +674,6 @@
                             <tr style="background:#fcf2e8;"><td><strong>v381 (ours)</strong></td><td><strong>InstantSplat + Difix3D + 1080p</strong></td><td>63.48</td><td>5.44</td><td>19.45</td><td><strong>31.20</strong></td><td>0.326</td><td>0.455</td></tr>
                             <tr style="background:#fcf2e8;"><td><strong>v382 (ours)</strong></td><td><strong>InstantSplat + GSFix3D + 1080p</strong></td><td>62.92</td><td><strong>4.31</strong></td><td>28.81</td><td>38.10</td><td><strong>0.316</strong></td><td>0.506</td></tr>
                             <tr><td>v371 (ours)</td><td>Per-frame InstantSplat (no diffusion)</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
-                            <tr><td>v305</td><td>CoDa-4DGS (Song ICCV'25)</td><td>36.89</td><td>6.35</td><td>57.20</td><td>73.77</td><td>0.147</td><td>0.253</td></tr>
-                            <tr><td>v306</td><td>Faster-GS 4D (Hahlbohm CVPR'26)</td><td>29.62</td><td>5.73</td><td>46.20</td><td>61.78</td><td>0.085</td><td>0.176</td></tr>
-                            <tr><td>v301</td><td>Spacetime Gaussians (Li CVPR'24)</td><td>28.40</td><td>6.53</td><td>57.04</td><td>69.34</td><td>0.124</td><td>0.195</td></tr>
-                            <tr><td>v302</td><td>Dynamic 3D Gaussians (Luiten 3DV'24)</td><td>25.24</td><td>8.36</td><td>71.61</td><td>67.76</td><td>0.187</td><td>0.171</td></tr>
-                            <tr><td>v300</td><td>4DGaussians (Wu CVPR'24, default config)</td><td>24.17</td><td>8.01</td><td>61.49</td><td>72.54</td><td>0.104</td><td>0.143</td></tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
