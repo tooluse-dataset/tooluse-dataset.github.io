@@ -115,20 +115,6 @@
     "thumbnail": "thumbnails/spoon_lift_place_egg.jpg"
   },
   {
-    "task_dir": "knife_slice_banana",
-    "tools": [
-      "knife"
-    ],
-    "actions": [
-      "slice"
-    ],
-    "objects": [
-      "banana"
-    ],
-    "trials": 311,
-    "thumbnail": "thumbnails/knife_slice_banana.jpg"
-  },
-  {
     "task_dir": "rollingpin_roll_sand",
     "tools": [
       "rollingpin"
@@ -521,20 +507,6 @@
     ],
     "trials": 112,
     "thumbnail": "thumbnails/brush_sweep_nuts.jpg"
-  },
-  {
-    "task_dir": "mallet_crush_nuts",
-    "tools": [
-      "mallet"
-    ],
-    "actions": [
-      "crush"
-    ],
-    "objects": [
-      "nuts"
-    ],
-    "trials": 109,
-    "thumbnail": "thumbnails/mallet_crush_nuts.jpg"
   },
   {
     "task_dir": "scooper_scoop_icecream",
