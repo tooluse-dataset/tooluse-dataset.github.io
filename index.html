@@ -375,57 +375,47 @@
             <div class="columns is-centered">
                 <div class="column">
                     <h3 class="title is-4">Core equations</h3>
-                    <p style="font-size: 95%;">
-                        Standard 3DGS photometric loss (Kerbl et&nbsp;al., 2023):<br>
-                        &nbsp;&nbsp;<code>L<sub>3DGS</sub> = (1&minus;λ)·L<sub>1</sub> + λ·L<sub>D-SSIM</sub></code>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">1. Foundation &mdash; 3DGS photometric loss</strong> (Kerbl et&nbsp;al., 2023)</p>
+                    <p style="font-size:95%; margin-bottom:1rem;">
+                        &nbsp;&nbsp;<code>L<sub>3DGS</sub> = (1&minus;λ)·L<sub>1</sub>(Render(G,c), I<sub>c</sub>) + λ·L<sub>D-SSIM</sub></code><br>
+                        Every method below extends this base loss, swaps the initializer for <code>G</code>, or post-processes its rendered output.
                     </p>
-                    <p style="font-size: 95%;">
-                        SparseGS-style regularizers (our v55 base, after Xiong et&nbsp;al. 2024):<br>
-                        &nbsp;&nbsp;<code>L<sub>v55</sub> = L<sub>3DGS</sub> + λ<sub>warp</sub>·L<sub>warp_reg</sub> + λ<sub>P</sub>·L<sub>Pearson_depth</sub> + λ<sub>OE</sub>·L<sub>opacity_entropy</sub></code>
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>Our addition (v117):</strong> a 1-step Difix3D diffusion fix-up applied to the rendered
-                        novel-view sequence:<br>
-                        &nbsp;&nbsp;<code>Î(c) = Difix<sub>1-step</sub>(Render<sub>3DGS</sub>(c))</code><br>
-                        where <code>c</code> is a slerp+lerp camera path between training cameras. The composition gives
-                        <strong>+27 MUSIQ over the same SparseGS render without diffusion</strong>.
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v143</strong> &mdash; Difix3D fix-up on a plain InstantSplat-1k backbone (no SparseGS regularizers):<br>
-                        &nbsp;&nbsp;<code>G<sub>v143</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>(G; 8&nbsp;views), &nbsp; K=1000</code><br>
-                        &nbsp;&nbsp;<code>Î(c) = Difix<sub>1-step</sub>(Render(G<sub>v143</sub>, c); &nbsp; t=199, &nbsp; "remove&nbsp;degradation")</code><br>
-                        Difix is fed only the rendered novel-view (no GT condition); single-step (<code>t=199</code>) preserves geometry while smoothing splat seams.
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v142</strong> &mdash; MASt3R initialization &rarr; 1k-iter 3DGS &rarr; 4-step GSFix3D fix-up:<br>
-                        &nbsp;&nbsp;<code>G<sub>0</sub> = MASt3R(8&nbsp;cams), &nbsp; G<sub>v142</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>(G; G<sub>0</sub>), &nbsp; K=1000</code><br>
-                        &nbsp;&nbsp;<code>Î(c) = GSFix<sub>4-step</sub>(Render(G<sub>v142</sub>, c))</code><br>
-                        GSFix is a 4-step diffusion (<code>t&isin;{249,499,749,999}</code> with classifier-free guidance), trained on rendered-vs-real GS artifact pairs.
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v129</strong> &mdash; pure InstantSplat trained 7&times;-longer than v118 (7k vs 1k iters), no diffusion:<br>
-                        &nbsp;&nbsp;<code>G<sub>v129</sub> = argmin<sub>G</sub> Σ<sub>c</sub>&thinsp;(1&minus;λ)·L<sub>1</sub>(Render(G,c), I<sub>c</sub>) + λ·L<sub>D-SSIM</sub>, &nbsp; K=7000</code><br>
-                        &nbsp;&nbsp;<code>I(c) = Render(G<sub>v129</sub>, c)</code> &nbsp; (raw splat output, no post-processing)
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v150</strong> &mdash; Sparfels (Lin et&nbsp;al. 2025): replace 3D Gaussians with surface-aligned 2D disks plus a sparsity-aware geometric prior:<br>
-                        &nbsp;&nbsp;<code>L<sub>v150</sub> = L<sub>3DGS</sub> + λ<sub>geom</sub>·L<sub>sparfels-geom</sub> + λ<sub>norm</sub>·L<sub>normal-consistency</sub></code><br>
-                        &nbsp;&nbsp;<code>I(c) = Render<sub>2DGS</sub>(G<sub>v150</sub>, c)</code> &nbsp; (rasterizer specialized for oriented disks)
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v149b</strong> &mdash; VGGT-X (Liu et&nbsp;al. 2025) feed-forward init, then 30k-iter 3DGS refinement:<br>
-                        &nbsp;&nbsp;<code>(G<sub>0</sub>, &kappa;<sub>0</sub>) = VGGT(I<sub>cam0..7</sub>)</code> &nbsp; (joint scene + camera regression in one forward pass)<br>
-                        &nbsp;&nbsp;<code>G<sub>v149b</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>(G; G<sub>0</sub>), &nbsp; K=30000</code>
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v123 (1k)</strong> &mdash; plain InstantSplat-1k (random init, no MASt3R, no regularizers):<br>
-                        &nbsp;&nbsp;<code>G<sub>0</sub> &sim; uniform&thinsp;in&thinsp;scene&thinsp;volume, &nbsp; G<sub>v123</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>, &nbsp; K=1000</code><br>
-                        &nbsp;&nbsp;<code>I(c) = Render(G<sub>v123</sub>, c)</code> &nbsp; (baseline for measuring the value of MASt3R&nbsp;init)
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v127</strong> &mdash; InstantSplat-1k + our photometric-matching loss across cam pairs:<br>
-                        &nbsp;&nbsp;<code>L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>) = ||&Pi;(W<sub>i&rarr;j</sub>(I<sub>i</sub>)) &minus; I<sub>j</sub>||<sup>2</sup></code> &nbsp; (warp&thinsp;cam&thinsp;<em>i</em>&thinsp;into&thinsp;cam&thinsp;<em>j</em>&thinsp;via depth, compare)<br>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">2. InstantSplat family</strong> &mdash; random init, vary K iters and aux losses (Fan et&nbsp;al. 2024)</p>
+                    <p style="font-size:95%; margin-bottom:1rem;">
+                        &nbsp;&nbsp;Common form: <code>G<sub>0</sub> &sim; uniform(scene); &nbsp; G = argmin<sub>G</sub> L<sub>3DGS</sub>; &nbsp; I(c) = Render(G, c)</code><br>
+                        &bull; <strong>v123 (1k)</strong> &mdash; baseline, K=1000, no regularizers<br>
+                        &bull; <strong>v129</strong> &mdash; identical loss but K=7000 (7&times; longer, tests if more iters alone helps)<br>
+                        &bull; <strong>v127</strong> &mdash; v123 + a photometric-matching loss across cam pairs:<br>
+                        &nbsp;&nbsp;<code>L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>) = ||&Pi;(W<sub>i&rarr;j</sub>(I<sub>i</sub>)) &minus; I<sub>j</sub>||<sup>2</sup></code> &nbsp; (warp cam <em>i</em> into cam <em>j</em> via depth, compare)<br>
                         &nbsp;&nbsp;<code>L<sub>v127</sub> = L<sub>3DGS</sub> + λ<sub>pm</sub>·Σ<sub>(i,j)</sub> L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>), &nbsp; K=1000</code>
+                    </p>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">3. Feed-forward initializers</strong> &mdash; replace random <code>G<sub>0</sub></code> with a learned scene prior</p>
+                    <p style="font-size:95%; margin-bottom:1rem;">
+                        &nbsp;&nbsp;Common form: <code>G<sub>0</sub> = &Phi;(I<sub>cam0..7</sub>); &nbsp; G = argmin<sub>G</sub> L<sub>3DGS</sub>(G; G<sub>0</sub>), K iters</code><br>
+                        &bull; <strong>v118</strong> (MASt3R, Leroy et&nbsp;al. 2024) &mdash; <code>&Phi; = MASt3R</code> (pairwise dense matching), K=1000<br>
+                        &bull; <strong>v149b</strong> (VGGT-X, Liu et&nbsp;al. 2025) &mdash; <code>(G<sub>0</sub>, &kappa;<sub>0</sub>) = VGGT</code> (joint scene + camera regression in one forward pass), K=30000
+                    </p>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">4. Sparsity / surface-regularized losses</strong> &mdash; add geometric priors on top of <code>L<sub>3DGS</sub></code></p>
+                    <p style="font-size:95%; margin-bottom:1rem;">
+                        &bull; <strong>v55</strong> (SparseGS, Xiong et&nbsp;al. 2024) &mdash; depth, opacity, and warp regularizers:<br>
+                        &nbsp;&nbsp;<code>L<sub>v55</sub> = L<sub>3DGS</sub> + λ<sub>warp</sub>·L<sub>warp_reg</sub> + λ<sub>P</sub>·L<sub>Pearson_depth</sub> + λ<sub>OE</sub>·L<sub>opacity_entropy</sub></code><br>
+                        &bull; <strong>v150</strong> (Sparfels, Lin et&nbsp;al. 2025) &mdash; replaces 3D Gaussians with surface-aligned 2D disks:<br>
+                        &nbsp;&nbsp;<code>L<sub>v150</sub> = L<sub>3DGS</sub> + λ<sub>geom</sub>·L<sub>sparfels-geom</sub> + λ<sub>norm</sub>·L<sub>normal-consistency</sub></code><br>
+                        &nbsp;&nbsp;<code>I(c) = Render<sub>2DGS</sub>(G, c)</code> &nbsp; (rasterizer specialized for oriented disks)
+                    </p>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">5. Diffusion fix-up family (post-render)</strong> &mdash; apply a pretrained image diffusion to the rendered novel-view sequence</p>
+                    <p style="font-size:95%; margin-bottom:0.5rem;">
+                        &nbsp;&nbsp;Common form: <code>Î(c) = D(Render(G, c))</code> &nbsp; where <code>D</code> is a frozen image-restoration diffusion<br>
+                        &bull; <strong>Difix<sub>1-step</sub></strong> (Liang et&nbsp;al. 2024) &mdash; single denoising step at <code>t=199</code>, prompt &ldquo;remove degradation&rdquo;:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<strong>v143</strong> &mdash; <code>D &compfn; InstantSplat-1k</code><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<strong>v117 (best, MUSIQ&nbsp;71.85)</strong> &mdash; <code>D &compfn; SparseGS</code> (combines categories 4 + 5; <strong>+27 MUSIQ over SparseGS alone</strong>)<br>
+                        &bull; <strong>GSFix<sub>4-step</sub></strong> (Wang et&nbsp;al. 2025) &mdash; 4 denoising steps at <code>t&isin;{249,499,749,999}</code> with classifier-free guidance:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<strong>v142</strong> &mdash; <code>D &compfn; MASt3R-3DGS</code> (combines categories 3 + 5)
                     </p>
                 </div>
             </div>
@@ -609,41 +599,28 @@
             <div class="columns is-centered">
                 <div class="column">
                     <h3 class="title is-4">Core equations</h3>
-                    <p style="font-size: 95%;">
-                        Per-frame InstantSplat training (Fan et&nbsp;al. 2024) on each of <em>T</em>&nbsp;timesteps
-                        independently, MASt3R-initialized (Leroy et&nbsp;al. 2024):<br>
-                        &nbsp;&nbsp;<code>{G<sub>t</sub>} = argmin<sub>G</sub> Σ<sub>c</sub> (1&minus;λ)·L<sub>1</sub> + λ·L<sub>D-SSIM</sub>, &nbsp; t&isin;{0..T&minus;1}</code>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">1. Per-frame backbone</strong> &mdash; InstantSplat applied independently to each timestep (no temporal coupling)</p>
+                    <p style="font-size:95%; margin-bottom:1rem;">
+                        &nbsp;&nbsp;<code>{G<sub>t</sub>} = argmin<sub>G</sub> L<sub>3DGS</sub>(G; cam0..7&thinsp;@&thinsp;t), &nbsp; t&isin;{0..T&minus;1}</code> &nbsp; (T = 300 frames)<br>
+                        Reuses the 3DGS L<sub>3DGS</sub> loss (category&nbsp;1 above) per timestep; no deformation field, no polynomial trajectory &mdash; just a stack of 300 independent 3DGS scenes.
                     </p>
-                    <p style="font-size: 95%;">
-                        Novel-view synthesis along a smooth camera path
-                        <code>c(s)</code> with leg order
-                        <code>[0,4,7,5,6,2,3,1]</code> (slerp rotation + lerp position):<br>
-                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code>
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>Our addition (v383):</strong> ordered 1080p diffusion stack with Lanczos downsample:<br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s))))</code><br>
-                        Stack order is <em>not</em> commutative: reversing to GSFix&rarr;Difix (v384) drops MUSIQ by
-                        1.46 (70.57 vs 72.03).
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v384</strong> &mdash; <em>reversed</em> stack (GSFix first, then Difix). Same per-frame backbone, same path:<br>
-                        &nbsp;&nbsp;<code>{G<sub>t</sub>} = argmin<sub>G</sub> L<sub>3DGS</sub>(G; cam0..7&thinsp;@&thinsp;t), &nbsp; t&isin;{0..299}</code><br>
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">2. Smooth camera path</strong> &mdash; slerp rotation + lerp position between training cams</p>
+                    <p style="font-size:95%; margin-bottom:1rem;">
+                        &nbsp;&nbsp;<code>c(s)</code> walks leg order <code>[0,4,7,5,6,2,3,1]</code> (closed loop), <code>s &isin; [0,1)</code><br>
                         &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s))))</code><br>
-                        Composing the diffusions in this order makes Difix re-inject high-frequency artifacts that GSFix had just removed.
+                        Time and camera are coupled: as <code>s</code> advances along the cam loop, <code>t(s)</code> advances through the 300 timesteps so the rendered video walks through space and time simultaneously.
                     </p>
-                    <p style="font-size: 95%;">
-                        <strong>v381</strong> &mdash; same backbone as v383/v384, but only the Difix3D fix-up at the end (no GSFix):<br>
-                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s)))</code><br>
-                        Isolates the contribution of Difix alone; result roughly matches the 3DGS v143 score, suggesting per-frame independence does not hurt Difix.
-                    </p>
-                    <p style="font-size: 95%;">
-                        <strong>v382</strong> &mdash; same backbone, only the GSFix3D fix-up (no Difix):<br>
-                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s)))</code><br>
-                        Isolates GSFix; lower MUSIQ than v381 confirms that Difix is the higher-leverage fixer for this artifact distribution.
+
+                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">3. Per-frame diffusion fix-up</strong> &mdash; reuse the 3DGS diffusion family (category&nbsp;5 above) on every rendered 1080p frame, then Lanczos&nbsp;&darr; to 720p</p>
+                    <p style="font-size:95%; margin-bottom:0.5rem;">
+                        &nbsp;&nbsp;Common form: <code>Î(s) = Lanczos<sub>720p</sub>(D(I<sub>raw</sub>(s)))</code> &nbsp; where <code>D</code> varies per variant<br>
+                        &bull; <strong>v371</strong> (no fix-up) &mdash; <code>Î(s) = I<sub>raw</sub>(s)</code> &nbsp; (raw splat output, MUSIQ 55.44)<br>
+                        &bull; <strong>v381</strong> (Difix only) &mdash; <code>D = Difix<sub>1-step</sub></code> &nbsp; (MUSIQ 63.48; matches 3DGS v143 &mdash; per-frame independence does not hurt Difix)<br>
+                        &bull; <strong>v382</strong> (GSFix only) &mdash; <code>D = GSFix<sub>4-step</sub></code> &nbsp; (MUSIQ 62.92; lower than v381 &mdash; Difix is the higher-leverage fixer for this artifact distribution)<br>
+                        &bull; <strong>v384</strong> (reversed stack) &mdash; <code>D = Difix<sub>1-step</sub> &compfn; GSFix<sub>4-step</sub></code> &nbsp; (MUSIQ 70.57; Difix re-injects high-frequency artifacts GSFix had just removed)<br>
+                        &bull; <strong>v383 (best, MUSIQ&nbsp;72.03)</strong> &mdash; <code>D = GSFix<sub>4-step</sub> &compfn; Difix<sub>1-step</sub></code> &nbsp; Difix removes splat seams first, then GSFix smooths the residual texture artifacts. Stack order is <em>not</em> commutative: reversing to v384 drops MUSIQ by 1.46.
                     </p>
                 </div>
             </div>
