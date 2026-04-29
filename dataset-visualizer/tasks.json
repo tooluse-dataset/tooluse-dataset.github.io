@@ -381,6 +381,20 @@
     "thumbnail": "thumbnails/mallet_crush_dough.jpg"
   },
   {
+    "task_dir": "mallet_crush_nuts",
+    "tools": [
+      "mallet"
+    ],
+    "actions": [
+      "crush"
+    ],
+    "objects": [
+      "nuts"
+    ],
+    "trials": 109,
+    "thumbnail": "thumbnails/mallet_crush_nuts.jpg"
+  },
+  {
     "task_dir": "mallet_push_toy",
     "tools": [
       "mallet"
