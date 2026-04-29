@@ -392,31 +392,40 @@
                     </p>
                     <p style="font-size: 95%;">
                         <strong>v143</strong> &mdash; Difix3D fix-up on a plain InstantSplat-1k backbone (no SparseGS regularizers):<br>
-                        &nbsp;&nbsp;<code>Î(c) = Difix<sub>1-step</sub>(Render<sub>InstantSplat-1k</sub>(c))</code>
+                        &nbsp;&nbsp;<code>G<sub>v143</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>(G; 8&nbsp;views), &nbsp; K=1000</code><br>
+                        &nbsp;&nbsp;<code>Î(c) = Difix<sub>1-step</sub>(Render(G<sub>v143</sub>, c); &nbsp; t=199, &nbsp; "remove&nbsp;degradation")</code><br>
+                        Difix is fed only the rendered novel-view (no GT condition); single-step (<code>t=199</code>) preserves geometry while smoothing splat seams.
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v142</strong> &mdash; 4-step GSFix3D fix-up applied to a MASt3R-initialized 3DGS render:<br>
-                        &nbsp;&nbsp;<code>Î(c) = GSFix<sub>4-step</sub>(Render<sub>3DGS-MASt3R</sub>(c))</code>
+                        <strong>v142</strong> &mdash; MASt3R initialization &rarr; 1k-iter 3DGS &rarr; 4-step GSFix3D fix-up:<br>
+                        &nbsp;&nbsp;<code>G<sub>0</sub> = MASt3R(8&nbsp;cams), &nbsp; G<sub>v142</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>(G; G<sub>0</sub>), &nbsp; K=1000</code><br>
+                        &nbsp;&nbsp;<code>Î(c) = GSFix<sub>4-step</sub>(Render(G<sub>v142</sub>, c))</code><br>
+                        GSFix is a 4-step diffusion (<code>t&isin;{249,499,749,999}</code> with classifier-free guidance), trained on rendered-vs-real GS artifact pairs.
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v129</strong> &mdash; pure InstantSplat trained for 7k iterations, no diffusion:<br>
-                        &nbsp;&nbsp;<code>G = argmin<sub>G</sub> Σ<sub>c</sub> (1&minus;λ)·L<sub>1</sub> + λ·L<sub>D-SSIM</sub>, &nbsp; K=7000</code>
+                        <strong>v129</strong> &mdash; pure InstantSplat trained 7&times;-longer than v118 (7k vs 1k iters), no diffusion:<br>
+                        &nbsp;&nbsp;<code>G<sub>v129</sub> = argmin<sub>G</sub> Σ<sub>c</sub>&thinsp;(1&minus;λ)·L<sub>1</sub>(Render(G,c), I<sub>c</sub>) + λ·L<sub>D-SSIM</sub>, &nbsp; K=7000</code><br>
+                        &nbsp;&nbsp;<code>I(c) = Render(G<sub>v129</sub>, c)</code> &nbsp; (raw splat output, no post-processing)
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v150</strong> &mdash; Sparfels (Lin et&nbsp;al. 2025): adds a sparsity-aware geometric prior on top of <code>L<sub>3DGS</sub></code>:<br>
-                        &nbsp;&nbsp;<code>L<sub>v150</sub> = L<sub>3DGS</sub> + λ<sub>geom</sub>·L<sub>sparfels-geom</sub></code>
+                        <strong>v150</strong> &mdash; Sparfels (Lin et&nbsp;al. 2025): replace 3D Gaussians with surface-aligned 2D disks plus a sparsity-aware geometric prior:<br>
+                        &nbsp;&nbsp;<code>L<sub>v150</sub> = L<sub>3DGS</sub> + λ<sub>geom</sub>·L<sub>sparfels-geom</sub> + λ<sub>norm</sub>·L<sub>normal-consistency</sub></code><br>
+                        &nbsp;&nbsp;<code>I(c) = Render<sub>2DGS</sub>(G<sub>v150</sub>, c)</code> &nbsp; (rasterizer specialized for oriented disks)
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v149b</strong> &mdash; VGGT-X (Liu et&nbsp;al. 2025) initialization, 30k-iter 3DGS refinement:<br>
-                        &nbsp;&nbsp;<code>G<sub>0</sub> = VGGT(8&nbsp;cams); &nbsp; G = argmin<sub>G</sub> L<sub>3DGS</sub>, K=30000</code>
+                        <strong>v149b</strong> &mdash; VGGT-X (Liu et&nbsp;al. 2025) feed-forward init, then 30k-iter 3DGS refinement:<br>
+                        &nbsp;&nbsp;<code>(G<sub>0</sub>, &kappa;<sub>0</sub>) = VGGT(I<sub>cam0..7</sub>)</code> &nbsp; (joint scene + camera regression in one forward pass)<br>
+                        &nbsp;&nbsp;<code>G<sub>v149b</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>(G; G<sub>0</sub>), &nbsp; K=30000</code>
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v123 (1k)</strong> &mdash; plain InstantSplat-1k baseline (no MASt3R init, no regularizers):<br>
-                        &nbsp;&nbsp;<code>G = argmin<sub>G</sub> L<sub>3DGS</sub>, &nbsp; K=1000</code>
+                        <strong>v123 (1k)</strong> &mdash; plain InstantSplat-1k (random init, no MASt3R, no regularizers):<br>
+                        &nbsp;&nbsp;<code>G<sub>0</sub> &sim; uniform&thinsp;in&thinsp;scene&thinsp;volume, &nbsp; G<sub>v123</sub> = argmin<sub>G</sub> L<sub>3DGS</sub>, &nbsp; K=1000</code><br>
+                        &nbsp;&nbsp;<code>I(c) = Render(G<sub>v123</sub>, c)</code> &nbsp; (baseline for measuring the value of MASt3R&nbsp;init)
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v127</strong> &mdash; InstantSplat-1k augmented with our photometric-matching loss:<br>
-                        &nbsp;&nbsp;<code>L<sub>v127</sub> = L<sub>3DGS</sub> + λ<sub>pm</sub>·L<sub>pm-loss</sub></code>
+                        <strong>v127</strong> &mdash; InstantSplat-1k + our photometric-matching loss across cam pairs:<br>
+                        &nbsp;&nbsp;<code>L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>) = ||&Pi;(W<sub>i&rarr;j</sub>(I<sub>i</sub>)) &minus; I<sub>j</sub>||<sup>2</sup></code> &nbsp; (warp&thinsp;cam&thinsp;<em>i</em>&thinsp;into&thinsp;cam&thinsp;<em>j</em>&thinsp;via depth, compare)<br>
+                        &nbsp;&nbsp;<code>L<sub>v127</sub> = L<sub>3DGS</sub> + λ<sub>pm</sub>·Σ<sub>(i,j)</sub> L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>), &nbsp; K=1000</code>
                     </p>
                 </div>
             </div>
@@ -618,16 +627,23 @@
                         1.46 (70.57 vs 72.03).
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v384</strong> &mdash; reversed stack (GSFix first, then Difix), same Lanczos downsample:<br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s))))</code>
+                        <strong>v384</strong> &mdash; <em>reversed</em> stack (GSFix first, then Difix). Same per-frame backbone, same path:<br>
+                        &nbsp;&nbsp;<code>{G<sub>t</sub>} = argmin<sub>G</sub> L<sub>3DGS</sub>(G; cam0..7&thinsp;@&thinsp;t), &nbsp; t&isin;{0..299}</code><br>
+                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s))))</code><br>
+                        Composing the diffusions in this order makes Difix re-inject high-frequency artifacts that GSFix had just removed.
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v381</strong> &mdash; Difix3D-only fix-up on the per-frame InstantSplat 1080p render (no GSFix):<br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s)))</code>
+                        <strong>v381</strong> &mdash; same backbone as v383/v384, but only the Difix3D fix-up at the end (no GSFix):<br>
+                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(Difix<sub>1-step</sub>(I<sub>raw</sub>(s)))</code><br>
+                        Isolates the contribution of Difix alone; result roughly matches the 3DGS v143 score, suggesting per-frame independence does not hurt Difix.
                     </p>
                     <p style="font-size: 95%;">
-                        <strong>v382</strong> &mdash; GSFix3D-only fix-up on the per-frame InstantSplat 1080p render (no Difix):<br>
-                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s)))</code>
+                        <strong>v382</strong> &mdash; same backbone, only the GSFix3D fix-up (no Difix):<br>
+                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
+                        &nbsp;&nbsp;<code>Î(s) = Lanczos<sub>720p</sub>(GSFix<sub>4-step</sub>(I<sub>raw</sub>(s)))</code><br>
+                        Isolates GSFix; lower MUSIQ than v381 confirms that Difix is the higher-leverage fixer for this artifact distribution.
                     </p>
                 </div>
             </div>
