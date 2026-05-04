@@ -1,0 +1,135 @@
+[
+  {
+    "task": "fork_flip_egg",
+    "trial": "20260205_bigwoodenspatula_flip_eggtoy_in_blackpan_1",
+    "video": "videos/trajectories/fork_flip_egg.mp4",
+    "size_kb": 106,
+    "poster": "videos/trajectories/fork_flip_egg.jpg"
+  },
+  {
+    "task": "fork_flip_naan",
+    "trial": "20260210_bigwoodenfork_flip_naan_in_blackpan_1",
+    "video": "videos/trajectories/fork_flip_naan.mp4",
+    "size_kb": 101,
+    "poster": "videos/trajectories/fork_flip_naan.jpg"
+  },
+  {
+    "task": "spatula_scoop_nuts",
+    "trial": "20260109_redrubber_spatula_scoop_cashew_nuts_from_table_1",
+    "video": "videos/trajectories/spatula_scoop_nuts.mp4",
+    "size_kb": 86,
+    "poster": "videos/trajectories/spatula_scoop_nuts.jpg"
+  },
+  {
+    "task": "spatula_flip_naan",
+    "trial": "20260211_bigwoodenspatula_flip_naan_in_blackpan_1",
+    "video": "videos/trajectories/spatula_flip_naan.mp4",
+    "size_kb": 89,
+    "poster": "videos/trajectories/spatula_flip_naan.jpg"
+  },
+  {
+    "task": "knife_slice_banana",
+    "trial": "20260115_orangeknife_slice_unpealed_banana_1",
+    "video": "videos/trajectories/knife_slice_banana.mp4",
+    "size_kb": 100,
+    "poster": "videos/trajectories/knife_slice_banana.jpg"
+  },
+  {
+    "task": "spoon_scoop_nuts",
+    "trial": "20260105_plasticspoon_scoop_almond_nuts_from_deepbowl_1",
+    "video": "videos/trajectories/spoon_scoop_nuts.mp4",
+    "size_kb": 90,
+    "poster": "videos/trajectories/spoon_scoop_nuts.jpg"
+  },
+  {
+    "task": "cup_roll_dough",
+    "trial": "20260129_plasticcup_roll_dough_on_plasticcutter_1",
+    "video": "videos/trajectories/cup_roll_dough.mp4",
+    "size_kb": 107,
+    "poster": "videos/trajectories/cup_roll_dough.jpg"
+  },
+  {
+    "task": "spoon_press_sponge",
+    "trial": "20260202_bigwoodenspoon_press_sponge_in_largeshallowcontainer_1",
+    "video": "videos/trajectories/spoon_press_sponge.mp4",
+    "size_kb": 93,
+    "poster": "videos/trajectories/spoon_press_sponge.jpg"
+  },
+  {
+    "task": "chopstick_stir_coffee",
+    "trial": "20260127_greenchopstick_stir_largeamount_coffee_in_smallshallowcontainer_1",
+    "video": "videos/trajectories/chopstick_stir_coffee.mp4",
+    "size_kb": 72,
+    "poster": "videos/trajectories/chopstick_stir_coffee.jpg"
+  },
+  {
+    "task": "brush_collect_sand",
+    "trial": "20260123_brush_collect_largeamount_sand_from_table_1",
+    "video": "videos/trajectories/brush_collect_sand.mp4",
+    "size_kb": 98,
+    "poster": "videos/trajectories/brush_collect_sand.jpg"
+  },
+  {
+    "task": "straw_stir_coffee",
+    "trial": "20260119_greenstraw_stir_coffee_shallowcontainer_1",
+    "video": "videos/trajectories/straw_stir_coffee.mp4",
+    "size_kb": 84,
+    "poster": "videos/trajectories/straw_stir_coffee.jpg"
+  },
+  {
+    "task": "spatula_stir_coffee",
+    "trial": "20260120_curvedwoodenspatula_stir_largeamount_coffee_shallowcontainer_1",
+    "video": "videos/trajectories/spatula_stir_coffee.mp4",
+    "size_kb": 94,
+    "poster": "videos/trajectories/spatula_stir_coffee.jpg"
+  },
+  {
+    "task": "knife_spread_tomatosauce",
+    "trial": "20260206_greenknife_spread_largeamount_tomatosauce_in_purpleplate_1",
+    "video": "videos/trajectories/knife_spread_tomatosauce.mp4",
+    "size_kb": 94,
+    "poster": "videos/trajectories/knife_spread_tomatosauce.jpg"
+  },
+  {
+    "task": "chopstick_slice_dough",
+    "trial": "20260104_smallplate_woodenchopstick_slice_smalldough_1",
+    "video": "videos/trajectories/chopstick_slice_dough.mp4",
+    "size_kb": 110,
+    "poster": "videos/trajectories/chopstick_slice_dough.jpg"
+  },
+  {
+    "task": "squeegee_sweep_nuts",
+    "trial": "20260106_squeegee_sweep_almond_nuts_from_table_39",
+    "video": "videos/trajectories/squeegee_sweep_nuts.mp4",
+    "size_kb": 99,
+    "poster": "videos/trajectories/squeegee_sweep_nuts.jpg"
+  },
+  {
+    "task": "book_collect_nuts",
+    "trial": "20260113_book_sweep_cashew_nuts_from_table_1",
+    "video": "videos/trajectories/book_collect_nuts.mp4",
+    "size_kb": 134,
+    "poster": "videos/trajectories/book_collect_nuts.jpg"
+  },
+  {
+    "task": "fork_spread_tomatosauce",
+    "trial": "20260212_bigwoodenfork_spread_large_tomatosauce_in_purpleplate_1",
+    "video": "videos/trajectories/fork_spread_tomatosauce.mp4",
+    "size_kb": 91,
+    "poster": "videos/trajectories/fork_spread_tomatosauce.jpg"
+  },
+  {
+    "task": "brush_sweep_nuts",
+    "trial": "20260109_scrubbrush_sweep_almond_nuts_from_table_1",
+    "video": "videos/trajectories/brush_sweep_nuts.mp4",
+    "size_kb": 88,
+    "poster": "videos/trajectories/brush_sweep_nuts.jpg"
+  },
+  {
+    "task": "mallet_crush_dough",
+    "trial": "20260104_largeplate_mallet_flatten_crush_largedough_1",
+    "video": "videos/trajectories/mallet_crush_dough.mp4",
+    "size_kb": 111,
+    "poster": "videos/trajectories/mallet_crush_dough.jpg"
+  }
+]

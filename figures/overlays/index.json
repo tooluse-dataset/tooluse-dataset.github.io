@@ -1,18 +1,8 @@
 [
   {
-    "task": "spatula_scoop_nuts",
+    "task": "fork_flip_egg",
     "n_trajectories": 40,
-    "image": "figures/overlays/spatula_scoop_nuts.png"
-  },
-  {
-    "task": "spoon_scoop_nuts",
-    "n_trajectories": 40,
-    "image": "figures/overlays/spoon_scoop_nuts.png"
-  },
-  {
-    "task": "spatula_flip_naan",
-    "n_trajectories": 40,
-    "image": "figures/overlays/spatula_flip_naan.png"
+    "image": "figures/overlays/fork_flip_egg.png"
   },
   {
     "task": "fork_flip_naan",
@@ -20,13 +10,58 @@
     "image": "figures/overlays/fork_flip_naan.png"
   },
   {
-    "task": "fork_flip_egg",
+    "task": "spatula_scoop_nuts",
     "n_trajectories": 40,
-    "image": "figures/overlays/fork_flip_egg.png"
+    "image": "figures/overlays/spatula_scoop_nuts.png"
+  },
+  {
+    "task": "spatula_flip_naan",
+    "n_trajectories": 40,
+    "image": "figures/overlays/spatula_flip_naan.png"
+  },
+  {
+    "task": "knife_slice_banana",
+    "n_trajectories": 38,
+    "image": "figures/overlays/knife_slice_banana.png"
+  },
+  {
+    "task": "spoon_scoop_nuts",
+    "n_trajectories": 40,
+    "image": "figures/overlays/spoon_scoop_nuts.png"
+  },
+  {
+    "task": "cup_roll_dough",
+    "n_trajectories": 40,
+    "image": "figures/overlays/cup_roll_dough.png"
+  },
+  {
+    "task": "spoon_press_sponge",
+    "n_trajectories": 40,
+    "image": "figures/overlays/spoon_press_sponge.png"
+  },
+  {
+    "task": "chopstick_stir_coffee",
+    "n_trajectories": 40,
+    "image": "figures/overlays/chopstick_stir_coffee.png"
+  },
+  {
+    "task": "brush_collect_sand",
+    "n_trajectories": 40,
+    "image": "figures/overlays/brush_collect_sand.png"
+  },
+  {
+    "task": "straw_stir_coffee",
+    "n_trajectories": 40,
+    "image": "figures/overlays/straw_stir_coffee.png"
+  },
+  {
+    "task": "spatula_stir_coffee",
+    "n_trajectories": 40,
+    "image": "figures/overlays/spatula_stir_coffee.png"
   },
   {
     "task": "knife_spread_tomatosauce",
-    "n_trajectories": 40,
+    "n_trajectories": 33,
     "image": "figures/overlays/knife_spread_tomatosauce.png"
   },
   {
@@ -40,14 +75,14 @@
     "image": "figures/overlays/squeegee_sweep_nuts.png"
   },
   {
-    "task": "knife_slice_banana",
+    "task": "book_collect_nuts",
     "n_trajectories": 40,
-    "image": "figures/overlays/knife_slice_banana.png"
+    "image": "figures/overlays/book_collect_nuts.png"
   },
   {
-    "task": "cup_roll_dough",
+    "task": "fork_spread_tomatosauce",
     "n_trajectories": 40,
-    "image": "figures/overlays/cup_roll_dough.png"
+    "image": "figures/overlays/fork_spread_tomatosauce.png"
   },
   {
     "task": "brush_sweep_nuts",
@@ -55,43 +90,8 @@
     "image": "figures/overlays/brush_sweep_nuts.png"
   },
   {
-    "task": "spoon_press_sponge",
-    "n_trajectories": 40,
-    "image": "figures/overlays/spoon_press_sponge.png"
-  },
-  {
-    "task": "brush_collect_sand",
-    "n_trajectories": 28,
-    "image": "figures/overlays/brush_collect_sand.png"
-  },
-  {
-    "task": "fork_spread_tomatosauce",
-    "n_trajectories": 27,
-    "image": "figures/overlays/fork_spread_tomatosauce.png"
-  },
-  {
-    "task": "chopstick_stir_coffee",
-    "n_trajectories": 26,
-    "image": "figures/overlays/chopstick_stir_coffee.png"
-  },
-  {
-    "task": "straw_stir_coffee",
-    "n_trajectories": 25,
-    "image": "figures/overlays/straw_stir_coffee.png"
-  },
-  {
     "task": "mallet_crush_dough",
     "n_trajectories": 24,
     "image": "figures/overlays/mallet_crush_dough.png"
-  },
-  {
-    "task": "spatula_stir_coffee",
-    "n_trajectories": 22,
-    "image": "figures/overlays/spatula_stir_coffee.png"
-  },
-  {
-    "task": "book_collect_nuts",
-    "n_trajectories": 15,
-    "image": "figures/overlays/book_collect_nuts.png"
   }
 ]
