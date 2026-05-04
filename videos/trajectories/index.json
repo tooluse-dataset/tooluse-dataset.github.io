@@ -84,25 +84,11 @@
     "poster": "videos/trajectories/spatula_stir_coffee.jpg"
   },
   {
-    "task": "knife_spread_tomatosauce",
-    "trial": "20260206_greenknife_spread_largeamount_tomatosauce_in_purpleplate_1",
-    "video": "videos/trajectories/knife_spread_tomatosauce.mp4",
-    "size_kb": 94,
-    "poster": "videos/trajectories/knife_spread_tomatosauce.jpg"
-  },
-  {
     "task": "chopstick_slice_dough",
     "trial": "20260104_smallplate_woodenchopstick_slice_smalldough_1",
     "video": "videos/trajectories/chopstick_slice_dough.mp4",
     "size_kb": 110,
     "poster": "videos/trajectories/chopstick_slice_dough.jpg"
-  },
-  {
-    "task": "squeegee_sweep_nuts",
-    "trial": "20260106_squeegee_sweep_almond_nuts_from_table_39",
-    "video": "videos/trajectories/squeegee_sweep_nuts.mp4",
-    "size_kb": 99,
-    "poster": "videos/trajectories/squeegee_sweep_nuts.jpg"
   },
   {
     "task": "book_collect_nuts",

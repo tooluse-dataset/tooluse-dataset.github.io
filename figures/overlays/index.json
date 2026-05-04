@@ -60,19 +60,9 @@
     "image": "figures/overlays/spatula_stir_coffee.png"
   },
   {
-    "task": "knife_spread_tomatosauce",
-    "n_trajectories": 33,
-    "image": "figures/overlays/knife_spread_tomatosauce.png"
-  },
-  {
     "task": "chopstick_slice_dough",
     "n_trajectories": 40,
     "image": "figures/overlays/chopstick_slice_dough.png"
-  },
-  {
-    "task": "squeegee_sweep_nuts",
-    "n_trajectories": 40,
-    "image": "figures/overlays/squeegee_sweep_nuts.png"
   },
   {
     "task": "book_collect_nuts",
