@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>RoboTool: A Diverse Human Tool-Use Video Dataset</title>
+    <title>TOOLDEX: An Ego-Exo Human Demonstration Dataset for Creative Physical Tool Use</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -133,7 +133,7 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">RoboTool: A Large-Scale,<br>Multi-Tool Human Manipulation Dataset</h1>
+                        <h1 class="title is-1 publication-title">TOOLDEX:<br>An Ego-Exo Human Demonstration Dataset<br>for Creative Physical Tool Use</h1>
 
                         <div class="is-size-5 publication-authors">
                             <span class="team-name"><b>Anonymous Authors</b></span>
@@ -186,7 +186,7 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p style="font-size: 125%">
-                            RoboTool is a large-scale dataset of <b>human tool-use demonstrations</b> captured in a shared multi-camera rig. We densely cover the <i>combinatorial space</i> of tool, action, and object: the same action (e.g., <i>scoop</i>, <i>stir</i>, <i>crush</i>) is performed with many different physical tools, so every trajectory measures <b>how humans flexibly repurpose objects</b> to accomplish a goal. Each trial captures 8 synchronized RGB-D cameras, and a large fraction of the dataset ships with hand-optimized 6DoF object poses, per-frame masks, and hand trajectories — enabling policy learning, affordance discovery, and tool-use generalization studies.
+                            TOOLDEX is a large-scale dataset of <b>human tool-use demonstrations</b> captured in a shared multi-camera rig. We densely cover the <i>combinatorial space</i> of tool, action, and object: the same action (e.g., <i>scoop</i>, <i>stir</i>, <i>crush</i>) is performed with many different physical tools, so every trajectory measures <b>how humans flexibly repurpose objects</b> to accomplish a goal. Each trial captures 8 synchronized RGB-D cameras, and a large fraction of the dataset ships with hand-optimized 6DoF object poses, per-frame masks, and hand trajectories — enabling policy learning, affordance discovery, and tool-use generalization studies.
                         </p>
                     </div>
                 </div>
@@ -374,54 +374,6 @@
 
             <div class="columns is-centered">
                 <div class="column">
-                    <h3 class="title is-4">Core equations</h3>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">1. Foundation &mdash; 3DGS photometric loss</strong> (Kerbl et&nbsp;al., 2023)</p>
-                    <p style="font-size:95%; margin-bottom:1rem;">
-                        &nbsp;&nbsp;<code>L<sub>3DGS</sub> = (1&minus;λ)·L<sub>1</sub>(Render(G,c), I<sub>c</sub>) + λ·L<sub>D-SSIM</sub></code><br>
-                        Every method below extends this base loss, swaps the initializer for <code>G</code>, or post-processes its rendered output.
-                    </p>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">2. InstantSplat family</strong> &mdash; random init, vary K iters and aux losses (Fan et&nbsp;al. 2024)</p>
-                    <p style="font-size:95%; margin-bottom:1rem;">
-                        &nbsp;&nbsp;Common form: <code>G<sub>0</sub> &sim; uniform(scene); &nbsp; G = argmin<sub>G</sub> L<sub>3DGS</sub>; &nbsp; I(c) = Render(G, c)</code><br>
-                        &bull; <strong>v123 (1k)</strong> &mdash; baseline, K=1000, no regularizers<br>
-                        &bull; <strong>v129</strong> &mdash; identical loss but K=7000 (7&times; longer, tests if more iters alone helps)<br>
-                        &bull; <strong>v127</strong> &mdash; v123 + a photometric-matching loss across cam pairs:<br>
-                        &nbsp;&nbsp;<code>L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>) = ||&Pi;(W<sub>i&rarr;j</sub>(I<sub>i</sub>)) &minus; I<sub>j</sub>||<sup>2</sup></code> &nbsp; (warp cam <em>i</em> into cam <em>j</em> via depth, compare)<br>
-                        &nbsp;&nbsp;<code>L<sub>v127</sub> = L<sub>3DGS</sub> + λ<sub>pm</sub>·Σ<sub>(i,j)</sub> L<sub>pm</sub>(c<sub>i</sub>, c<sub>j</sub>), &nbsp; K=1000</code>
-                    </p>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">3. Feed-forward initializers</strong> &mdash; replace random <code>G<sub>0</sub></code> with a learned scene prior</p>
-                    <p style="font-size:95%; margin-bottom:1rem;">
-                        &nbsp;&nbsp;Common form: <code>G<sub>0</sub> = &Phi;(I<sub>cam0..7</sub>); &nbsp; G = argmin<sub>G</sub> L<sub>3DGS</sub>(G; G<sub>0</sub>), K iters</code><br>
-                        &bull; <strong>v118</strong> (MASt3R, Leroy et&nbsp;al. 2024) &mdash; <code>&Phi; = MASt3R</code> (pairwise dense matching), K=1000<br>
-                        &bull; <strong>v149b</strong> (VGGT-X, Liu et&nbsp;al. 2025) &mdash; <code>(G<sub>0</sub>, &kappa;<sub>0</sub>) = VGGT</code> (joint scene + camera regression in one forward pass), K=30000
-                    </p>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">4. Sparsity / surface-regularized losses</strong> &mdash; add geometric priors on top of <code>L<sub>3DGS</sub></code></p>
-                    <p style="font-size:95%; margin-bottom:1rem;">
-                        &bull; <strong>v55</strong> (SparseGS, Xiong et&nbsp;al. 2024) &mdash; depth, opacity, and warp regularizers:<br>
-                        &nbsp;&nbsp;<code>L<sub>v55</sub> = L<sub>3DGS</sub> + λ<sub>warp</sub>·L<sub>warp_reg</sub> + λ<sub>P</sub>·L<sub>Pearson_depth</sub> + λ<sub>OE</sub>·L<sub>opacity_entropy</sub></code><br>
-                        &bull; <strong>v150</strong> (Sparfels, Lin et&nbsp;al. 2025) &mdash; replaces 3D Gaussians with surface-aligned 2D disks:<br>
-                        &nbsp;&nbsp;<code>L<sub>v150</sub> = L<sub>3DGS</sub> + λ<sub>geom</sub>·L<sub>sparfels-geom</sub> + λ<sub>norm</sub>·L<sub>normal-consistency</sub></code><br>
-                        &nbsp;&nbsp;<code>I(c) = Render<sub>2DGS</sub>(G, c)</code> &nbsp; (rasterizer specialized for oriented disks)
-                    </p>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">5. Diffusion fix-up family (post-render)</strong> &mdash; apply a pretrained image diffusion to the rendered novel-view sequence</p>
-                    <p style="font-size:95%; margin-bottom:0.5rem;">
-                        &nbsp;&nbsp;Common form: <code>Î(c) = D(Render(G, c))</code> &nbsp; where <code>D</code> is a frozen image-restoration diffusion<br>
-                        &bull; <strong>Difix<sub>1-step</sub></strong> (Liang et&nbsp;al. 2024) &mdash; single denoising step at <code>t=199</code>, prompt &ldquo;remove degradation&rdquo;:<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<strong>v143</strong> &mdash; <code>D &compfn; InstantSplat-1k</code><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<strong>v117 (best, MUSIQ&nbsp;71.85)</strong> &mdash; <code>D &compfn; SparseGS</code> (combines categories 4 + 5; <strong>+27 MUSIQ over SparseGS alone</strong>)<br>
-                        &bull; <strong>GSFix<sub>4-step</sub></strong> (Wang et&nbsp;al. 2025) &mdash; 4 denoising steps at <code>t&isin;{249,499,749,999}</code> with classifier-free guidance:<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<strong>v142</strong> &mdash; <code>D &compfn; MASt3R-3DGS</code> (combines categories 3 + 5)
-                    </p>
-                </div>
-            </div>
-
-            <div class="columns is-centered">
-                <div class="column">
                     <p class="has-text-centered" style="font-weight:600;">Ground truth (8 cameras)</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_gt_8cams.mp4" type="video/mp4">
@@ -592,35 +544,6 @@
                         diffusion stack (Difix3D&rarr;GSFix3D) at 1080p is
                         <strong>+1.46 MUSIQ better than the reverse order</strong>, and the full pipeline
                         beats every 4DGS baseline by 8&ndash;15 MUSIQ on the same scene.
-                    </p>
-                </div>
-            </div>
-
-            <div class="columns is-centered">
-                <div class="column">
-                    <h3 class="title is-4">Core equations</h3>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">1. Per-frame backbone</strong> &mdash; InstantSplat applied independently to each timestep (no temporal coupling)</p>
-                    <p style="font-size:95%; margin-bottom:1rem;">
-                        &nbsp;&nbsp;<code>{G<sub>t</sub>} = argmin<sub>G</sub> L<sub>3DGS</sub>(G; cam0..7&thinsp;@&thinsp;t), &nbsp; t&isin;{0..T&minus;1}</code> &nbsp; (T = 300 frames)<br>
-                        Reuses the 3DGS L<sub>3DGS</sub> loss (category&nbsp;1 above) per timestep; no deformation field, no polynomial trajectory &mdash; just a stack of 300 independent 3DGS scenes.
-                    </p>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">2. Smooth camera path</strong> &mdash; slerp rotation + lerp position between training cams</p>
-                    <p style="font-size:95%; margin-bottom:1rem;">
-                        &nbsp;&nbsp;<code>c(s)</code> walks leg order <code>[0,4,7,5,6,2,3,1]</code> (closed loop), <code>s &isin; [0,1)</code><br>
-                        &nbsp;&nbsp;<code>I<sub>raw</sub>(s) = Render<sub>1080p</sub>(G<sub>t(s)</sub>, c(s))</code><br>
-                        Time and camera are coupled: as <code>s</code> advances along the cam loop, <code>t(s)</code> advances through the 300 timesteps so the rendered video walks through space and time simultaneously.
-                    </p>
-
-                    <p style="font-size:95%; margin-bottom:0.3rem;"><strong style="color:#1f5fa8;">3. Per-frame diffusion fix-up</strong> &mdash; reuse the 3DGS diffusion family (category&nbsp;5 above) on every rendered 1080p frame, then Lanczos&nbsp;&darr; to 720p</p>
-                    <p style="font-size:95%; margin-bottom:0.5rem;">
-                        &nbsp;&nbsp;Common form: <code>Î(s) = Lanczos<sub>720p</sub>(D(I<sub>raw</sub>(s)))</code> &nbsp; where <code>D</code> varies per variant<br>
-                        &bull; <strong>v371</strong> (no fix-up) &mdash; <code>Î(s) = I<sub>raw</sub>(s)</code> &nbsp; (raw splat output, MUSIQ 55.44)<br>
-                        &bull; <strong>v381</strong> (Difix only) &mdash; <code>D = Difix<sub>1-step</sub></code> &nbsp; (MUSIQ 63.48; matches 3DGS v143 &mdash; per-frame independence does not hurt Difix)<br>
-                        &bull; <strong>v382</strong> (GSFix only) &mdash; <code>D = GSFix<sub>4-step</sub></code> &nbsp; (MUSIQ 62.92; lower than v381 &mdash; Difix is the higher-leverage fixer for this artifact distribution)<br>
-                        &bull; <strong>v384</strong> (reversed stack) &mdash; <code>D = Difix<sub>1-step</sub> &compfn; GSFix<sub>4-step</sub></code> &nbsp; (MUSIQ 70.57; Difix re-injects high-frequency artifacts GSFix had just removed)<br>
-                        &bull; <strong>v383 (best, MUSIQ&nbsp;72.03)</strong> &mdash; <code>D = GSFix<sub>4-step</sub> &compfn; Difix<sub>1-step</sub></code> &nbsp; Difix removes splat seams first, then GSFix smooths the residual texture artifacts. Stack order is <em>not</em> commutative: reversing to v384 drops MUSIQ by 1.46.
                     </p>
                 </div>
             </div>
@@ -817,8 +740,8 @@
 <section class="section" id="BibTeX">
         <div class="container is-max-widescreen content">
             <h2 class="title">BibTeX</h2>
-            <pre><code>@misc{robotool2026,
-    title  = {RoboTool: A Large-Scale, Multi-Tool Human Manipulation Dataset},
+            <pre><code>@misc{tooldex2026,
+    title  = {TOOLDEX: An Ego-Exo Human Demonstration Dataset for Creative Physical Tool Use},
     year   = {2026},
 }</code></pre>
         </div>
