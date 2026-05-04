@@ -658,7 +658,7 @@
                 <div class="row is-full-width">
                     <h2 class="title is-2"><span class="dvima">Human trajectory diversity</span></h2>
                     <p style="font-size: 125%">
-                        For the tasks with hand-optimized annotations, we overlay every human hand trajectory for that task on a single representative frame. Each color corresponds to one trial. Dense overlays reveal the natural spread of approach directions, contact points, and execution styles.
+                        For each task with hand-optimized annotations, we render a representative trial as a skeleton-overlay video — MANO joints, bones, and a fading wrist tail show the human trajectory through the action. The thumbnail captures the trajectory near the end of the clip; click any tile to play.
                     </p>
                 </div>
                 <div class="columns is-multiline" id="overlay-grid">
@@ -801,24 +801,27 @@
         async function loadOverlays() {
             const grid = document.getElementById('overlay-grid');
             try {
-                const res = await fetch('figures/overlays/index.json' + CACHE_BUST, { cache: 'no-store' });
-                if (!res.ok) throw new Error('no index');
+                const res = await fetch('videos/trajectories/index.json' + CACHE_BUST, { cache: 'no-store' });
+                if (!res.ok) throw new Error('no video index');
                 const items = await res.json();
-                console.log('[overlays] loaded', items.length, 'items');
+                console.log('[overlays] loaded', items.length, 'trajectory videos');
                 grid.innerHTML = '';
                 items.forEach(it => {
                     const col = document.createElement('div');
                     col.className = 'column is-one-third has-text-centered';
+                    const posterAttr = it.poster ? ' poster="' + it.poster + CACHE_BUST + '"' : '';
                     col.innerHTML =
-                        '<img src="' + it.image + CACHE_BUST +
-                        '" alt="' + it.task + '" style="width:100%;border-radius:4px;border:1px solid #eee" />' +
+                        '<video' + posterAttr + ' controls muted loop playsinline preload="none"' +
+                        '  style="width:100%;border-radius:4px;border:1px solid #eee;background:#000;display:block">' +
+                        '  <source src="' + it.video + CACHE_BUST + '" type="video/mp4">' +
+                        '</video>' +
                         '<div style="font-size:0.95rem;margin-top:4px"><code>' + it.task + '</code></div>';
                     grid.appendChild(col);
                 });
-                if (!items.length) grid.innerHTML = '<div class="column is-full has-text-centered"><em>No overlays generated yet.</em></div>';
+                if (!items.length) grid.innerHTML = '<div class="column is-full has-text-centered"><em>No trajectory videos generated yet.</em></div>';
             } catch (e) {
                 console.error('[overlays] failed', e);
-                grid.innerHTML = '<div class="column is-full has-text-centered"><em>Overlay index failed to load: ' + e.message + '</em></div>';
+                grid.innerHTML = '<div class="column is-full has-text-centered"><em>Trajectory video index failed to load: ' + e.message + '</em></div>';
             }
         }
         loadOverlays();
