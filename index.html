@@ -385,7 +385,8 @@
 
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600;">Ground truth (8 cameras)</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ground truth (8 cameras)</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">&nbsp;<br>&nbsp;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_gt_8cams.mp4" type="video/mp4">
                     </video>
@@ -576,7 +577,8 @@
 
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600;">Ground truth (8 cameras, time-sliced, 10 s @ 30 fps)</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ground truth (8 cameras, time-sliced, 10 s @ 30 fps)</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">&nbsp;<br>&nbsp;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_gt_8cams.mp4" type="video/mp4">
                     </video>
@@ -587,6 +589,23 @@
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_ours_v383.mp4" type="video/mp4">
                     </video>
+                </div>
+            </div>
+
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours vs InstantSplat &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
+                Same novel-view trajectory; <b>left half: ours</b>, right half: InstantSplat baseline. MUSIQ 72.03 vs 55.44.
+            </p>
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp4_instantsplat" loop playsinline autoplay muted
+                               data-panes="2"
+                               data-labels="Ours|InstantSplat"
+                               src="videos/4dgs_compare_ours_vs_instantsplat.mp4"
+                               onplay="resizeAndPlayMulti(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp4_instantsplatMerge"></canvas>
+                    </div>
                 </div>
             </div>
 
