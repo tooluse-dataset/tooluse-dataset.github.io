@@ -874,6 +874,47 @@
             }
         }
         loadOverlays();
+
+        // Keep the 5 Block-1 ours-vs-baseline sliders in sync. Each <video> starts
+        // independently with its own readyState, which causes them to drift apart
+        // (and to loop at slightly different times). Once all are ready, snap them
+        // to currentTime=0 simultaneously, then re-align every 500 ms.
+        (function syncBlock1Sliders() {
+            const SYNC_IDS = [
+                'cmp_instantsplat', 'cmp_sparsegs', 'cmp_splatformer',
+                'cmp_vggtx', 'cmp_sparfels',
+            ];
+            const vids = SYNC_IDS.map(id => document.getElementById(id)).filter(Boolean);
+            if (vids.length < 2) return;
+
+            let pending = vids.length;
+            const onAllReady = function () {
+                vids.forEach(v => { try { v.currentTime = 0; } catch (_) { } });
+                Promise.all(vids.map(v => v.play().catch(() => { }))).then(() => {
+                    setInterval(() => {
+                        const t = vids[0].currentTime;
+                        const dT = vids[0].duration;
+                        for (let i = 1; i < vids.length; i++) {
+                            const v = vids[i];
+                            if (!isFinite(v.duration) || v.duration <= 0) continue;
+                            const expected = isFinite(dT) && dT > 0 ? (t % v.duration) : t;
+                            if (Math.abs(v.currentTime - expected) > 0.2) {
+                                try { v.currentTime = expected; } catch (_) { }
+                            }
+                        }
+                    }, 500);
+                });
+            };
+            const tick = () => { if (--pending === 0) onAllReady(); };
+            vids.forEach(v => {
+                if (v.readyState >= 3) {
+                    tick();
+                } else {
+                    const cb = () => { v.removeEventListener('canplay', cb); tick(); };
+                    v.addEventListener('canplay', cb);
+                }
+            });
+        })();
     </script>
 
 </body>
