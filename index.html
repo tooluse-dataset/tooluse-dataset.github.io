@@ -358,15 +358,15 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-2"><span class="dvima">3D Gaussian Splatting Novel-View Synthesis</span></h2>
+                    <h2 class="title is-2"><span class="dvima">3D Gaussian Splatting Novel-View Synthesis from Sparse Views</span></h2>
                 </div>
             </div>
 
             <div class="columns is-centered">
                 <div class="column">
                     <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
-                        For static scenes (single timestep, 8 calibrated cameras) we reconstruct a per-scene 3D Gaussian
-                        field and synthesize novel views around the captured rig. Our top variant
+                        From <strong>8 sparse calibrated cameras</strong> capturing a single timestep, we reconstruct a
+                        per-scene 3D Gaussian field and synthesize novel views around the captured rig. Our top variant
                         achieves <strong>MUSIQ&nbsp;71.85</strong> &mdash; the highest no-reference quality on this scene
                         among all 3DGS pipelines we tested.
                     </p>
@@ -548,17 +548,17 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-2"><span class="dvima">4D Gaussian Splatting Novel-View Synthesis</span></h2>
+                    <h2 class="title is-2"><span class="dvima">4D Gaussian Splatting Novel-View Synthesis from Sparse Views</span></h2>
                 </div>
             </div>
 
             <div class="columns is-centered">
                 <div class="column">
                     <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
-                        For dynamic scenes (10&nbsp;s &middot; 30&nbsp;fps &middot; 8 calibrated cameras) we reconstruct a
-                        time-aware Gaussian field and synthesize a novel-view trajectory of equal length.
-                        Our top variant reaches <strong>MUSIQ&nbsp;72.03</strong> &mdash;
-                        the first 4DGS pipeline on this scene to <em>exceed</em> the strongest 3DGS-only result (71.85).
+                        From <strong>8 sparse calibrated cameras</strong> capturing a dynamic scene
+                        (10&nbsp;s &middot; 30&nbsp;fps), we reconstruct a time-aware Gaussian field and synthesize a
+                        novel-view trajectory of equal length. Our top variant reaches <strong>MUSIQ&nbsp;72.03</strong>
+                        &mdash; the first 4DGS pipeline on this scene to <em>exceed</em> the strongest 3DGS-only result (71.85).
                     </p>
                     <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
                         <strong>What is unique vs 2025/2026 research:</strong> recent 4DGS work
