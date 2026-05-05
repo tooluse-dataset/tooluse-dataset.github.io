@@ -177,7 +177,8 @@
                 <div class="kpi"><div class="num" id="kpi-tasks">—</div><div class="lbl">task signatures</div></div>
                 <div class="kpi"><div class="num" id="kpi-tools">—</div><div class="lbl">distinct tools</div></div>
                 <div class="kpi"><div class="num" id="kpi-verbs">—</div><div class="lbl">actions (verbs)</div></div>
-                <div class="kpi"><div class="num" id="kpi-objects">—</div><div class="lbl">object categories</div></div>
+                <div class="kpi"><div class="num" id="kpi-objects">—</div><div class="lbl">support objects</div></div>
+                <div class="kpi"><div class="num" id="kpi-deformable">—</div><div class="lbl">deformable objects</div></div>
             </div>
         </div>
     </section>
@@ -777,6 +778,7 @@
             setNum('kpi-tools', s.n_unique_tools);
             setNum('kpi-verbs', s.n_unique_verbs);
             setNum('kpi-objects', s.n_unique_objects);
+            setNum('kpi-deformable', s.n_deformable_objects);
 
             const tbody = document.getElementById('task-table-body');
             const rows = Object.entries(s.task_counts || {})
