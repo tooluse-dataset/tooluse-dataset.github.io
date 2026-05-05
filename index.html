@@ -419,7 +419,7 @@
             <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Multi-pane: ours vs four baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag any of the four seams)</span></h3>
             <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
                 Five renders of the same novel-view sweep stacked into one canvas. Drag any of the four internal seams to wipe between adjacent methods.
-                Left to right: <b>Ours</b> &middot; InstantSplat &middot; SparseGS &middot; SplatFormer &middot; Sparfels.
+                Left to right: <b>Ours</b> &middot; InstantSplat &middot; Sparfels &middot; SplatFormer &middot; SparseGS.
                 MUSIQ: <b>62.25</b> &middot; 52.83 &middot; 51.03 &middot; 47.45 &middot; 55.64.
             </p>
             <div class="columns is-centered">
@@ -427,7 +427,7 @@
                     <div class="video-compare-container" style="max-width: 1100px;">
                         <video class="video" id="multi_gsfix3d" loop playsinline autoplay muted
                                data-panes="5"
-                               data-labels="Ours|InstantSplat|SparseGS|SplatFormer|Sparfels"
+                               data-labels="Ours|InstantSplat|Sparfels|SplatFormer|SparseGS"
                                src="videos/3dgs_multi_gsfix3d_5pane.mp4"
                                onplay="resizeAndPlayMulti(this)"></video>
                         <canvas height="0" class="videoMerge" id="multi_gsfix3dMerge"></canvas>
@@ -438,14 +438,14 @@
             <h3 class="title is-4 has-text-centered" style="margin-top:36px;">More 3DGS variants (sorted by MUSIQ)</h3>
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS + Difix3D (ours, best)</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS + Difix3D</p>
                     <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 71.85 &uarr; &middot; NIQE 4.71 &darr; &middot; BRISQUE 21.53 &darr; &middot; PIQE 48.76 &darr; &middot; MANIQA 0.361 &uarr; &middot; TOPIQ 0.552 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_ours_v117.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">GSFix3D on InstantSplat (ours)</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">GSFix3D on InstantSplat</p>
                     <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 62.25 &uarr; &middot; NIQE 4.98 &darr; &middot; BRISQUE 39.07 &darr; &middot; PIQE 50.56 &darr; &middot; MANIQA 0.336 &uarr; &middot; TOPIQ 0.523 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v142.mp4" type="video/mp4">
@@ -461,26 +461,10 @@
                     </video>
                 </div>
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat MASt3R 1k</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 53.22 &uarr; &middot; NIQE 5.16 &darr; &middot; BRISQUE 41.11 &darr; &middot; PIQE 49.31 &darr; &middot; MANIQA 0.227 &uarr; &middot; TOPIQ 0.375 &uarr;</p>
-                    <video controls muted playsinline style="width:100%; border-radius:6px;">
-                        <source src="videos/3dgs_v118.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-            <div class="columns is-centered">
-                <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat 1k</p>
                     <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 52.83 &uarr; &middot; NIQE 5.12 &darr; &middot; BRISQUE 40.68 &darr; &middot; PIQE 48.98 &darr; &middot; MANIQA 0.226 &uarr; &middot; TOPIQ 0.374 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v123.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat 1k pm-loss (ours)</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 52.76 &uarr; &middot; NIQE 5.13 &darr; &middot; BRISQUE 40.44 &darr; &middot; PIQE 48.92 &darr; &middot; MANIQA 0.222 &uarr; &middot; TOPIQ 0.371 &uarr;</p>
-                    <video controls muted playsinline style="width:100%; border-radius:6px;">
-                        <source src="videos/3dgs_v127.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -494,7 +478,7 @@
                     </video>
                 </div>
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">VGGT-X 30k</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">VGGT-X</p>
                     <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 55.48 &uarr; &middot; NIQE 5.52 &darr; &middot; BRISQUE 48.58 &darr; &middot; PIQE 51.74 &darr; &middot; MANIQA 0.262 &uarr; &middot; TOPIQ 0.409 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v149b.mp4" type="video/mp4">
@@ -510,7 +494,7 @@
                     </video>
                 </div>
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS baseline</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS</p>
                     <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 51.03 &uarr; &middot; NIQE 4.81 &darr; &middot; BRISQUE 31.05 &darr; &middot; PIQE 49.61 &darr; &middot; MANIQA 0.193 &uarr; &middot; TOPIQ 0.370 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v55.mp4" type="video/mp4">
@@ -541,7 +525,7 @@
                         <tbody>
                             <tr style="background:#e8f4fc;"><td><strong>Ours</strong></td><td><strong>63.26</strong></td><td><strong>5.07</strong></td><td><strong>30.66</strong></td><td>53.36</td><td><strong>0.308</strong></td><td><strong>0.450</strong></td></tr>
                             <tr><td>Sparfels</td><td>55.64</td><td>5.41</td><td>44.88</td><td>56.03</td><td>0.263</td><td>0.412</td></tr>
-                            <tr><td>VGGT-X 30k</td><td>55.48</td><td>5.52</td><td>48.58</td><td>51.74</td><td>0.262</td><td>0.409</td></tr>
+                            <tr><td>VGGT-X</td><td>55.48</td><td>5.52</td><td>48.58</td><td>51.74</td><td>0.262</td><td>0.409</td></tr>
                             <tr><td>InstantSplat</td><td>52.83</td><td>5.12</td><td>40.68</td><td>48.98</td><td>0.226</td><td>0.374</td></tr>
                             <tr><td>SplatFormer</td><td>47.45</td><td>4.66</td><td>34.53</td><td>42.59</td><td>0.198</td><td>0.335</td></tr>
                             <tr><td>SparseGS</td><td>28.86</td><td>6.77</td><td>47.24</td><td>63.12</td><td>0.116</td><td>0.187</td></tr>
