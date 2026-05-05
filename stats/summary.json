@@ -1,22 +1,22 @@
 {
-  "n_trials": 11228,
+  "n_trials": 10853,
   "n_unparsed": 1,
-  "n_task_dirs": 65,
-  "n_unique_tools": 22,
-  "n_unique_verbs": 16,
+  "n_task_dirs": 60,
+  "n_unique_tools": 20,
+  "n_unique_verbs": 15,
   "n_unique_objects": 16,
   "tool_counts": {
     "spatula": 2451,
-    "fork": 1892,
     "spoon": 1737,
-    "knife": 658,
+    "fork": 1735,
     "mallet": 552,
     "ladle": 483,
+    "knife": 464,
     "rollingpin": 393,
     "book": 362,
-    "cup": 297,
     "icecreamscooper": 279,
     "squeegee": 279,
+    "cup": 273,
     "scoop": 267,
     "chopstick": 256,
     "brush": 197,
@@ -25,38 +25,35 @@
     "pan": 136,
     "scooper": 131,
     "straw": 93,
-    "pestle": 86,
-    "rolling-rod": 199,
-    "towel": 98
+    "pestle": 86
   },
   "verb_counts": {
     "flip": 2316,
     "scoop": 1957,
     "roll": 933,
     "lift": 754,
-    "crush": 728,
+    "crush": 704,
     "push": 629,
-    "slice": 590,
     "sweep": 535,
     "stir": 513,
     "dig": 439,
     "spread": 433,
+    "slice": 417,
     "collect": 333,
     "press": 310,
-    "cut": 300,
-    "shape": 79,
-    "open": 276
+    "cut": 122,
+    "shape": 79
   },
   "object_counts": {
     "nuts": 2445,
     "sand": 1338,
     "egg": 1334,
-    "dough": 1166,
     "naan": 938,
+    "dough": 840,
     "eggtoy": 798,
     "toy": 629,
-    "banana": 547,
     "coffee": 513,
+    "banana": 498,
     "tomatosauce": 433,
     "sponge": 310,
     "box": 276,
@@ -74,11 +71,11 @@
     "spatula_lift_place_egg": 405,
     "scooper_scoop_nuts": 354,
     "spoon_lift_place_egg": 349,
-    "knife_slice_banana": 311,
     "rollingpin_roll_sand": 303,
     "spoon_scoop_nuts": 294,
     "spatula_scoop_nuts": 281,
     "fork_scoop_nuts": 264,
+    "knife_slice_banana": 262,
     "book_push_toy": 230,
     "mallet_push_toy": 210,
     "plasticwraprod_roll_sand": 199,
@@ -96,17 +93,17 @@
     "spatula_press_sponge": 150,
     "book_collect_nuts": 132,
     "spoon_spread_tomatosauce": 131,
-    "cup_crush_dough": 127,
     "spoon_cut_kinetic_sand": 122,
     "spoon_crush_nuts": 122,
     "knife_open_box": 118,
     "spoon_stir_coffee": 117,
     "squeegee_sweep_nuts": 116,
     "brush_sweep_nuts": 112,
+    "spatula_spread_tomatosauce": 112,
     "mallet_crush_nuts": 109,
     "scooper_scoop_icecream": 108,
-    "fork_cut_dough": 107,
     "fork_spread_tomatosauce": 106,
+    "cup_crush_dough": 103,
     "chopstick_stir_coffee": 101,
     "towel_sweep_nuts": 98,
     "spoon_dig_plantingpot": 94,
@@ -120,14 +117,9 @@
     "fork_shape_kineticsand": 79,
     "fork_stir_coffee": 78,
     "spoon_sweep_nuts": 77,
-    "knife_slice_dought": 74,
     "spoon_crush_banana": 74,
     "mallet_crush_dough": 71,
-    "knife_cut_dough": 71,
-    "spatula_spread_tomatosauce": 57,
     "scooper_shape_kineticsand": 57,
-    "spatual_spread_tomatosauce": 55,
-    "fork_slice_dough": 50,
     "pestle_crush_nuts": 44,
     "ladle_stir_coffee": 42,
     "malletpestle_crush_nuts": 42
@@ -138,7 +130,6 @@
     "ladle|scoop": 441,
     "spatula|lift": 405,
     "rollingpin|roll": 393,
-    "knife|slice": 385,
     "spoon|lift": 349,
     "mallet|crush": 342,
     "spoon|scoop": 294,
@@ -147,6 +138,7 @@
     "scoop|scoop": 267,
     "fork|scoop": 264,
     "spoon|dig": 263,
+    "knife|slice": 262,
     "book|push": 230,
     "spoon|crush": 224,
     "mallet|push": 210,
@@ -166,7 +158,6 @@
     "squeegee|sweep": 116,
     "brush|sweep": 112,
     "spatula|spread": 112,
-    "fork|cut": 107,
     "fork|spread": 106,
     "chopstick|stir": 101,
     "straw|stir": 93,
@@ -178,28 +169,19 @@
     "fork|shape": 79,
     "fork|stir": 78,
     "spoon|sweep": 77,
-    "knife|cut": 71,
     "spatula|crush": 52,
-    "fork|slice": 50,
-    "ladle|stir": 42,
-    "cup|crush": 24,
-    "rolling-rod|roll": 199,
-    "knifeblade|open": 158,
-    "knife|open": 118,
-    "towel|sweep": 98
+    "ladle|stir": 42
   },
   "verb_to_tools": {
-    "slice": [
-      "chopstick",
-      "fork",
-      "knife"
-    ],
     "crush": [
-      "cup",
       "mallet",
       "pestle",
       "spatula",
       "spoon"
+    ],
+    "slice": [
+      "chopstick",
+      "knife"
     ],
     "scoop": [
       "fork",
@@ -214,12 +196,9 @@
       "book",
       "brush",
       "spoon",
-      "squeegee",
-      "towel"
+      "squeegee"
     ],
     "cut": [
-      "fork",
-      "knife",
       "spoon"
     ],
     "stir": [
@@ -238,8 +217,7 @@
     "roll": [
       "cup",
       "rollingpin",
-      "rollrod",
-      "rolling-rod"
+      "rollrod"
     ],
     "press": [
       "spatula",
@@ -270,22 +248,16 @@
     "lift": [
       "spatula",
       "spoon"
-    ],
-    "open": [
-      "knifeblade",
-      "knife"
     ]
   },
   "tool_to_verbs": {
-    "knife": [
-      "cut",
-      "slice",
-      "spread",
-      "open"
-    ],
     "mallet": [
       "crush",
       "push"
+    ],
+    "knife": [
+      "slice",
+      "spread"
     ],
     "chopstick": [
       "slice",
@@ -331,12 +303,10 @@
       "sweep"
     ],
     "fork": [
-      "cut",
       "dig",
       "flip",
       "scoop",
       "shape",
-      "slice",
       "spread",
       "stir"
     ],
@@ -348,7 +318,6 @@
       "stir"
     ],
     "cup": [
-      "crush",
       "roll"
     ],
     "rollingpin": [
@@ -365,25 +334,16 @@
     ],
     "pestle": [
       "crush"
-    ],
-    "rolling-rod": [
-      "roll"
-    ],
-    "knifeblade": [
-      "open"
-    ],
-    "towel": [
-      "sweep"
     ]
   },
   "task_to_tools": {
+    "mallet_crush_dough": [
+      "mallet"
+    ],
     "knife_slice_banana": [
       "knife"
     ],
-    "knife_slice_dought": [
-      "knife"
-    ],
-    "mallet_crush_dough": [
+    "mallet_crush_banana": [
       "mallet"
     ],
     "chopstick_slice_dough": [
@@ -419,9 +379,6 @@
     ],
     "spoon_stir_coffee": [
       "spoon"
-    ],
-    "mallet_crush_banana": [
-      "mallet"
     ],
     "spoon_crush_banana": [
       "spoon"
@@ -471,9 +428,6 @@
     ],
     "knife_spread_tomatosauce": [
       "knife"
-    ],
-    "spatual_spread_tomatosauce": [
-      "spatula"
     ],
     "spatula_flip_egg": [
       "spatula"
@@ -556,37 +510,22 @@
     "spoon_dig_plantingpot": [
       "spoon"
     ],
-    "fork_cut_dough": [
-      "fork"
-    ],
     "cup_crush_dough": [
       "cup"
-    ],
-    "knife_cut_dough": [
-      "knife"
-    ],
-    "fork_slice_dough": [
-      "fork"
     ],
     "woodenspoon_crush_dough": [
       "spatula",
       "spoon"
-    ],
-    "plasticwraprod_roll_sand": [
-      "rolling-rod"
-    ],
-    "towel_sweep_nuts": [
-      "towel"
     ]
   },
   "task_to_verbs": {
+    "mallet_crush_dough": [
+      "crush"
+    ],
     "knife_slice_banana": [
       "slice"
     ],
-    "knife_slice_dought": [
-      "slice"
-    ],
-    "mallet_crush_dough": [
+    "mallet_crush_banana": [
       "crush"
     ],
     "chopstick_slice_dough": [
@@ -624,9 +563,6 @@
     ],
     "spoon_stir_coffee": [
       "stir"
-    ],
-    "mallet_crush_banana": [
-      "crush"
     ],
     "spoon_crush_banana": [
       "crush"
@@ -677,9 +613,6 @@
       "flip"
     ],
     "knife_spread_tomatosauce": [
-      "spread"
-    ],
-    "spatual_spread_tomatosauce": [
       "spread"
     ],
     "spatula_flip_egg": [
@@ -754,37 +687,19 @@
     "spoon_dig_plantingpot": [
       "dig"
     ],
-    "fork_cut_dough": [
-      "cut"
-    ],
-    "cup_crush_dough": [
-      "crush"
-    ],
-    "knife_cut_dough": [
-      "cut"
-    ],
-    "fork_slice_dough": [
-      "slice"
-    ],
     "woodenspoon_crush_dough": [
       "crush"
-    ],
-    "knifeblade_open_box": [
-      "open"
-    ],
-    "knife_open_box": [
-      "open"
     ]
   },
   "task_to_objects": {
+    "mallet_crush_dough": [
+      "dough"
+    ],
     "knife_slice_banana": [
       "banana"
     ],
-    "knife_slice_dought": [
-      "dough"
-    ],
-    "mallet_crush_dough": [
-      "dough"
+    "mallet_crush_banana": [
+      "banana"
     ],
     "chopstick_slice_dough": [
       "dough"
@@ -822,9 +737,6 @@
     ],
     "spoon_stir_coffee": [
       "coffee"
-    ],
-    "mallet_crush_banana": [
-      "banana"
     ],
     "spoon_crush_banana": [
       "banana"
@@ -876,9 +788,6 @@
       "eggtoy"
     ],
     "knife_spread_tomatosauce": [
-      "tomatosauce"
-    ],
-    "spatual_spread_tomatosauce": [
       "tomatosauce"
     ],
     "spatula_flip_egg": [
@@ -959,16 +868,7 @@
     "spoon_dig_plantingpot": [
       "plantingpot"
     ],
-    "fork_cut_dough": [
-      "dough"
-    ],
     "cup_crush_dough": [
-      "dough"
-    ],
-    "knife_cut_dough": [
-      "dough"
-    ],
-    "fork_slice_dough": [
       "dough"
     ],
     "woodenspoon_crush_dough": [
