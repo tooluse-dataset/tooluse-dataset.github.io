@@ -2,8 +2,8 @@
   "n_trials": 10853,
   "n_unparsed": 1,
   "n_task_dirs": 60,
-  "n_unique_tools": 20,
-  "n_unique_verbs": 15,
+  "n_unique_tools": 21,
+  "n_unique_verbs": 16,
   "n_unique_objects": 16,
   "tool_counts": {
     "spatula": 2451,
@@ -24,6 +24,7 @@
     "knifeblade": 158,
     "pan": 136,
     "scooper": 131,
+    "towel": 98,
     "straw": 93,
     "pestle": 86
   },
@@ -41,6 +42,7 @@
     "slice": 417,
     "collect": 333,
     "press": 310,
+    "open": 276,
     "cut": 122,
     "shape": 79
   },
@@ -516,6 +518,12 @@
     "woodenspoon_crush_dough": [
       "spatula",
       "spoon"
+    ],
+    "towel_sweep_nuts": [
+      "towel"
+    ],
+    "plasticwraprod_roll_sand": [
+      "rollingrod"
     ]
   },
   "task_to_verbs": {
@@ -689,6 +697,15 @@
     ],
     "woodenspoon_crush_dough": [
       "crush"
+    ],
+    "cup_crush_dough": [
+      "crush"
+    ],
+    "knife_open_box": [
+      "open"
+    ],
+    "knifeblade_open_box": [
+      "open"
     ]
   },
   "task_to_objects": {
