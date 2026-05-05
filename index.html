@@ -407,8 +407,10 @@
                 <div class="column">
                     <div class="video-compare-container" style="max-width: 900px;">
                         <video class="video" id="cmp_instantsplat" loop playsinline autoplay muted
+                               data-panes="2"
+                               data-labels="Ours (Difix3D on InstantSplat-1k)|InstantSplat 1k"
                                src="videos/3dgs_compare_difix3d_vs_instantsplat.mp4"
-                               onplay="resizeAndPlay(this)"></video>
+                               onplay="resizeAndPlayMulti(this)"></video>
                         <canvas height="0" class="videoMerge" id="cmp_instantsplatMerge"></canvas>
                     </div>
                 </div>
