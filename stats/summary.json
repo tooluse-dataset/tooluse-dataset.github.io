@@ -2,7 +2,7 @@
   "n_trials": 10853,
   "n_unparsed": 1,
   "n_task_dirs": 60,
-  "n_unique_tools": 37,
+  "n_unique_tools": 43,
   "n_unique_verbs": 16,
   "n_unique_objects": 16,
   "tool_counts": {
@@ -892,5 +892,5 @@
       "dough"
     ]
   },
-  "n_tool_categories": 21
+  "n_tool_categories": 25
 }
