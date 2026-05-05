@@ -4,7 +4,7 @@
   "n_task_dirs": 60,
   "n_unique_tools": 43,
   "n_unique_verbs": 16,
-  "n_unique_objects": 16,
+  "n_unique_objects": 18,
   "tool_counts": {
     "spatula": 2451,
     "spoon": 1737,
