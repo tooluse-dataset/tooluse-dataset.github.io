@@ -18,12 +18,14 @@
     <link rel="stylesheet" href="./static/css/academicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/video_comparison.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script src="./static/js/video_comparison.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
@@ -396,7 +398,72 @@
                 </div>
             </div>
 
-            <h3 class="title is-4 has-text-centered" style="margin-top:24px;">More 3DGS variants (sorted by MUSIQ)</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours vs baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
+                Each clip plays the same novel-view camera path. <b>Left half: ours</b> (Difix3D applied to InstantSplat-1k). Right half: baseline. Drag horizontally to compare.
+            </p>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; InstantSplat 1k <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 52.83)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp_instantsplat" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_difix3d_vs_instantsplat.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp_instantsplatMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; SparseGS (no diffusion) <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 51.03)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp_sparsegs" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_difix3d_vs_sparsegs.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp_sparsegsMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; SplatFormer <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 47.45)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp_splatformer" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_difix3d_vs_splatformer.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp_splatformerMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; VGGT-X 30k <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 55.48)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp_vggtx" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_difix3d_vs_vggtx.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp_vggtxMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; Sparfels <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 55.64)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp_sparfels" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_difix3d_vs_sparfels.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp_sparfelsMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="title is-4 has-text-centered" style="margin-top:36px;">More 3DGS variants (sorted by MUSIQ)</h3>
             <div class="columns is-centered">
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS + Difix3D (ours, best)</p>
@@ -721,6 +788,9 @@
                             Website template adapted from <a href="https://droid-dataset.github.io/">DROID</a>,
                             which in turn builds on <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
                             and <a href="https://eureka-research.github.io/">Eureka</a>.
+                            The novel-view comparison sliders use <code>video_comparison.js</code> from
+                            <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a> (Verbin et&nbsp;al., 2022),
+                            also used by <a href="https://dekuliutesla.github.io/vggt-x.github.io/">VGGT-X</a>.
                         </p>
                     </div>
                 </div>

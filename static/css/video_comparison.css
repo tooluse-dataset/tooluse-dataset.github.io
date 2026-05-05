@@ -1,0 +1,4 @@
+/* Video-comparison slider CSS (refnerf) */
+.video-compare-container { width: 100%; margin: 0 auto; position: relative; display: block; line-height: 0; }
+.video-compare-container .video { width: 100%; height: auto; position: relative; top: 0; left: 0; }
+.videoMerge { position: relative; top: 0; left: 0; z-index: 10; width: 100%; display: block; margin: 0 auto; background-size: cover; }
