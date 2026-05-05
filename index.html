@@ -399,67 +399,17 @@
                 </div>
             </div>
 
-            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours (Difix3D on InstantSplat-1k) vs baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours (Difix3D on InstantSplat-1k) vs InstantSplat &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
             <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
-                Each clip plays the same novel-view camera path. <b>Left half: ours</b> (Difix3D applied to InstantSplat-1k). Right half: baseline. Drag horizontally to compare.
+                Same novel-view camera path; <b>left half: ours</b> (Difix3D applied to InstantSplat-1k), right half: InstantSplat 1k baseline. MUSIQ 63.26 vs 52.83.
             </p>
-
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; InstantSplat 1k <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 52.83)</span></p>
                     <div class="video-compare-container" style="max-width: 900px;">
                         <video class="video" id="cmp_instantsplat" loop playsinline autoplay muted
                                src="videos/3dgs_compare_difix3d_vs_instantsplat.mp4"
                                onplay="resizeAndPlay(this)"></video>
                         <canvas height="0" class="videoMerge" id="cmp_instantsplatMerge"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="columns is-centered">
-                <div class="column">
-                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; SparseGS (no diffusion) <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 51.03)</span></p>
-                    <div class="video-compare-container" style="max-width: 900px;">
-                        <video class="video" id="cmp_sparsegs" loop playsinline autoplay muted
-                               src="videos/3dgs_compare_difix3d_vs_sparsegs.mp4"
-                               onplay="resizeAndPlay(this)"></video>
-                        <canvas height="0" class="videoMerge" id="cmp_sparsegsMerge"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="columns is-centered">
-                <div class="column">
-                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; SplatFormer <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 47.45)</span></p>
-                    <div class="video-compare-container" style="max-width: 900px;">
-                        <video class="video" id="cmp_splatformer" loop playsinline autoplay muted
-                               src="videos/3dgs_compare_difix3d_vs_splatformer.mp4"
-                               onplay="resizeAndPlay(this)"></video>
-                        <canvas height="0" class="videoMerge" id="cmp_splatformerMerge"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="columns is-centered">
-                <div class="column">
-                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; VGGT-X 30k <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 55.48)</span></p>
-                    <div class="video-compare-container" style="max-width: 900px;">
-                        <video class="video" id="cmp_vggtx" loop playsinline autoplay muted
-                               src="videos/3dgs_compare_difix3d_vs_vggtx.mp4"
-                               onplay="resizeAndPlay(this)"></video>
-                        <canvas height="0" class="videoMerge" id="cmp_vggtxMerge"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="columns is-centered">
-                <div class="column">
-                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; Sparfels <span style="color:#888; font-weight:400;">(MUSIQ 63.26 vs 55.64)</span></p>
-                    <div class="video-compare-container" style="max-width: 900px;">
-                        <video class="video" id="cmp_sparfels" loop playsinline autoplay muted
-                               src="videos/3dgs_compare_difix3d_vs_sparfels.mp4"
-                               onplay="resizeAndPlay(this)"></video>
-                        <canvas height="0" class="videoMerge" id="cmp_sparfelsMerge"></canvas>
                     </div>
                 </div>
             </div>
@@ -874,47 +824,6 @@
             }
         }
         loadOverlays();
-
-        // Keep the 5 Block-1 ours-vs-baseline sliders in sync. Each <video> starts
-        // independently with its own readyState, which causes them to drift apart
-        // (and to loop at slightly different times). Once all are ready, snap them
-        // to currentTime=0 simultaneously, then re-align every 500 ms.
-        (function syncBlock1Sliders() {
-            const SYNC_IDS = [
-                'cmp_instantsplat', 'cmp_sparsegs', 'cmp_splatformer',
-                'cmp_vggtx', 'cmp_sparfels',
-            ];
-            const vids = SYNC_IDS.map(id => document.getElementById(id)).filter(Boolean);
-            if (vids.length < 2) return;
-
-            let pending = vids.length;
-            const onAllReady = function () {
-                vids.forEach(v => { try { v.currentTime = 0; } catch (_) { } });
-                Promise.all(vids.map(v => v.play().catch(() => { }))).then(() => {
-                    setInterval(() => {
-                        const t = vids[0].currentTime;
-                        const dT = vids[0].duration;
-                        for (let i = 1; i < vids.length; i++) {
-                            const v = vids[i];
-                            if (!isFinite(v.duration) || v.duration <= 0) continue;
-                            const expected = isFinite(dT) && dT > 0 ? (t % v.duration) : t;
-                            if (Math.abs(v.currentTime - expected) > 0.2) {
-                                try { v.currentTime = expected; } catch (_) { }
-                            }
-                        }
-                    }, 500);
-                });
-            };
-            const tick = () => { if (--pending === 0) onAllReady(); };
-            vids.forEach(v => {
-                if (v.readyState >= 3) {
-                    tick();
-                } else {
-                    const cb = () => { v.removeEventListener('canplay', cb); tick(); };
-                    v.addEventListener('canplay', cb);
-                }
-            });
-        })();
     </script>
 
 </body>
