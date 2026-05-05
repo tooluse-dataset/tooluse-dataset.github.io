@@ -398,7 +398,7 @@
                 </div>
             </div>
 
-            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours vs baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours (Difix3D on InstantSplat-1k) vs baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
             <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
                 Each clip plays the same novel-view camera path. <b>Left half: ours</b> (Difix3D applied to InstantSplat-1k). Right half: baseline. Drag horizontally to compare.
             </p>
@@ -459,6 +459,59 @@
                                src="videos/3dgs_compare_difix3d_vs_sparfels.mp4"
                                onplay="resizeAndPlay(this)"></video>
                         <canvas height="0" class="videoMerge" id="cmp_sparfelsMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours (GSFix3D on InstantSplat) vs baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
+                Same comparisons but with our second variant on the left half: GSFix3D-style 4-step diffusion fix-up applied to InstantSplat. Right half: baseline.
+            </p>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; InstantSplat 1k <span style="color:#888; font-weight:400;">(MUSIQ 62.25 vs 52.83)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp2_instantsplat" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_gsfix3d_vs_instantsplat.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp2_instantsplatMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; SparseGS (no diffusion) <span style="color:#888; font-weight:400;">(MUSIQ 62.25 vs 51.03)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp2_sparsegs" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_gsfix3d_vs_sparsegs.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp2_sparsegsMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; SplatFormer <span style="color:#888; font-weight:400;">(MUSIQ 62.25 vs 47.45)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp2_splatformer" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_gsfix3d_vs_splatformer.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp2_splatformerMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p class="has-text-centered" style="font-weight: 600; margin-bottom: 4px;">Ours &nbsp;vs&nbsp; Sparfels <span style="color:#888; font-weight:400;">(MUSIQ 62.25 vs 55.64)</span></p>
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp2_sparfels" loop playsinline autoplay muted
+                               src="videos/3dgs_compare_gsfix3d_vs_sparfels.mp4"
+                               onplay="resizeAndPlay(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp2_sparfelsMerge"></canvas>
                     </div>
                 </div>
             </div>
