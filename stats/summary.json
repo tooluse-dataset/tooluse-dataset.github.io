@@ -2,7 +2,7 @@
   "n_trials": 10853,
   "n_unparsed": 1,
   "n_task_dirs": 60,
-  "n_unique_tools": 21,
+  "n_unique_tools": 37,
   "n_unique_verbs": 16,
   "n_unique_objects": 16,
   "tool_counts": {
@@ -891,5 +891,6 @@
     "woodenspoon_crush_dough": [
       "dough"
     ]
-  }
+  },
+  "n_tool_categories": 21
 }
