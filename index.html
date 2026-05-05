@@ -399,9 +399,9 @@
                 </div>
             </div>
 
-            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours (Difix3D on InstantSplat-1k) vs InstantSplat &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours vs InstantSplat &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
             <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
-                Same novel-view camera path; <b>left half: ours</b> (Difix3D applied to InstantSplat-1k), right half: InstantSplat 1k baseline. MUSIQ 63.26 vs 52.83.
+                Same novel-view camera path; <b>left half: ours</b>, right half: InstantSplat 1k baseline. MUSIQ 63.26 vs 52.83.
             </p>
             <div class="columns is-centered">
                 <div class="column">
@@ -674,16 +674,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="background:#e8f4fc;"><td><strong>Ours, best &mdash; InstantSplat + Difix &rarr; GSFix + 1080p</strong></td><td><strong>72.03</strong></td><td>4.50</td><td>21.88</td><td>38.33</td><td>0.412</td><td><strong>0.561</strong></td></tr>
-                            <tr style="background:#fcf2e8;"><td><strong>Ours &mdash; InstantSplat + GSFix &rarr; Difix + 1080p</strong></td><td>70.57</td><td>4.63</td><td><strong>12.92</strong></td><td>27.02</td><td>0.393</td><td>0.531</td></tr>
-                            <tr style="background:#fcf2e8;"><td><strong>Ours &mdash; InstantSplat + Difix3D + 1080p</strong></td><td>63.48</td><td>5.44</td><td>19.45</td><td><strong>31.20</strong></td><td>0.326</td><td>0.455</td></tr>
-                            <tr style="background:#fcf2e8;"><td><strong>Ours &mdash; InstantSplat + GSFix3D + 1080p</strong></td><td>62.92</td><td><strong>4.31</strong></td><td>28.81</td><td>38.10</td><td><strong>0.316</strong></td><td>0.506</td></tr>
-                            <tr><td>Per-frame InstantSplat (no diffusion)</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
+                            <tr style="background:#e8f4fc;"><td><strong>Ours</strong></td><td><strong>72.03</strong></td><td><strong>4.50</strong></td><td><strong>21.88</strong></td><td><strong>38.33</strong></td><td><strong>0.412</strong></td><td><strong>0.561</strong></td></tr>
+                            <tr><td>InstantSplat</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
-                        Highlighted rows (yellow) ablate single-component additions; the green row is the full ordered stack &mdash;
-                        the first 4DGS pipeline on this scene to exceed 71.85 (the 3D-only ceiling).
+                        Same 8-camera scene; the green row is our full pipeline &mdash; the first 4DGS result on this scene to exceed 71.85 (the 3D-only ceiling).
                     </p>
                 </div>
             </div>
