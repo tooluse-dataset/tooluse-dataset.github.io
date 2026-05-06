@@ -315,24 +315,19 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-2"><span class="dvima">Auto-Segmentation &amp; Annotation</span></h2>
+                    <h2 class="title is-2"><span class="dvima">Automatic Annotation Pipeline &amp; Visualization</span></h2>
                 </div>
             </div>
             <div class="columns is-centered">
                 <div class="column">
-                    <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
-                        We provide a fully automated annotation pipeline that turns raw multi-camera footage into
-                        (1) a metric-scale fused point cloud, (2) DINO-based per-frame foreground masks, and
-                        (3) ICP-aligned tool poses &mdash; <strong>all without manual labels</strong>.
-                    </p>
-                    <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
-                        <strong>What is unique vs 2025/2026 research:</strong> recent automatic-annotation pipelines
-                        (e.g., SAM2-Track, Grounded-SAM2, ICP-on-DINO baselines) target either single-camera tracking
-                        <em>or</em> rigid-only tool pose &mdash; not both, and not on a calibrated 8-camera rig with
-                        depth co-registration. Our pipeline fuses 8 RealSense streams into a metric point cloud,
-                        runs DINO-feature clustering for stable foreground masks across all 8 views, then drives ICP
-                        on the per-frame masked point cloud to recover 6-DoF tool trajectories &mdash;
-                        producing <em>geometry-aware</em> annotations that downstream 3DGS/4DGS pipelines consume directly.
+                    <p style="font-size: 110%; max-width: 900px; margin: 0 auto 24px;">
+                        Our automatic annotation pipeline produces three coordinated outputs for every recorded trial:
+                        per-frame 6&nbsp;DoF tool pose recovered via multi-view <em>FoundationPose</em> fusion,
+                        bimanual MANO hand meshes estimated with <em>WiLoR</em> and refined through joint hand&ndash;tool optimization,
+                        and dense segmentation masks for the target object &mdash; including deformable materials such as
+                        dough, sauce, and granular media. All annotations are jointly optimized to ensure physical consistency.
+                        The video below visualizes these overlaid annotations on a single demonstration, illustrating how
+                        hand pose, tool pose, and deformable object state are tracked in concert throughout the interaction.
                     </p>
                 </div>
             </div>
