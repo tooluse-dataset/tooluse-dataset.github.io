@@ -2,9 +2,9 @@
   "n_trials": 10853,
   "n_unparsed": 1,
   "n_task_dirs": 60,
-  "n_unique_tools": 42,
+  "n_unique_tools": 45,
   "n_unique_verbs": 16,
-  "n_unique_objects": 18,
+  "n_unique_objects": 23,
   "tool_counts": {
     "spatula": 2451,
     "spoon": 1737,
