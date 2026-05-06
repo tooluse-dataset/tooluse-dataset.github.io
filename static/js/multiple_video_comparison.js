@@ -34,10 +34,23 @@ function playMultiVids(videoId) {
     const paneW = vid.videoWidth / nPanes;
     const H = vid.videoHeight;
 
-    // Initial seams: equally spaced inside [0, paneW].
+    // Initial seams. Default = equally spaced inside [0, paneW]; can be
+    // overridden via `data-init-seams="f1,f2,..."` on the <video> tag, where
+    // each f_i is a fraction in (0, 1) giving seam_i's position as a fraction
+    // of paneW. Useful for biasing one pane to take more canvas width by
+    // default (e.g. pin "Ours" to the central 50%).
     const seams = [];
+    const initAttr = (vid.dataset.initSeams || "").trim();
+    let initFracs = null;
+    if (initAttr) {
+        const parsed = initAttr.split(",").map(s => parseFloat(s));
+        if (parsed.length === nPanes - 1 && parsed.every(v => Number.isFinite(v) && v > 0 && v < 1)) {
+            initFracs = parsed;
+        }
+    }
     for (let i = 1; i < nPanes; i++) {
-        seams.push((i / nPanes) * paneW);
+        const frac = initFracs ? initFracs[i - 1] : (i / nPanes);
+        seams.push(frac * paneW);
     }
 
     let draggingIdx = -1;

@@ -415,15 +415,16 @@
 
             <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Multi-pane: ours vs four baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag any of the four seams)</span></h3>
             <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 1100px; margin: 0 auto 18px;">
-                Five renders of the same novel-view sweep stacked into one canvas. Drag any of the four internal seams to wipe between adjacent methods.
-                Left to right: <b>Ours</b> &middot; InstantSplat &middot; Sparfels &middot; SplatFormer &middot; SparseGS.
+                Five renders of the same novel-view sweep stacked into one canvas. <b>Ours</b> takes the central 50% of the canvas by default; drag any of the four internal seams to wipe between adjacent methods.
+                Left to right: InstantSplat &middot; <b>Ours</b> &middot; Sparfels &middot; SplatFormer &middot; SparseGS.
             </p>
             <div class="columns is-centered">
                 <div class="column">
                     <div class="video-compare-container" style="max-width: 1200px;">
                         <video class="video" id="multi_3dgs" loop playsinline autoplay muted
                                data-panes="5"
-                               data-labels="Ours|InstantSplat|Sparfels|SplatFormer|SparseGS"
+                               data-labels="InstantSplat|Ours|Sparfels|SplatFormer|SparseGS"
+                               data-init-seams="0.25,0.75,0.8333,0.9167"
                                src="videos/3dgs_multi_5pane.mp4"
                                onplay="resizeAndPlayMulti(this)"></video>
                         <canvas height="0" class="videoMerge" id="multi_3dgsMerge"></canvas>
