@@ -47,6 +47,9 @@
   .card-task .tags { color: #666; font-size: 0.78rem; margin-bottom: 0.25rem; }
   .card-task .trials { color: #1f5fa8; font-weight: 600; font-size: 0.8rem; }
   .card-task[data-video] { cursor: pointer; }
+  .card-task .view-toggle { position: absolute; top: 6px; right: 6px; z-index: 2; background: rgba(0,0,0,0.65); color: #fff; border: 1px solid rgba(255,255,255,0.35); padding: 2px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; cursor: pointer; }
+  .card-task .view-toggle:hover { background: #1f5fa8; border-color: #1f5fa8; }
+  .card-task .view-toggle.is-4dgs { background: #1f5fa8; border-color: #1f5fa8; }
   </style>
 </head>
 <body>
@@ -151,15 +154,40 @@ function sortTasks(arr) {
   return a;
 }
 
-document.addEventListener('click', (e) => {
-  const card = e.target.closest('.card-task');
-  if (!card) return;
-  const videoSrc = card.dataset.video;
-  if (!videoSrc) return;
+// Two views per card: 'rgb' = the original camera preview, '4dgs' = the 4D Gaussian
+// Splatting novel-view render (only present when tasks.json carries video_4dgs).
+function srcForMode(card, mode) {
+  return mode === '4dgs' ? card.dataset.video4dgs : card.dataset.video;
+}
+
+function refreshToggle(card) {
+  const btn = card.querySelector('.view-toggle');
+  if (!btn) return;
+  const is4dgs = card.dataset.mode === '4dgs';
+  btn.textContent = is4dgs ? 'RGB' : '4DGS';
+  btn.title = is4dgs
+    ? 'Show the original camera view'
+    : 'Show the 4D Gaussian Splatting novel view';
+  btn.classList.toggle('is-4dgs', is4dgs);
+}
+
+function playInCard(card, mode) {
+  const src = srcForMode(card, mode);
+  if (!src) return;
+  card.dataset.mode = mode;
+  const existing = card.querySelector('video');
+  if (existing) {
+    existing.src = src;
+    existing.load();
+    const p = existing.play();
+    if (p) p.catch(() => {});
+    refreshToggle(card);
+    return;
+  }
   const img = card.querySelector('img');
   if (!img) return;
   const video = document.createElement('video');
-  video.src = videoSrc;
+  video.src = src;
   video.controls = true;
   video.autoplay = true;
   video.muted = true;
@@ -169,6 +197,25 @@ document.addEventListener('click', (e) => {
   video.style.height = img.style.height || 'auto';
   video.style.borderRadius = getComputedStyle(img).borderRadius;
   img.replaceWith(video);
+  refreshToggle(card);
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.view-toggle');
+  if (btn) {
+    e.stopPropagation();
+    const card = btn.closest('.card-task');
+    if (!card) return;
+    playInCard(card, card.dataset.mode === '4dgs' ? 'rgb' : '4dgs');
+    return;
+  }
+  const card = e.target.closest('.card-task');
+  if (!card) return;
+  if (!card.dataset.video && !card.dataset.video4dgs) return;
+  // Only kick off playback from the poster state; once a <video> is in place the
+  // native controls own the clicks.
+  if (!card.querySelector('img')) return;
+  playInCard(card, card.dataset.mode || 'rgb');
 });
 
 function render() {
@@ -190,8 +237,16 @@ function render() {
       else camLabel = String(t.camera).replace('.mp4', '');
     }
     const camTag = camLabel ? `<span class="cam-tag">${camLabel}</span>` : '';
-    return `<div class="card-task"${t.video ? ` data-video="${t.video}" style="cursor:pointer;"` : ""}>
-      <div class="thumb-wrap">${thumb}${camTag}</div>
+    const toggleBtn = t.video_4dgs
+      ? `<button type="button" class="view-toggle" title="Show the 4D Gaussian Splatting novel view">4DGS</button>`
+      : '';
+    const attrs = [
+      t.video ? ` data-video="${t.video}"` : '',
+      t.video_4dgs ? ` data-video4dgs="${t.video_4dgs}"` : '',
+      (t.video || t.video_4dgs) ? ` style="cursor:pointer;"` : ''
+    ].join('');
+    return `<div class="card-task"${attrs}>
+      <div class="thumb-wrap">${thumb}${camTag}${toggleBtn}</div>
       <div class="meta">
         <div class="task-name">${t.task_dir}</div>
         <div class="tags">${tagLine}</div>
