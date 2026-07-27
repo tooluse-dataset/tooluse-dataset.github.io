@@ -11,7 +11,6 @@ HTML, CSS and JS, deployed on every push to `main` by the workflow in `.github/w
 |---|---|
 | `index.html` | main project page |
 | `dataset-visualizer/` | filterable task browser; cards toggle between the original camera view and the 4DGS novel view |
-| `8cam-vs-10cam/` | wipe-slider comparison of the 8-camera and 10-camera 4DGS reconstructions |
 | `static/` | CSS and JS, including the novel-view comparison sliders |
 | `figures/`, `videos/`, `stats/`, `assets/` | page media and precomputed statistics |
 
