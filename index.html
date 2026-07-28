@@ -1256,6 +1256,145 @@
 
     <section class="section">
         <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-2"><span class="dvima">Robot Physical Tool-Use from Human
+                            Demonstrations</span></h2>
+                    <div class="content has-text-left" style="font-size: 110%; max-width: 980px; margin: 0 auto;">
+                        <p>
+                            <strong>Experiment Setup.</strong> To evaluate whether TOOLDEX provides robot-transferable
+                            demonstrations for dexterous policy learning, we test two mimic-style reinforcement learning
+                            settings that both use TOOLDEX trajectories as reference signals. <em>ManipTrans</em> adapts
+                            ManipTrans and trains a residual policy for an Inspire hand in IsaacGym.
+                            <em>Arm+Hand RL</em> is an independently implemented mimic RL pipeline that jointly controls a
+                            Sharpa hand and a Franka FR3 arm in IsaacLab. The policies are trained with an identical
+                            pipeline across all tasks without task-specific tuning. Unlike ego-only datasets where
+                            hand&ndash;tool trajectories must be estimated from a single noisy viewpoint, TOOLDEX's
+                            multi-view-fused annotations can be consumed directly without additional refinement. We
+                            select demonstrations from 6 tasks spanning 4 action categories (stir, scoop, crush, collect)
+                            with 254&ndash;600 frames (&asymp;4&ndash;10&nbsp;s at 60&nbsp;Hz). After training, we
+                            evaluate each policy for 200 episodes with randomized start frames.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-multiline is-variable is-5 benchmark-grid">
+                <div class="column is-12">
+                    <div class="benchmark-card">
+                        <h3 class="title is-5">Per-task success rate on 6 tool-use tasks</h3>
+                        <p class="benchmark-caption">
+                            Success rate (%): the object reaches within 5&nbsp;cm of the demonstration's final pose under
+                            randomized start frames. <em>ManipTrans</em> and <em>Arm+Hand RL</em> report mean&nbsp;&plusmn;&nbsp;std
+                            over 3 seeds; <em>Kinematic retarget</em> (open-loop replay of the reference) and
+                            <em>BC</em> (behavior cloning of the reference) are single-run reference baselines. Best per
+                            task in bold.
+                        </p>
+                        <div class="table-container">
+                            <table class="stats-table table is-striped is-narrow is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Kinematic retarget</th>
+                                        <th>BC</th>
+                                        <th>ManipTrans</th>
+                                        <th>Arm+Hand RL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Stir coffee (spatula)</td>
+                                        <td>7.0</td>
+                                        <td>1.6</td>
+                                        <td>52.2 &plusmn; 2.2</td>
+                                        <td><strong>72.7 &plusmn; 0.8</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Scoop nuts (ladle)</td>
+                                        <td>22.2</td>
+                                        <td>9.1</td>
+                                        <td>62.9 &plusmn; 0.4</td>
+                                        <td><strong>66.8 &plusmn; 1.3</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Crush banana (mallet)</td>
+                                        <td>10.2</td>
+                                        <td>2.6</td>
+                                        <td>53.0 &plusmn; 1.9</td>
+                                        <td><strong>55.8 &plusmn; 0.2</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Scoop nuts (scooper)</td>
+                                        <td>31.0</td>
+                                        <td>9.8</td>
+                                        <td><strong>45.3 &plusmn; 2.0</strong></td>
+                                        <td>31.3 &plusmn; 0.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Crush nuts (pestle)</td>
+                                        <td>7.0</td>
+                                        <td>1.9</td>
+                                        <td>16.8 &plusmn; 0.2</td>
+                                        <td><strong>46.7 &plusmn; 2.4</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Collect sand (squeegee)</td>
+                                        <td>6.9</td>
+                                        <td>2.6</td>
+                                        <td>12.6 &plusmn; 0.7</td>
+                                        <td><strong>57.5 &plusmn; 1.9</strong></td>
+                                    </tr>
+                                    <tr style="border-top: 2px solid #d0d0d0; font-weight: 600;">
+                                        <td><strong>Average</strong></td>
+                                        <td>14.0</td>
+                                        <td>4.6</td>
+                                        <td>40.5</td>
+                                        <td><strong>55.1</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered has-text-centered" style="margin-top: 1.5rem;">
+                <div class="column is-10">
+                    <h3 class="title is-5">Simulation and real-robot rollouts &mdash; squeegee</h3>
+                    <p class="benchmark-caption">
+                        The Arm+Hand RL policy sweeping with a squeegee: executed in simulation (left) and
+                        deployed on the real Sharpa hand mounted on a Franka FR3 arm (right).
+                    </p>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:8px;">Simulation</p>
+                    <video controls muted loop playsinline preload="metadata"
+                        style="width:100%; border-radius:6px;">
+                        <source src="videos/sim_squeegee.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column is-4">
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:8px;">Real robot</p>
+                    <video controls muted loop playsinline preload="metadata"
+                        style="width:100%; border-radius:6px;">
+                        <source src="videos/demo_squeegee_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column is-4">
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:8px;">Real robot</p>
+                    <video controls muted loop playsinline preload="metadata"
+                        style="width:100%; border-radius:6px;">
+                        <source src="videos/demo_squeegee_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
             <div class="rows">
                 <div class="row is-full-width">
                     <h2 class="title is-2"><span class="dvima">Human trajectory diversity</span></h2>
