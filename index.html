@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="./static/css/bulma.min.css">
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="./static/css/academicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
@@ -44,88 +43,286 @@
             --rt-bg-alt: #fafbfc;
             --rt-border: #e3e6ea;
         }
+
         body {
             font-family: "Myriad-Pro", "Open Sans", "Google Sans", sans-serif;
             color: var(--rt-text);
             background: var(--rt-bg);
         }
-        .hero { background: linear-gradient(180deg, #ffffff 0%, #f3f6fa 100%); }
-        .hero-body { padding-top: 3rem; padding-bottom: 1.5rem; }
-        .publication-title { font-family: "Myriad-Pro", "Open Sans", sans-serif; letter-spacing: -0.01em; }
-        .publication-authors { font-family: "Myriad-Pro", "Open Sans", sans-serif; }
-        .author-block { display: none; }
-        .publication-authors:hover .author-block { display: block; }
-        .publication-links .button { margin: 4px 4px; }
-        .dvima { font-variant: small-caps; letter-spacing: 0.02em; }
-        .section { padding: 2.5rem 1.5rem; }
-        h2.title.is-2 { color: var(--rt-text); }
-        h2.title.is-3 { color: var(--rt-text); }
-        .content p { line-height: 1.55; }
-        a { color: var(--rt-accent); }
-        a:hover { color: #143f73; }
+
+        .hero {
+            background: linear-gradient(180deg, #ffffff 0%, #f3f6fa 100%);
+        }
+
+        .hero-body {
+            padding-top: 3rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .publication-title {
+            font-family: "Myriad-Pro", "Open Sans", sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+        .publication-authors {
+            font-family: "Myriad-Pro", "Open Sans", sans-serif;
+        }
+
+        .author-block {
+            display: none;
+        }
+
+        .publication-authors:hover .author-block {
+            display: block;
+        }
+
+        .publication-links .button {
+            margin: 4px 4px;
+        }
+
+        .dvima {
+            font-variant: small-caps;
+            letter-spacing: 0.02em;
+        }
+
+        .section {
+            padding: 2.5rem 1.5rem;
+        }
+
+        h2.title.is-2 {
+            color: var(--rt-text);
+        }
+
+        h2.title.is-3 {
+            color: var(--rt-text);
+        }
+
+        .content p {
+            line-height: 1.55;
+        }
+
+        a {
+            color: var(--rt-accent);
+        }
+
+        a:hover {
+            color: #143f73;
+        }
 
         /* KPI strip — DROID-style panel */
         .kpi-grid {
-            display: flex; flex-wrap: wrap; gap: 0;
-            justify-content: center; margin: 8px auto;
-            max-width: 980px; background: #fff;
-            border: 1px solid var(--rt-border); border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            justify-content: center;
+            margin: 8px auto;
+            max-width: 980px;
+            background: #fff;
+            border: 1px solid var(--rt-border);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
             overflow: hidden;
         }
+
         .kpi {
-            flex: 1 1 160px; min-width: 140px; text-align: center;
-            padding: 18px 16px; border-right: 1px solid var(--rt-border);
+            flex: 1 1 160px;
+            min-width: 140px;
+            text-align: center;
+            padding: 18px 16px;
+            border-right: 1px solid var(--rt-border);
         }
-        .kpi:last-child { border-right: none; }
+
+        .kpi:last-child {
+            border-right: none;
+        }
+
         .kpi .num {
-            font-size: 2.4rem; font-weight: 700; color: var(--rt-accent);
-            line-height: 1; font-family: "Myriad-Pro", "Open Sans", sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--rt-accent);
+            line-height: 1;
+            font-family: "Myriad-Pro", "Open Sans", sans-serif;
         }
+
         .kpi .lbl {
-            font-size: 0.85rem; color: var(--rt-muted); margin-top: 6px;
-            text-transform: uppercase; letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            color: var(--rt-muted);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* Tables — DROID-style polish */
-        table.stats-table { border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-        table.stats-table td, table.stats-table th { padding: 6px 10px; font-size: 0.88rem; border-bottom: 1px solid var(--rt-border); }
+        table.stats-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        table.stats-table td,
+        table.stats-table th {
+            padding: 6px 10px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--rt-border);
+        }
+
         table.stats-table thead th {
-            background: var(--rt-accent); color: #fff;
-            font-weight: 600; letter-spacing: 0.02em;
+            background: var(--rt-accent);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.02em;
             border-bottom: none;
         }
-        table.stats-table tbody tr:hover { background: var(--rt-accent-soft) !important; }
-        table.stats-table tbody tr:last-child td { border-bottom: none; }
+
+        table.stats-table tbody tr:hover {
+            background: var(--rt-accent-soft) !important;
+        }
+
+        table.stats-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .benchmark-grid {
+            margin-top: 1.5rem;
+        }
+
+        .benchmark-card {
+            height: 100%;
+            padding: 1.25rem;
+            background: #fff;
+            border: 1px solid var(--rt-border);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .benchmark-card .table-container {
+            margin-bottom: 0;
+        }
+
+        .benchmark-card table.stats-table {
+            width: 100%;
+            margin: 0;
+        }
+
+        .benchmark-card table.stats-table td:not(:first-child),
+        .benchmark-card table.stats-table th:not(:first-child) {
+            text-align: center;
+        }
+
+        .benchmark-caption {
+            margin: 0 0 0.85rem;
+            color: var(--rt-muted);
+            font-size: 0.92rem;
+            line-height: 1.4;
+        }
+
+        .qualitative-figure {
+            margin: 2.5rem 0 0;
+        }
+
+        .qualitative-figure+.qualitative-figure {
+            margin-top: 3rem;
+        }
+
+        .qualitative-figure img {
+            display: block;
+            width: 100%;
+            border: 1px solid var(--rt-border);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .qualitative-figure figcaption {
+            max-width: 980px;
+            margin: 0.75rem auto 0;
+            color: var(--rt-muted);
+            font-size: 0.92rem;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .benchmark-card {
+                padding: 0.9rem;
+            }
+
+            .benchmark-card table.stats-table td,
+            .benchmark-card table.stats-table th {
+                padding: 6px 8px;
+                white-space: nowrap;
+            }
+        }
 
         /* Image / video grid polish */
-        .interpolation-image, .columns video, .columns img {
+        .interpolation-image,
+        .columns video,
+        .columns img {
             border-radius: 8px;
         }
-        .columns video, .columns img.interpolation-image {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+        .columns video,
+        .columns img.interpolation-image {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
-        .columns .has-text-centered p[style*="font-weight:600"] { color: var(--rt-text); }
+
+        .columns .has-text-centered p[style*="font-weight:600"] {
+            color: var(--rt-text);
+        }
 
         /* Section accent line under headings */
         h2.title.is-2 .dvima::after {
-            content: ""; display: block; width: 60px; height: 3px;
-            background: var(--rt-accent); margin-top: 8px; border-radius: 2px;
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--rt-accent);
+            margin-top: 8px;
+            border-radius: 2px;
         }
 
         /* Code blocks */
-        pre, code { font-family: "Source Code Pro", ui-monospace, Menlo, monospace; }
-        pre { background: #f6f8fa; border: 1px solid var(--rt-border); border-radius: 8px; padding: 12px 14px; }
+        pre,
+        code {
+            font-family: "Source Code Pro", ui-monospace, Menlo, monospace;
+        }
+
+        pre {
+            background: #f6f8fa;
+            border: 1px solid var(--rt-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
 
         /* Footer */
-        .footer { padding: 2.5rem 1.5rem; background: #f3f6fa; border-top: 1px solid var(--rt-border); }
-        .footer .content p { color: var(--rt-muted); font-size: 0.9rem; }
+        .footer {
+            padding: 2.5rem 1.5rem;
+            background: #f3f6fa;
+            border-top: 1px solid var(--rt-border);
+        }
+
+        .footer .content p {
+            color: var(--rt-muted);
+            font-size: 0.9rem;
+        }
 
         /* Buttons (publication links) */
-        .button.is-dark { background-color: #1a1a1a; }
-        .button.is-dark:hover { background-color: var(--rt-accent); }
-        .button.is-large.is-primary { background-color: var(--rt-accent); }
-        .button.is-large.is-primary:hover { background-color: #143f73; }
+        .button.is-dark {
+            background-color: #1a1a1a;
+        }
+
+        .button.is-dark:hover {
+            background-color: var(--rt-accent);
+        }
+
+        .button.is-large.is-primary {
+            background-color: var(--rt-accent);
+        }
+
+        .button.is-large.is-primary:hover {
+            background-color: #143f73;
+        }
     </style>
 </head>
 
@@ -136,7 +333,8 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">TOOLDEX:<br>An Ego-Exo Human Demonstration Dataset<br>for Creative Physical Tool Use</h1>
+                        <h1 class="title is-1 publication-title">TOOLDEX:<br>An Ego-Exo Human Demonstration
+                            Dataset<br>for Creative Physical Tool Use</h1>
 
                         <div class="is-size-5 publication-authors">
                             <span class="team-name"><b>Anonymous Authors</b></span>
@@ -173,12 +371,30 @@
     <section class="section" style="padding-top: 0">
         <div class="container is-max-desktop">
             <div class="kpi-grid">
-                <div class="kpi"><div class="num" id="kpi-trials">—</div><div class="lbl">trials</div></div>
-                <div class="kpi"><div class="num" id="kpi-tasks">—</div><div class="lbl">task signatures</div></div>
-                <div class="kpi"><div class="num" id="kpi-tools">—</div><div class="lbl">distinct tools</div></div>
-                <div class="kpi"><div class="num" id="kpi-verbs">—</div><div class="lbl">actions (verbs)</div></div>
-                <div class="kpi"><div class="num" id="kpi-objects">—</div><div class="lbl">support objects</div></div>
-                <div class="kpi"><div class="num" id="kpi-deformable">—</div><div class="lbl">deformable objects</div></div>
+                <div class="kpi">
+                    <div class="num" id="kpi-trials">—</div>
+                    <div class="lbl">trials</div>
+                </div>
+                <div class="kpi">
+                    <div class="num" id="kpi-tasks">—</div>
+                    <div class="lbl">task signatures</div>
+                </div>
+                <div class="kpi">
+                    <div class="num" id="kpi-tools">—</div>
+                    <div class="lbl">distinct tools</div>
+                </div>
+                <div class="kpi">
+                    <div class="num" id="kpi-verbs">—</div>
+                    <div class="lbl">actions (verbs)</div>
+                </div>
+                <div class="kpi">
+                    <div class="num" id="kpi-objects">—</div>
+                    <div class="lbl">support objects</div>
+                </div>
+                <div class="kpi">
+                    <div class="num" id="kpi-deformable">—</div>
+                    <div class="lbl">deformable objects</div>
+                </div>
             </div>
         </div>
     </section>
@@ -190,7 +406,14 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p style="font-size: 125%">
-                            TOOLDEX is a large-scale dataset of <b>human tool-use demonstrations</b> captured in a shared multi-camera rig. We densely cover the <i>combinatorial space</i> of tool, action, and object: the same action (e.g., <i>scoop</i>, <i>stir</i>, <i>crush</i>) is performed with many different physical tools, so every trajectory measures <b>how humans flexibly repurpose objects</b> to accomplish a goal. Each trial captures 8 synchronized RGB-D cameras, and a large fraction of the dataset ships with hand-optimized 6DoF object poses, per-frame masks, and hand trajectories — enabling policy learning, affordance discovery, and tool-use generalization studies.
+                            TOOLDEX is a large-scale dataset of <b>human tool-use demonstrations</b> captured in a
+                            shared multi-camera rig. We densely cover the <i>combinatorial space</i> of tool, action,
+                            and object: the same action (e.g., <i>scoop</i>, <i>stir</i>, <i>crush</i>) is performed
+                            with many different physical tools, so every trajectory measures <b>how humans flexibly
+                                repurpose objects</b> to accomplish a goal. Each trial captures 8 synchronized RGB-D
+                            cameras, and a large fraction of the dataset ships with hand-optimized 6DoF object poses,
+                            per-frame masks, and hand trajectories — enabling policy learning, affordance discovery, and
+                            tool-use generalization studies.
                         </p>
                     </div>
                 </div>
@@ -205,7 +428,11 @@
                     <div class="row is-full-width">
                         <h2 class="title is-2"><span class="dvima">Dataset at a glance</span></h2>
                         <p style="font-size: 125%">
-                            Collection spans one shared scene (cutting-board / tabletop) with 8 calibrated RGB-D cameras. Each trial is one human demonstration of a (tool, action, object) triple with natural variation in grasp, approach, and in-plane pose. Key takeaway: for almost every action we record, multiple tools are demonstrated, yielding rich <i>tool-choice diversity</i> per goal.
+                            Collection spans one shared scene (cutting-board / tabletop) with 8 calibrated RGB-D
+                            cameras. Each trial is one human demonstration of a (tool, action, object) triple with
+                            natural variation in grasp, approach, and in-plane pose. Key takeaway: for almost every
+                            action we record, multiple tools are demonstrated, yielding rich <i>tool-choice
+                                diversity</i> per goal.
                         </p>
                         <!--
                         <p style="font-size: 110%">
@@ -226,17 +453,22 @@
                         <div class="column has-text-centered">
                             <img src="figures/pie_tools.png" class="interpolation-image" alt=""
                                 style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
-                            <span style="font-size: 115%"><b>Tool distribution.</b> Share of trials using each physical tool. Spatulas, forks, and spoons dominate the long tail.</span>
+                            <span style="font-size: 115%"><b>Tool distribution.</b> Share of trials using each physical
+                                tool. Spatulas, forks, and spoons dominate the long tail.</span>
                         </div>
                         <div class="column has-text-centered">
                             <img src="figures/pie_verbs.png" class="interpolation-image" alt=""
                                 style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
-                            <span style="font-size: 115%"><b>Action distribution.</b> Share of trials per action. <i>flip</i>, <i>scoop</i>, <i>roll</i>, <i>lift</i>, and <i>crush</i> lead the set.</span>
+                            <span style="font-size: 115%"><b>Action distribution.</b> Share of trials per action.
+                                <i>flip</i>, <i>scoop</i>, <i>roll</i>, <i>lift</i>, and <i>crush</i> lead the
+                                set.</span>
                         </div>
                         <div class="column has-text-centered">
                             <img src="figures/pie_objects.png" class="interpolation-image" alt=""
                                 style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
-                            <span style="font-size: 115%"><b>Object distribution.</b> Share of trials per manipulated object / material — includes egg, dough, sand, nuts, naan, tomato sauce, and sponge.</span>
+                            <span style="font-size: 115%"><b>Object distribution.</b> Share of trials per manipulated
+                                object / material — includes egg, dough, sand, nuts, naan, tomato sauce, and
+                                sponge.</span>
                         </div>
                     </div>
                 </div>
@@ -250,7 +482,13 @@
                 <div class="row is-full-width">
                     <h2 class="title is-2"><span class="dvima">One action, many tools</span></h2>
                     <p style="font-size: 125%">
-                        The signature of this dataset is the diversity of <i>how</i> humans perform the same action. <i>scoop</i> is demonstrated with <b>7</b> distinct tools, <i>stir</i> with <b>6</b>, <i>crush</i> with <b>5</b>, etc. To prevent class imbalance from confounding the analysis, <b>every task is collected to roughly the same total demonstration length (~1&nbsp;hour)</b>, so trial-count differences do not dominate downstream statistics. This shows up in the tool&times;action heatmap, the per-action tool-choice bar chart, and the per-task duration bar plot below.
+                        The signature of this dataset is the diversity of <i>how</i> humans perform the same action.
+                        <i>scoop</i> is demonstrated with <b>7</b> distinct tools, <i>stir</i> with <b>6</b>,
+                        <i>crush</i> with <b>5</b>, etc. To prevent class imbalance from confounding the analysis,
+                        <b>every task is collected to roughly the same total demonstration length (~1&nbsp;hour)</b>, so
+                        trial-count differences do not dominate downstream statistics. This shows up in the
+                        tool&times;action heatmap, the per-action tool-choice bar chart, and the per-task duration bar
+                        plot below.
                     </p>
                 </div>
                 <br>
@@ -258,7 +496,9 @@
                     <div class="column has-text-centered">
                         <img src="figures/tool_verb_heatmap.png" class="interpolation-image" alt=""
                             style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
-                        <span style="font-size: 115%"><b>Tool × action heatmap.</b> Each cell is the trial count for a specific (tool, action) pair. Empty cells indicate affordance gaps; dense rows/columns indicate highly reused tools/actions.</span>
+                        <span style="font-size: 115%"><b>Tool × action heatmap.</b> Each cell is the trial count for a
+                            specific (tool, action) pair. Empty cells indicate affordance gaps; dense rows/columns
+                            indicate highly reused tools/actions.</span>
                     </div>
                 </div>
                 <br>
@@ -266,7 +506,8 @@
                     <div class="column has-text-centered">
                         <img src="figures/verb_tool_diversity.png" class="interpolation-image" alt=""
                             style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
-                        <span style="font-size: 115%"><b>Tool-choice diversity per action.</b> For each verb, we list every distinct tool used to realize it in the dataset.</span>
+                        <span style="font-size: 115%"><b>Tool-choice diversity per action.</b> For each verb, we list
+                            every distinct tool used to realize it in the dataset.</span>
                     </div>
                 </div>
                 <br>
@@ -274,7 +515,11 @@
                     <div class="column has-text-centered">
                         <img src="figures/bar_task_durations.png" class="interpolation-image" alt=""
                             style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
-                        <span style="font-size: 115%"><b>Balanced collection: ~1&nbsp;hour of demonstration video per task.</b> Total cam-0 video duration aggregated across all trials of each task_dir. The dashed red line marks the <b>average per-task duration (57&nbsp;min across the 60 tasks)</b>. Bars cluster around it because we deliberately equalized collection effort across tasks rather than letting trial counts alone determine total time.</span>
+                        <span style="font-size: 115%"><b>Balanced collection: ~1&nbsp;hour of demonstration video per
+                                task.</b> Total cam-0 video duration aggregated across all trials of each task_dir. The
+                            dashed red line marks the <b>average per-task duration (57&nbsp;min across the 60
+                                tasks)</b>. Bars cluster around it because we deliberately equalized collection effort
+                            across tasks rather than letting trial counts alone determine total time.</span>
                     </div>
                 </div>
             </div>
@@ -287,7 +532,8 @@
                 <div class="row is-full-width">
                     <h2 class="title is-2"><span class="dvima">Task distribution</span></h2>
                     <p style="font-size: 125%">
-                        Top task folders by number of trials. The full table and CSV enumerate every task signature and its (tool, action, object) breakdown.
+                        Top task folders by number of trials. The full table and CSV enumerate every task signature and
+                        its (tool, action, object) breakdown.
                     </p>
                 </div>
                 <div class="columns">
@@ -298,27 +544,38 @@
                 </div>
                 <br>
                 <h3 class="title is-4">Full task table</h3>
-                <p style="font-size: 110%">Click a column header to sort; filter by tool / action / object in the visualizer.</p>
+                <p style="font-size: 110%">Click a column header to sort; filter by tool / action / object in the
+                    visualizer.</p>
                 <div style="overflow-x: auto">
                     <table class="stats-table table is-striped is-narrow is-hoverable" id="task-table">
                         <thead>
                             <tr>
-                                <th>#</th><th>task_dir</th><th>tools</th><th>actions</th><th>objects</th><th>trials</th>
+                                <th>#</th>
+                                <th>task_dir</th>
+                                <th>tools</th>
+                                <th>actions</th>
+                                <th>objects</th>
+                                <th>trials</th>
                             </tr>
                         </thead>
-                        <tbody id="task-table-body"><tr><td colspan="6">loading…</td></tr></tbody>
+                        <tbody id="task-table-body">
+                            <tr>
+                                <td colspan="6">loading…</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- ============ AUTO-SEGMENTATION / ANNOTATION ============ -->
+    <!-- ============ AUTO-SEGMENTATION / ANNOTATION ============ -->
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-2"><span class="dvima">Automatic Annotation Pipeline &amp; Visualization</span></h2>
+                    <h2 class="title is-2"><span class="dvima">Automatic Annotation Pipeline &amp; Visualization</span>
+                    </h2>
                 </div>
             </div>
             <div class="columns is-centered">
@@ -326,18 +583,24 @@
                     <p style="font-size: 110%; max-width: 900px; margin: 0 auto 24px;">
                         Our automatic annotation pipeline produces three coordinated outputs for every recorded trial:
                         per-frame 6&nbsp;DoF tool pose recovered via multi-view <em>FoundationPose</em> fusion,
-                        bimanual MANO hand meshes estimated with <em>WiLoR</em> and refined through joint hand&ndash;tool optimization,
-                        and dense segmentation masks for the target object &mdash; including deformable materials such as
-                        dough, sauce, and granular media. All annotations are jointly optimized to ensure physical consistency.
-                        The video below visualizes these overlaid annotations on a single demonstration, illustrating how
-                        hand pose, tool pose, and deformable object state are tracked in concert throughout the interaction.
+                        bimanual MANO hand meshes estimated with <em>WiLoR</em> and refined through joint
+                        hand&ndash;tool optimization,
+                        and dense segmentation masks for the target object &mdash; including deformable materials such
+                        as
+                        dough, sauce, and granular media. All annotations are jointly optimized to ensure physical
+                        consistency.
+                        The video below visualizes these overlaid annotations on a single demonstration, illustrating
+                        how
+                        hand pose, tool pose, and deformable object state are tracked in concert throughout the
+                        interaction.
                     </p>
                 </div>
             </div>
 
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; font-size:1.05rem; margin-bottom:8px;">Joint hand &mdash; tool &mdash; deformable-object visualization</p>
+                    <p class="has-text-centered" style="font-weight:600; font-size:1.05rem; margin-bottom:8px;">Joint
+                        hand &mdash; tool &mdash; deformable-object visualization</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/visualization.mp4" type="video/mp4">
                     </video>
@@ -351,7 +614,8 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-2"><span class="dvima">3D Gaussian Splatting Novel-View Synthesis<br>from Sparse Views</span></h2>
+                    <h2 class="title is-2"><span class="dvima">3D Gaussian Splatting Novel-View Synthesis<br>from Sparse
+                            Views</span></h2>
                 </div>
             </div>
 
@@ -360,7 +624,8 @@
                     <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
                         From <strong>8 sparse calibrated cameras</strong> capturing a single timestep, we reconstruct a
                         per-scene 3D Gaussian field and synthesize novel views around the captured rig. Our top variant
-                        achieves <strong>MUSIQ&nbsp;71.85</strong> &mdash; the highest no-reference quality on this scene
+                        achieves <strong>MUSIQ&nbsp;71.85</strong> &mdash; the highest no-reference quality on this
+                        scene
                         among all 3DGS pipelines we tested.
                     </p>
                     <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
@@ -378,15 +643,19 @@
 
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ground truth (8 cameras)</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">&nbsp;<br>&nbsp;</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ground truth (8 cameras)
+                    </p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">
+                        &nbsp;<br>&nbsp;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_gt_8cams.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ours</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 63.26 &uarr; &middot; NIQE 5.07 &darr; &middot; BRISQUE 30.66 &darr;<br>PIQE 53.36 &darr; &middot; MANIQA 0.308 &uarr; &middot; TOPIQ 0.450 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        63.26 &uarr; &middot; NIQE 5.07 &darr; &middot; BRISQUE 30.66 &darr;<br>PIQE 53.36 &darr;
+                        &middot; MANIQA 0.308 &uarr; &middot; TOPIQ 0.450 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v143.mp4" type="video/mp4">
                     </video>
@@ -413,20 +682,23 @@
             -->
 
 
-            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Multi-pane: ours vs four baselines &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag any of the four seams)</span></h3>
-            <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 1100px; margin: 0 auto 18px;">
-                Five renders of the same novel-view sweep stacked into one canvas. <b>Ours</b> takes the central 50% of the canvas by default; drag any of the four internal seams to wipe between adjacent methods.
-                Left to right: InstantSplat &middot; <b>Ours</b> &middot; Sparfels &middot; SplatFormer &middot; SparseGS.
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Multi-pane: ours vs four baselines
+                &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag any of the four seams)</span>
+            </h3>
+            <p class="has-text-centered"
+                style="font-size: 0.95rem; color: #555; max-width: 1100px; margin: 0 auto 18px;">
+                Five renders of the same novel-view sweep stacked into one canvas. <b>Ours</b> takes the central 50% of
+                the canvas by default; drag any of the four internal seams to wipe between adjacent methods.
+                Left to right: InstantSplat &middot; <b>Ours</b> &middot; Sparfels &middot; SplatFormer &middot;
+                SparseGS.
             </p>
             <div class="columns is-centered">
                 <div class="column">
                     <div class="video-compare-container" style="max-width: 1200px;">
-                        <video class="video" id="multi_3dgs" loop playsinline autoplay muted
-                               data-panes="5"
-                               data-labels="InstantSplat|Ours|Sparfels|SplatFormer|SparseGS"
-                               data-init-seams="0.25,0.75,0.8333,0.9167"
-                               src="videos/3dgs_multi_5pane.mp4"
-                               onplay="resizeAndPlayMulti(this)"></video>
+                        <video class="video" id="multi_3dgs" loop playsinline autoplay muted data-panes="5"
+                            data-labels="InstantSplat|Ours|Sparfels|SplatFormer|SparseGS"
+                            data-init-seams="0.25,0.75,0.8333,0.9167" src="videos/3dgs_multi_5pane.mp4"
+                            onplay="resizeAndPlayMulti(this)"></video>
                         <canvas height="0" class="videoMerge" id="multi_3dgsMerge"></canvas>
                     </div>
                 </div>
@@ -436,14 +708,19 @@
             <div class="columns is-centered">
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS + Difix3D</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 71.85 &uarr; &middot; NIQE 4.71 &darr; &middot; BRISQUE 21.53 &darr;<br>PIQE 48.76 &darr; &middot; MANIQA 0.361 &uarr; &middot; TOPIQ 0.552 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        71.85 &uarr; &middot; NIQE 4.71 &darr; &middot; BRISQUE 21.53 &darr;<br>PIQE 48.76 &darr;
+                        &middot; MANIQA 0.361 &uarr; &middot; TOPIQ 0.552 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_ours_v117.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + GSFix3D</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 62.25 &uarr; &middot; NIQE 4.98 &darr; &middot; BRISQUE 39.07 &darr;<br>PIQE 50.56 &darr; &middot; MANIQA 0.336 &uarr; &middot; TOPIQ 0.523 &uarr;</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + GSFix3D
+                    </p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        62.25 &uarr; &middot; NIQE 4.98 &darr; &middot; BRISQUE 39.07 &darr;<br>PIQE 50.56 &darr;
+                        &middot; MANIQA 0.336 &uarr; &middot; TOPIQ 0.523 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v142.mp4" type="video/mp4">
                     </video>
@@ -452,31 +729,39 @@
             <div class="columns is-centered">
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat 7k</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 55.90 &uarr; &middot; NIQE 5.18 &darr; &middot; BRISQUE 48.90 &darr;<br>PIQE 50.44 &darr; &middot; MANIQA 0.240 &uarr; &middot; TOPIQ 0.402 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        55.90 &uarr; &middot; NIQE 5.18 &darr; &middot; BRISQUE 48.90 &darr;<br>PIQE 50.44 &darr;
+                        &middot; MANIQA 0.240 &uarr; &middot; TOPIQ 0.402 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v129.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat 1k</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 52.83 &uarr; &middot; NIQE 5.12 &darr; &middot; BRISQUE 40.68 &darr;<br>PIQE 48.98 &darr; &middot; MANIQA 0.226 &uarr; &middot; TOPIQ 0.374 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        52.83 &uarr; &middot; NIQE 5.12 &darr; &middot; BRISQUE 40.68 &darr;<br>PIQE 48.98 &darr;
+                        &middot; MANIQA 0.226 &uarr; &middot; TOPIQ 0.374 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v123.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
 
-                        <div class="columns is-centered">
+            <div class="columns is-centered">
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Sparfels</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 55.64 &uarr; &middot; NIQE 5.41 &darr; &middot; BRISQUE 44.88 &darr;<br>PIQE 56.03 &darr; &middot; MANIQA 0.263 &uarr; &middot; TOPIQ 0.412 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        55.64 &uarr; &middot; NIQE 5.41 &darr; &middot; BRISQUE 44.88 &darr;<br>PIQE 56.03 &darr;
+                        &middot; MANIQA 0.263 &uarr; &middot; TOPIQ 0.412 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v150.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">VGGT-X</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 55.48 &uarr; &middot; NIQE 5.52 &darr; &middot; BRISQUE 48.58 &darr;<br>PIQE 51.74 &darr; &middot; MANIQA 0.262 &uarr; &middot; TOPIQ 0.409 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        55.48 &uarr; &middot; NIQE 5.52 &darr; &middot; BRISQUE 48.58 &darr;<br>PIQE 51.74 &darr;
+                        &middot; MANIQA 0.262 &uarr; &middot; TOPIQ 0.409 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v149b.mp4" type="video/mp4">
                     </video>
@@ -485,14 +770,18 @@
             <div class="columns is-centered">
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SplatFormer</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 47.45 &uarr; &middot; NIQE 4.66 &darr; &middot; BRISQUE 34.53 &darr;<br>PIQE 42.59 &darr; &middot; MANIQA 0.198 &uarr; &middot; TOPIQ 0.335 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        47.45 &uarr; &middot; NIQE 4.66 &darr; &middot; BRISQUE 34.53 &darr;<br>PIQE 42.59 &darr;
+                        &middot; MANIQA 0.198 &uarr; &middot; TOPIQ 0.335 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v139b.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">SparseGS</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 51.03 &uarr; &middot; NIQE 4.81 &darr; &middot; BRISQUE 31.05 &darr;<br>PIQE 49.61 &darr; &middot; MANIQA 0.193 &uarr; &middot; TOPIQ 0.370 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        51.03 &uarr; &middot; NIQE 4.81 &darr; &middot; BRISQUE 31.05 &darr;<br>PIQE 49.61 &darr;
+                        &middot; MANIQA 0.193 &uarr; &middot; TOPIQ 0.370 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/3dgs_v55.mp4" type="video/mp4">
                     </video>
@@ -500,12 +789,13 @@
             </div>
 
 
-<div class="columns is-centered">
+            <div class="columns is-centered">
                 <div class="column">
                     <h3 class="title is-4 has-text-centered">3DGS results &mdash; ours vs baselines</h3>
                     <p style="font-size: 90%; color:#555; max-width: 900px; margin: 0 auto 12px; text-align:center;">
                         Same 8-camera <code>pestle_crush_nuts_ep5</code> scene, single timestep,
-                        no post-processing on baselines. Direction: MUSIQ&uarr;, NIQE&darr;, BRISQUE&darr;, PIQE&darr;, MANIQA&uarr;, TOPIQ&uarr;.
+                        no post-processing on baselines. Direction: MUSIQ&uarr;, NIQE&darr;, BRISQUE&darr;, PIQE&darr;,
+                        MANIQA&uarr;, TOPIQ&uarr;.
                     </p>
                     <table class="stats-table table is-striped is-narrow is-hoverable" style="margin: 0 auto;">
                         <thead>
@@ -520,16 +810,65 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="background:#e8f4fc;"><td><strong>Ours</strong></td><td><strong>63.26</strong></td><td><strong>5.07</strong></td><td><strong>30.66</strong></td><td>53.36</td><td><strong>0.308</strong></td><td><strong>0.450</strong></td></tr>
-                            <tr><td>Sparfels</td><td>55.64</td><td>5.41</td><td>44.88</td><td>56.03</td><td>0.263</td><td>0.412</td></tr>
-                            <tr><td>VGGT-X</td><td>55.48</td><td>5.52</td><td>48.58</td><td>51.74</td><td>0.262</td><td>0.409</td></tr>
-                            <tr><td>InstantSplat</td><td>52.83</td><td>5.12</td><td>40.68</td><td>48.98</td><td>0.226</td><td>0.374</td></tr>
-                            <tr><td>SplatFormer</td><td>47.45</td><td>4.66</td><td>34.53</td><td>42.59</td><td>0.198</td><td>0.335</td></tr>
-                            <tr><td>SparseGS</td><td>28.86</td><td>6.77</td><td>47.24</td><td>63.12</td><td>0.116</td><td>0.187</td></tr>
+                            <tr style="background:#e8f4fc;">
+                                <td><strong>Ours</strong></td>
+                                <td><strong>63.26</strong></td>
+                                <td><strong>5.07</strong></td>
+                                <td><strong>30.66</strong></td>
+                                <td>53.36</td>
+                                <td><strong>0.308</strong></td>
+                                <td><strong>0.450</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Sparfels</td>
+                                <td>55.64</td>
+                                <td>5.41</td>
+                                <td>44.88</td>
+                                <td>56.03</td>
+                                <td>0.263</td>
+                                <td>0.412</td>
+                            </tr>
+                            <tr>
+                                <td>VGGT-X</td>
+                                <td>55.48</td>
+                                <td>5.52</td>
+                                <td>48.58</td>
+                                <td>51.74</td>
+                                <td>0.262</td>
+                                <td>0.409</td>
+                            </tr>
+                            <tr>
+                                <td>InstantSplat</td>
+                                <td>52.83</td>
+                                <td>5.12</td>
+                                <td>40.68</td>
+                                <td>48.98</td>
+                                <td>0.226</td>
+                                <td>0.374</td>
+                            </tr>
+                            <tr>
+                                <td>SplatFormer</td>
+                                <td>47.45</td>
+                                <td>4.66</td>
+                                <td>34.53</td>
+                                <td>42.59</td>
+                                <td>0.198</td>
+                                <td>0.335</td>
+                            </tr>
+                            <tr>
+                                <td>SparseGS</td>
+                                <td>28.86</td>
+                                <td>6.77</td>
+                                <td>47.24</td>
+                                <td>63.12</td>
+                                <td>0.116</td>
+                                <td>0.187</td>
+                            </tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
-                        All scores measured on the same 8-camera <code>pestle_crush_nuts_ep5</code> scene at the held-out frame-0 timestep.
+                        All scores measured on the same 8-camera <code>pestle_crush_nuts_ep5</code> scene at the
+                        held-out frame-0 timestep.
                     </p>
                 </div>
             </div>
@@ -541,7 +880,8 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-2"><span class="dvima">4D Gaussian Splatting Novel-View Synthesis<br>from Sparse Views</span></h2>
+                    <h2 class="title is-2"><span class="dvima">4D Gaussian Splatting Novel-View Synthesis<br>from Sparse
+                            Views</span></h2>
                 </div>
             </div>
 
@@ -551,7 +891,8 @@
                         From <strong>8 sparse calibrated cameras</strong> capturing a dynamic scene
                         (10&nbsp;s &middot; 30&nbsp;fps), we reconstruct a time-aware Gaussian field and synthesize a
                         novel-view trajectory of equal length. Our top variant reaches <strong>MUSIQ&nbsp;72.03</strong>
-                        &mdash; the first 4DGS pipeline on this scene to <em>exceed</em> the strongest 3DGS-only result (71.85).
+                        &mdash; the first 4DGS pipeline on this scene to <em>exceed</em> the strongest 3DGS-only result
+                        (71.85).
                     </p>
                     <p style="font-size: 100%; max-width: 900px; margin: 0 auto 24px; color: #555;">
                         <strong>What is unique vs 2025/2026 research:</strong> recent 4DGS work
@@ -560,7 +901,7 @@
                         deformation fields, per-Gaussian polynomial trajectories, entropy-constrained compression,
                         accelerated optimization. None target a key empirical observation: per-frame InstantSplat
                         produces images whose <em>artifact distribution exactly matches what generative view-fixers were
-                        trained to remove</em>. We show that a per-frame backbone + an <strong>ordered</strong>
+                            trained to remove</em>. We show that a per-frame backbone + an <strong>ordered</strong>
                         diffusion stack (Difix3D&rarr;GSFix3D) at 1080p is
                         <strong>+1.46 MUSIQ better than the reverse order</strong>, and the full pipeline
                         beats every 4DGS baseline by 8&ndash;15 MUSIQ on the same scene.
@@ -570,33 +911,38 @@
 
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ground truth (8 cameras, time-sliced, 10 s @ 30 fps)</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">&nbsp;<br>&nbsp;</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ground truth (8 cameras,
+                        time-sliced, 10 s @ 30 fps)</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">
+                        &nbsp;<br>&nbsp;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_gt_8cams.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">Ours</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 72.03 &uarr; &middot; NIQE 4.50 &darr; &middot; BRISQUE 21.88 &darr;<br>PIQE 38.33 &darr; &middot; MANIQA 0.412 &uarr; &middot; TOPIQ 0.561 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        72.03 &uarr; &middot; NIQE 4.50 &darr; &middot; BRISQUE 21.88 &darr;<br>PIQE 38.33 &darr;
+                        &middot; MANIQA 0.412 &uarr; &middot; TOPIQ 0.561 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_ours_v383.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
 
-            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours vs InstantSplat &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
-            <p class="has-text-centered" style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
-                Same novel-view trajectory; <b>left half: ours</b>, right half: InstantSplat baseline. MUSIQ 72.03 vs 55.44.
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: ours vs InstantSplat
+                &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <p class="has-text-centered"
+                style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
+                Same novel-view trajectory; <b>left half: ours</b>, right half: InstantSplat baseline. MUSIQ 72.03 vs
+                55.44.
             </p>
             <div class="columns is-centered">
                 <div class="column">
                     <div class="video-compare-container" style="max-width: 900px;">
-                        <video class="video" id="cmp4_instantsplat" loop playsinline autoplay muted
-                               data-panes="2"
-                               data-labels="Ours|InstantSplat"
-                               src="videos/4dgs_compare_ours_vs_instantsplat.mp4"
-                               onplay="resizeAndPlayMulti(this)"></video>
+                        <video class="video" id="cmp4_instantsplat" loop playsinline autoplay muted data-panes="2"
+                            data-labels="Ours|InstantSplat" src="videos/4dgs_compare_ours_vs_instantsplat.mp4"
+                            onplay="resizeAndPlayMulti(this)"></video>
                         <canvas height="0" class="videoMerge" id="cmp4_instantsplatMerge"></canvas>
                     </div>
                 </div>
@@ -604,15 +950,21 @@
 
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + GSFix3D + Difix3D</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 70.57 &uarr; &middot; NIQE 4.63 &darr; &middot; BRISQUE 12.92 &darr;<br>PIQE 27.02 &darr; &middot; MANIQA 0.393 &uarr; &middot; TOPIQ 0.531 &uarr;</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + GSFix3D +
+                        Difix3D</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        70.57 &uarr; &middot; NIQE 4.63 &darr; &middot; BRISQUE 12.92 &darr;<br>PIQE 27.02 &darr;
+                        &middot; MANIQA 0.393 &uarr; &middot; TOPIQ 0.531 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_v384.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + Difix3D</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 63.48 &uarr; &middot; NIQE 5.44 &darr; &middot; BRISQUE 19.45 &darr;<br>PIQE 31.20 &darr; &middot; MANIQA 0.326 &uarr; &middot; TOPIQ 0.455 &uarr;</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + Difix3D
+                    </p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        63.48 &uarr; &middot; NIQE 5.44 &darr; &middot; BRISQUE 19.45 &darr;<br>PIQE 31.20 &darr;
+                        &middot; MANIQA 0.326 &uarr; &middot; TOPIQ 0.455 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_v381.mp4" type="video/mp4">
                     </video>
@@ -620,22 +972,27 @@
             </div>
             <div class="columns is-centered">
                 <div class="column">
-                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + GSFix3D</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 62.92 &uarr; &middot; NIQE 4.31 &darr; &middot; BRISQUE 28.81 &darr;<br>PIQE 38.10 &darr; &middot; MANIQA 0.316 &uarr; &middot; TOPIQ 0.506 &uarr;</p>
+                    <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat + GSFix3D
+                    </p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        62.92 &uarr; &middot; NIQE 4.31 &darr; &middot; BRISQUE 28.81 &darr;<br>PIQE 38.10 &darr;
+                        &middot; MANIQA 0.316 &uarr; &middot; TOPIQ 0.506 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_v382.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column">
                     <p class="has-text-centered" style="font-weight:600; margin-bottom:0.1rem;">InstantSplat only</p>
-                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ 55.44 &uarr; &middot; NIQE 5.21 &darr; &middot; BRISQUE 39.05 &darr;<br>PIQE 49.62 &darr; &middot; MANIQA 0.232 &uarr; &middot; TOPIQ 0.392 &uarr;</p>
+                    <p class="has-text-centered" style="font-size:0.82rem; color:#555; margin-bottom:0.5rem;">MUSIQ
+                        55.44 &uarr; &middot; NIQE 5.21 &darr; &middot; BRISQUE 39.05 &darr;<br>PIQE 49.62 &darr;
+                        &middot; MANIQA 0.232 &uarr; &middot; TOPIQ 0.392 &uarr;</p>
                     <video controls muted playsinline style="width:100%; border-radius:6px;">
                         <source src="videos/4dgs_v371.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
 
-<div class="columns is-centered">
+            <div class="columns is-centered">
                 <div class="column">
                     <h3 class="title is-4 has-text-centered">4DGS results &mdash; ours vs baselines</h3>
                     <p style="font-size: 90%; color:#555; max-width: 900px; margin: 0 auto 12px; text-align:center;">
@@ -657,36 +1014,268 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="background:#e8f4fc;"><td><strong>Ours</strong></td><td><strong>72.03</strong></td><td><strong>4.50</strong></td><td><strong>21.88</strong></td><td><strong>38.33</strong></td><td><strong>0.412</strong></td><td><strong>0.561</strong></td></tr>
-                            <tr><td>InstantSplat</td><td>55.44</td><td>5.21</td><td>39.05</td><td>49.62</td><td>0.232</td><td>0.392</td></tr>
+                            <tr style="background:#e8f4fc;">
+                                <td><strong>Ours</strong></td>
+                                <td><strong>72.03</strong></td>
+                                <td><strong>4.50</strong></td>
+                                <td><strong>21.88</strong></td>
+                                <td><strong>38.33</strong></td>
+                                <td><strong>0.412</strong></td>
+                                <td><strong>0.561</strong></td>
+                            </tr>
+                            <tr>
+                                <td>InstantSplat</td>
+                                <td>55.44</td>
+                                <td>5.21</td>
+                                <td>39.05</td>
+                                <td>49.62</td>
+                                <td>0.232</td>
+                                <td>0.392</td>
+                            </tr>
                         </tbody>
                     </table>
                     <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
-                        Same 8-camera scene; the green row is our full pipeline &mdash; the first 4DGS result on this scene to exceed 71.85 (the 3D-only ceiling).
+                        Same 8-camera scene; the green row is our full pipeline &mdash; the first 4DGS result on this
+                        scene to exceed 71.85 (the 3D-only ceiling).
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ============ EVALUATION RESULTS ============ -->
+    <section class="section" id="evaluation-results">
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-2"><span class="dvima">Benchmarking VLMs’ Physical Tool-use Capabilities</span>
+                    </h2>
+                    <div class="content has-text-left" style="font-size: 110%; max-width: 980px; margin: 0 auto;">
+                        <p>
+                            We benchmark VLMs at three levels of physical tool-use reasoning. For each example, the
+                            model receives the first frame from a top-view RGB camera and a natural-language instruction
+                            such as <em>“stir the coffee.”</em> The evaluation set contains 160 manually verified
+                            demonstrations spanning 32 task variants.
+                        </p>
+                        <p>
+                            <strong>Tool selection</strong> tests whether a model understands which visible objects can
+                            physically perform the requested action. The model returns the names of all plausible tools:
+                            for example, a spoon, ladle, or scoop could each be proposed for <em>“scoop the nuts.”</em>
+                            Because several objects may be functionally valid, multiple answers are allowed.
+                        </p>
+                        <p>
+                            <strong>Spatial grounding</strong> tests whether the model can connect its tool choice to
+                            the correct object instance in the image. For every selected tool, the model predicts a
+                            rectangular bounding box. We compute intersection over union (IoU) only when the predicted
+                            tool category matches the demonstrated tool, separating localization errors from semantic
+                            selection errors.
+                        </p>
+                        <p>
+                            <strong>Behavioral planning</strong> asks how the tool should move after it has been
+                            identified. To isolate motion planning from selection, the model is explicitly given the
+                            demonstrated tool name along with the image and instruction. It outputs an ordered sequence
+                            of 2D image coordinates describing a high-level path from the tool to and through the
+                            interaction region—for example, approaching a cup and tracing a stirring motion.
+                            “Successfully evaluated” is the percentage of responses that can be parsed and scored as
+                            valid trajectories.
+                        </p>
+                        <p>
+                            Predictions are compared with two ground-truth paths. The <strong>tool-center
+                                trajectory</strong> projects the center of the tool through time. The
+                            <strong>correspondence-aware trajectory</strong> instead tracks a point on the functional
+                            part of the tool, such as a spoon tip, so it better represents the intended interaction
+                            region. Mean L2 measures average pointwise pixel error and is sensitive to the progression
+                            of the motion; Chamfer-L2 compares the overall sets of path points and emphasizes path
+                            shape.
+                            Lower values indicate closer agreement with the human demonstration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-multiline is-variable is-5 benchmark-grid">
+                <div class="column is-12">
+                    <div class="benchmark-card">
+                        <h3 class="title is-5">Tool selection and grounding</h3>
+                        <p class="benchmark-caption">
+                            Tool accuracy measures demonstrated-tool matches; BBox IoU measures localization
+                            for semantically matched predictions. Best results are shown in bold.
+                        </p>
+                        <div class="table-container">
+                            <table class="stats-table table is-striped is-narrow is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Tool Acc.</th>
+                                        <th>BBox IoU</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GPT-5-mini</td>
+                                        <td>0.662</td>
+                                        <td>0.300</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GPT-5.5</td>
+                                        <td>0.738</td>
+                                        <td><strong>0.890</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Claude-Sonnet-4.6</td>
+                                        <td><strong>0.800</strong></td>
+                                        <td>0.641</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Claude-Opus-4.7</td>
+                                        <td><strong>0.800</strong></td>
+                                        <td>0.564</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gemini-3-Flash</td>
+                                        <td>0.756</td>
+                                        <td>0.050</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gemini-3.1-Pro</td>
+                                        <td>0.781</td>
+                                        <td>0.010</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Qwen-3.5-9B</td>
+                                        <td>0.557</td>
+                                        <td>0.003</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Qwen-3.6-27B</td>
+                                        <td>0.638</td>
+                                        <td>0.004</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12">
+                    <div class="benchmark-card">
+                        <h3 class="title is-5">Trajectory prediction</h3>
+                        <p class="benchmark-caption">
+                            Results across 160 selected trajectories. Distance metrics are reported in pixels;
+                            higher is better for successful evaluation and lower is better for path errors.
+                        </p>
+                        <div class="table-container">
+                            <table class="stats-table table is-striped is-narrow is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Successfully<br>evaluated</th>
+                                        <th>Tool-center<br>Mean L2</th>
+                                        <th>Tool-center<br>Chamfer-L2</th>
+                                        <th>Corr.-aware<br>Mean L2</th>
+                                        <th>Corr.-aware<br>Chamfer-L2</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GPT-5.6 Sol.</td>
+                                        <td><strong>90.0%</strong></td>
+                                        <td>241.05</td>
+                                        <td>113.45</td>
+                                        <td>237.55</td>
+                                        <td>98.05</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gemma 4 31B</td>
+                                        <td>86.9%</td>
+                                        <td>259.96</td>
+                                        <td>104.17</td>
+                                        <td>269.73</td>
+                                        <td>107.31</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gemini Robotics ER</td>
+                                        <td>77.5%</td>
+                                        <td><strong>230.37</strong></td>
+                                        <td><strong>91.91</strong></td>
+                                        <td><strong>223.15</strong></td>
+                                        <td><strong>74.44</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Claude Fable 5</td>
+                                        <td>71.3%</td>
+                                        <td>263.33</td>
+                                        <td>146.37</td>
+                                        <td>234.89</td>
+                                        <td>102.61</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Qwen 3.6 27B</td>
+                                        <td>37.5%</td>
+                                        <td>244.88</td>
+                                        <td>128.44</td>
+                                        <td>228.61</td>
+                                        <td>103.71</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <figure class="qualitative-figure">
+                <img src="figures/vlm_compare_tasks.png"
+                    alt="Tool-grounding predictions from vision-language models across six physical manipulation tasks">
+                <figcaption>
+                    <strong>Tool selection and spatial grounding across tasks.</strong>
+                    We compare model-predicted tool labels and bounding boxes on six representative
+                    manipulation tasks: collecting sand, flattening dough, flipping naan, spreading tomato
+                    sauce, stirring coffee, and sweeping nuts. Bounding boxes are color-coded by model: brown for
+                    GPT-5.5, teal for Claude Sonnet 4.5, purple for Gemini 3.1 Pro, and
+                    pink for Qwen3.6-27B, green box marks the ground-truth tool.
+                </figcaption>
+            </figure>
+
+            <figure class="qualitative-figure">
+                <img src="figures/vlm_compare_models_behavior.png"
+                    alt="Ground-truth and model-predicted tool trajectories for a representative manipulation task">
+                <figcaption>
+                    <strong>Qualitative comparison of behavioral planning prediction results.</strong>
+                    Teal denotes the centered ground-truth trajectory, purple denotes the correspondence-aware
+                    ground-truth
+                    trajectory and orange are predicted trajectories. For the task “scoop cashews from a deep bowl using
+                    an ice cream scooper,” most evaluated models correctly
+                    localize the scooper, cashews, and bowl. However, their predicted trajectories are often overly
+                    smooth or idealized
+                    compared with the more irregular motion observed in the ground-truth trajectory.
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
     <section class="section">
         <div class="container is-max-widescreen">
             <div class="rows">
                 <div class="row is-full-width">
                     <h2 class="title is-2"><span class="dvima">Human trajectory diversity</span></h2>
                     <p style="font-size: 125%">
-                        For each task with hand-optimized annotations, we render a representative trial as a skeleton-overlay video — MANO hand joints (21 per hand), bones, and a fading 60-frame wrist tail trace the human trajectory through the action. A featured worked example is shown below at full size; the remaining tasks follow as small tiles. Click any video to play.
+                        For each task with hand-optimized annotations, we render a representative trial as a
+                        skeleton-overlay video — MANO hand joints (21 per hand), bones, and a fading 60-frame wrist tail
+                        trace the human trajectory through the action. A featured worked example is shown below at full
+                        size; the remaining tasks follow as small tiles. Click any video to play.
                     </p>
                 </div>
                 <br>
                 <div class="columns is-centered">
                     <div class="column is-two-thirds has-text-centered">
-                        <video controls autoplay muted loop playsinline
-                               poster="videos/trajectories/fork_flip_egg.jpg"
-                               style="width:100%; border-radius:4px; background:#000">
+                        <video controls autoplay muted loop playsinline poster="videos/trajectories/fork_flip_egg.jpg"
+                            style="width:100%; border-radius:4px; background:#000">
                             <source src="videos/trajectories/fork_flip_egg.mp4" type="video/mp4">
                         </video>
                         <div style="font-size: 0.95rem; margin-top: 6px; color: #555">
-                            Featured trial: <code>fork_flip_egg / 20260205_bigwoodenspatula_flip_eggtoy_in_blackpan_1</code>.
+                            Featured trial:
+                            <code>fork_flip_egg / 20260205_bigwoodenspatula_flip_eggtoy_in_blackpan_1</code>.
                             Left/right MANO hand joints projected into camera 0; fingers colored per group
                             (thumb = red, index = green, middle = blue, ring = yellow, pinky = magenta);
                             wrist dot with a 60-frame fading tail traces the trajectory. Detection-failure sentinels
@@ -711,16 +1300,18 @@
                 <div class="column">
                     <h2 class="title is-3">Interactive Dataset Visualizer</h2>
                     <p style="font-size: 125%">
-                        Browse a stratified random subset of trials. Filter by tool, action, or object to see how humans solve the same task in different ways.
+                        Browse a stratified random subset of trials. Filter by tool, action, or object to see how humans
+                        solve the same task in different ways.
                     </p>
-                    <a class="button is-large is-primary" target="_blank" href="dataset-visualizer/">Open the visualizer</a>
+                    <a class="button is-large is-primary" target="_blank" href="dataset-visualizer/">Open the
+                        visualizer</a>
                 </div>
             </div>
         </div>
     </section>
 
 
-<section class="section" id="BibTeX">
+    <section class="section" id="BibTeX">
         <div class="container is-max-widescreen content">
             <h2 class="title">BibTeX</h2>
             <pre><code>@misc{tooldex2026,
@@ -769,7 +1360,7 @@
             rows.forEach(([task, n], i) => {
                 const tools = (s.task_to_tools && s.task_to_tools[task]) || [];
                 const verbs = (s.task_to_verbs && s.task_to_verbs[task]) || [];
-                const objs  = (s.task_to_objects && s.task_to_objects[task]) || [];
+                const objs = (s.task_to_objects && s.task_to_objects[task]) || [];
                 const tr = document.createElement('tr');
                 tr.innerHTML = `<td>${i + 1}</td><td><code>${task}</code></td><td>${tools.join(', ')}</td><td>${verbs.join(', ')}</td><td>${objs.join(', ')}</td><td style="text-align:right">${n.toLocaleString()}</td>`;
                 tbody.appendChild(tr);
@@ -811,4 +1402,3 @@
 </body>
 
 </html>
-
