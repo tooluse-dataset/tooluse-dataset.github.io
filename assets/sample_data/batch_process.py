@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Batch process RoboTool annotated data into a format suitable for training.
+Batch process TOOLDEX annotated data into a format suitable for training.
 
 Usage:
     # Process all tasks
@@ -44,9 +44,9 @@ from data.robotool.load_data import (
 )
 
 
-DEFAULT_ANNOTATED_DIR = "/home/ruoqu/crq_ws/robotool/DataCollection/data_annotated"
-DEFAULT_RAW_DIR = "/home/ruoqu/crq_ws/robotool/DataCollection/data"
-DEFAULT_MODELS_DIR = "/home/ruoqu/crq_ws/robotool/HO-Cap-Annotation/data/models"
+DEFAULT_ANNOTATED_DIR = "/path/to/DataCollection/data_annotated"
+DEFAULT_RAW_DIR = "/path/to/DataCollection/data"
+DEFAULT_MODELS_DIR = "/path/to/HO-Cap-Annotation/data/models"
 DEFAULT_OUTPUT_DIR = str(PROJECT_ROOT / "data" / "robotool_batch")
 
 
@@ -345,7 +345,7 @@ def discover_sequences(annotated_dir: str, tasks: list = None) -> list:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Batch process RoboTool annotated data")
+    parser = argparse.ArgumentParser(description="Batch process TOOLDEX annotated data")
     parser.add_argument("--annotated_dir", default=DEFAULT_ANNOTATED_DIR,
                         help="Path to data_annotated directory")
     parser.add_argument("--raw_dir", default=DEFAULT_RAW_DIR,
@@ -383,13 +383,13 @@ def main():
 
     mano_layer_right = ManoLayer(
         side="right",
-        mano_root="/home/ruoqu/crq_ws/data/manopth/mano/models",
+        mano_root="/path/to/manopth/mano/models",
         use_pca=False,
         ncomps=45,
     ).to("cuda")
     mano_layer_left = ManoLayer(
         side="left",
-        mano_root="/home/ruoqu/crq_ws/data/manopth/mano/models",
+        mano_root="/path/to/manopth/mano/models",
         use_pca=False,
         ncomps=45,
     ).to("cuda")

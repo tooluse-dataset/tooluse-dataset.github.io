@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Visualize robotool mano_joints.pkl data using viser.
+Visualize TOOLDEX mano_joints.pkl data using viser.
 Works with both old-format (data/robotool/mano_joints.pkl) and
 batch-format (data/robotool_batch/{task}/{seq}/mano_joints.pkl).
 
@@ -73,7 +73,7 @@ def transform_verts(vertices: np.ndarray, T: np.ndarray) -> np.ndarray:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Visualize robotool mano_joints.pkl with viser")
+    parser = argparse.ArgumentParser(description="Visualize TOOLDEX mano_joints.pkl with viser")
     parser.add_argument("--pkl", type=str, required=True,
                         help="Path to mano_joints.pkl")
     parser.add_argument("--obj_mesh", type=str, default=None,
