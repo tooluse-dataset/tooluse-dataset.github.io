@@ -1043,6 +1043,102 @@
         </div>
     </section>
 
+    <!-- ============ TEMPORALLY CONSISTENT 4D GAUSSIAN SPLATTING ============ -->
+    <section class="section" id="temporal-4dgs">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-2"><span class="dvima">Temporally Consistent 4D Gaussian Splatting<br>from Sparse
+                            Views</span></h2>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <p style="font-size: 110%; max-width: 900px; margin: 0 auto 12px;">
+                        <strong>IS-4D</strong> fits InstantSplat independently at every timestep.
+                        <strong>IS-4D-T</strong> trains it <em>temporally</em>: the first-frame Gaussians are carried
+                        forward and each timestep is initialized from the previous one, so the same Gaussians persist
+                        through the whole sequence. Across <strong>20 tool-use scenes</strong>
+                        (8 cameras, 30&nbsp;fps), IS-4D-T cuts temporal flicker (tLP) by
+                        <strong>3.2&times;</strong> and flow-warping error by <strong>2.7&times;</strong>, bringing it
+                        to <strong>0.40</strong> &mdash; close to the captured video itself (0.31) &mdash; while
+                        keeping <strong>35.07&nbsp;dB PSNR</strong> and <strong>0.954&nbsp;SSIM</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="title is-4 has-text-centered" style="margin-top: 36px;">Side-by-side: IS-4D-T vs IS-4D
+                &nbsp;<span style="font-weight:400; font-size:0.85em; color:#555;">(drag the slider to wipe)</span></h3>
+            <p class="has-text-centered"
+                style="font-size: 0.95rem; color: #555; max-width: 900px; margin: 0 auto 18px;">
+                Same camera view and frames; <b>left half: IS-4D-T</b>, right half: IS-4D. Watch the wall, table
+                and markers: IS-4D-T stays stable from frame to frame. On this view, temporal flicker (tLP) is
+                7.7&times; lower, flow-warping error is 4.2&times; lower, and motion error (tOF) is 1.6&times; lower.
+            </p>
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="video-compare-container" style="max-width: 900px;">
+                        <video class="video" id="cmp4t_is4dt" loop playsinline autoplay muted data-panes="2"
+                            data-labels="IS-4D-T|IS-4D" src="videos/4dgs_temporal_compare_is4dt_vs_is4d.mp4"
+                            onplay="resizeAndPlayMulti(this)"></video>
+                        <canvas height="0" class="videoMerge" id="cmp4t_is4dtMerge"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <h3 class="title is-4 has-text-centered">Temporal 4DGS results &mdash; IS-4D-T vs IS-4D</h3>
+                    <p style="font-size: 90%; color:#555; max-width: 900px; margin: 0 auto 12px; text-align:center;">
+                        Averaged over 20 tool-use scenes (30&nbsp;fps, all 8 cameras used for
+                        training, scored on three camera views at every frame).
+                        tLP and E<sub>warp</sub> are &times;10<sup>2</sup>; the captured video itself has
+                        E<sub>warp</sub>&nbsp;=&nbsp;0.31.
+                        Direction: PSNR&uarr;, SSIM&uarr;, LPIPS&darr;, tLP&darr;, tOF&darr;, E<sub>warp</sub>&darr;.
+                    </p>
+                    <table class="stats-table table is-striped is-narrow is-hoverable" style="margin: 0 auto;">
+                        <thead>
+                            <tr>
+                                <th>method</th>
+                                <th>PSNR&uarr;</th>
+                                <th>SSIM&uarr;</th>
+                                <th>LPIPS&darr;</th>
+                                <th>tLP&darr;</th>
+                                <th>tOF&darr;</th>
+                                <th>E<sub>warp</sub>&darr;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background:#e8f4fc;">
+                                <td><strong>IS-4D-T</strong></td>
+                                <td>35.07</td>
+                                <td>0.954</td>
+                                <td>0.112</td>
+                                <td><strong>0.62</strong></td>
+                                <td>0.337</td>
+                                <td><strong>0.40</strong></td>
+                            </tr>
+                            <tr>
+                                <td>IS-4D</td>
+                                <td><strong>37.38</strong></td>
+                                <td><strong>0.978</strong></td>
+                                <td><strong>0.041</strong></td>
+                                <td>2.00</td>
+                                <td><strong>0.217</strong></td>
+                                <td>1.08</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.82rem; color:#666; text-align:center; margin-top:8px;">
+                        The blue row is the temporally trained variant &mdash; 3.2&times; lower tLP and 2.7&times;
+                        lower flow-warping error, consistently across all 20 scenes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ EVALUATION RESULTS ============ -->
     <section class="section" id="evaluation-results">
         <div class="container is-max-widescreen">
